@@ -5,34 +5,45 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/training_Plan"
+            android:icon="@drawable/ic_timer_black_24dp"
+            android:title="Training Plan" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/meals_Plan"
+            android:icon="@drawable/ic_restaurant_menu_black_24dp"
+            android:title="Meals Plan" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/reminder"
+            android:icon="@drawable/ic_event_note_black_24dp"
+            android:title="Reminder" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+            android:id="@+id/bmi_Calculator"
+            android:icon="@drawable/ic_event_note_black_24dp"
+            android:title="BMI Calculator" />
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/language"
+            android:icon="@drawable/ic_public_black_24dp"
+            android:title="Languages" />
+
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/ic_share_black_24dp"
+            android:title="Share" />
+        <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/ic_feedback_black_24dp"
+            android:title="FeedBack" />
+        <item
+            android:id="@+id/rate_Us"
+            android:icon="@drawable/ic_thumb_up_black_24dp"
+            android:title="Rate Us" />
+
+        <item
+            android:id="@+id/restart_Progress"
+            android:icon="@drawable/ic_replay_black_24dp"
+            android:title="Restart Progress" />
+
+    </group>
 
 </menu>
