@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExcerciseActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20sp"
+                    android:layout_weight="1"
+                    android:id="@+id/linearPushUps"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="PUSHUPS"
+                        android:layout_marginLeft="20sp"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorApp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="10sp"
+                        android:textSize="15sp"
+                        android:text="x20"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10sp"
+                    android:layout_height="wrap_content">
+
+                    <ViewFlipper
+                        android:layout_width="70dp"
+                        android:layout_marginLeft="50sp"
+                        android:id="@+id/viewFlipperPushUps"
+                        android:layout_height="70dp">
+
+                    </ViewFlipper>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20sp"
+                    android:layout_weight="1"
+                    android:id="@+id/linearSquats"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SQUATS"
+                        android:layout_marginLeft="20sp"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorApp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="10sp"
+                        android:textSize="15sp"
+                        android:text="x20"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:padding="10sp"
+                        android:layout_height="wrap_content">
+
+                        <ViewFlipper
+                            android:layout_width="70dp"
+                            android:id="@+id/viewFlipperSquats"
+                            android:layout_marginLeft="50sp"
+                            android:layout_height="70dp">
+
+                        </ViewFlipper>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20sp"
+                    android:layout_weight="1"
+                    android:id="@+id/linearLegRaise"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LEG RAISE"
+                        android:layout_marginLeft="20sp"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorApp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="10sp"
+                        android:textSize="15sp"
+                        android:text="x20"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1">
+
+                    <ViewFlipper
+                        android:layout_width="70dp"
+                        android:id="@+id/viewFlipperLegRaise"
+                        android:layout_marginLeft="50sp"
+                        android:layout_height="70dp">
+
+                    </ViewFlipper>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20sp"
+                    android:layout_weight="1"
+                    android:id="@+id/linearJumpingJack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="JUMPING JACK"
+                        android:layout_marginLeft="20sp"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorApp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="10sp"
+                        android:textSize="15sp"
+                        android:text="x15"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1">
+
+                    <ViewFlipper
+                        android:layout_width="70dp"
+                        android:id="@+id/viewFlipperJumpingJack"
+                        android:layout_marginLeft="50sp"
+                        android:layout_height="70dp">
+
+                    </ViewFlipper>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20sp"
+                    android:layout_weight="1"
+                    android:id="@+id/linearSquatsAgain"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SQUATS"
+                        android:layout_marginLeft="20sp"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorApp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="10sp"
+                        android:textSize="15sp"
+                        android:text="x20"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1">
+
+                    <ViewFlipper
+                        android:layout_width="70dp"
+                        android:id="@+id/viewFlipperSquatsAgain"
+                        android:layout_marginLeft="50sp"
+                        android:layout_height="70dp">
+
+                    </ViewFlipper>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20sp"
+                    android:layout_weight="1"
+                    android:id="@+id/linearPlankWithLegFit"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="PLANK WITH LEG FIT"
+                        android:layout_marginLeft="20sp"
+                        android:textSize="20sp"
+                        android:textColor="#000"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorApp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="10sp"
+                        android:textSize="15sp"
+                        android:text="x30"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_weight="1">
+
+                    <ViewFlipper
+                        android:layout_width="70dp"
+                        android:id="@+id/viewFlipperPlankWithLegFit"
+                        android:layout_marginLeft="50sp"
+                        android:layout_height="70dp">
+
+                    </ViewFlipper>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorApp"
+            android:id="@+id/startButton"
+            android:layout_marginHorizontal="30sp"
+            android:text="START"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            android:textSize="30sp"
+            android:textColor="#fff"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExcerciseStartActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/imageView"
+        android:background="@drawable/qo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100sp"
+        android:text="10"
+        android:id="@+id/countDown"
+        android:textColor="@color/colorApp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="100dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:text="READY TO GO"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:text="SKIP"
+        android:id="@+id/skipButton"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/colorApp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="30sp"
+        android:text="PUSHUPS"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/excercise_name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="80sp"
+        android:textSize="18sp"
+        android:text="@string/string_pushups"
+        android:padding="15sp"
+        android:textStyle="bold"
+        android:id="@+id/excercise_name_detail"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/play"
+        android:visibility="invisible"
+        android:layout_marginBottom="10sp"
+        android:layout_marginRight="10sp"
+        app:srcCompat="@android:drawable/ic_media_play"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/pause"
+        android:layout_marginBottom="10sp"
+        android:layout_marginRight="10sp"
+        app:srcCompat="@android:drawable/ic_media_pause"/>
+
+</RelativeLayout>
