@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/colorgrey" android:layout_width="fill_parent" android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout android:id="@+id/appBarLayout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar android:theme="@style/myToolbarTheme" android:id="@+id/mtoolbar" android:background="@color/colorgrey" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?actionBarSize" app:navigationIcon="?homeAsUpIndicator">
+            <TextView android:textSize="20.0sp" android:textColor="@color/colorPrimaryDark" android:layout_gravity="center" android:id="@+id/mtoolbar_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Toolbar Title" android:fontFamily="@font/roboto_medium" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v7.widget.RecyclerView android:id="@+id/recyclerAllDaysList" android:background="@color/colorgrey" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    <android.support.v7.widget.CardView android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="25.0dip" app:cardBackgroundColor="@android:color/transparent" app:cardElevation="1.0dip">
+        <Button android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/buttonTwo" android:background="@drawable/button_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="start" />
+    </android.support.v7.widget.CardView>
+</android.support.design.widget.CoordinatorLayout>

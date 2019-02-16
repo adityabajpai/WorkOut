@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/main_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0.0dip">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@id/toolbar"
+            android:background="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            app:navigationIcon="?homeAsUpIndicator"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:textSize="20.0sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:gravity="start|center"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:text="@string/shopping_list"
+                    android:layout_weight="1.0"
+                    android:fontFamily="@font/roboto_bold" />
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:onClick="imageclick" />
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.TabLayout
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:id="@+id/tab_layout"
+        android:background="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize"
+        android:minHeight="?actionBarSize" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:background="@color/colorgrey"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tab_layout" />
+
+</LinearLayout>

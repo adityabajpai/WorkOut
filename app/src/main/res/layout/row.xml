@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:background="#fffaf9f9" android:layout_width="120.0dip" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="10.0dip" app:cardCornerRadius="5.0dip" app:cardElevation="7.0dip"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="#fffaf9f9" android:layout_width="120.0dip" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/absW" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_margin="3.0dip" android:contentDescription="add" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@+id/tv1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:text="Abs workout" android:layout_below="@+id/absW" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff6b6b6b" android:id="@+id/free" android:layout_width="120.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:text="FREE" android:layout_below="@+id/tv1" />
+        <TextView android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_below="@+id/free" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

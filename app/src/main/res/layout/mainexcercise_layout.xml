@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@+id/rootlayout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/ready_to_go" />
+        <include layout="@layout/rest_layout" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:id="@+id/hLayoutprogress" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
+            <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_close_black_24dp" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="#ff66686b" android:id="@+id/timerTop" android:padding="25.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_alignParentRight="true" android:fontFamily="@font/roboto_regular" />
+        </RelativeLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <kr.pe.burt.android.lib.faimageview.FAImageView android:id="@+id/animImageFull" android:layout_width="fill_parent" android:layout_height="250.0dip" />
+        </RelativeLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip">
+            <TextView android:textSize="20.0sp" android:textColor="@color/lightestgrey" android:id="@+id/eachSideTextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:fontFamily="@font/roboto_regular" />
+            <TextView android:textSize="22.0sp" android:textColor="#ff1e1e1e" android:id="@+id/excName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PLANK" android:fontFamily="@font/roboto_regular" />
+        </LinearLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar android:id="@id/progress_one" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginTop="10.0dip" app:rcBackgroundColor="#ff1e1e1e" app:rcMax="300.0" app:rcProgress="1.0" app:rcProgressColor="@color/colorAccent" app:rcRadius="0.0dip" />
+            <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip">
+                    <TextView android:textSize="28.0sp" android:textStyle="bold" android:textColor="#fff2f2f2" android:id="@+id/tv_progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:fontFamily="@font/roboto_regular" />
+                    <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="#fff2f2f2" android:id="@+id/tv_progress_max" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" /10" android:fontFamily="@font/roboto_regular" />
+                </LinearLayout>
+                <ImageView android:id="@+id/pauseMainExcersise" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" android:src="@drawable/pause_main_progress" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@+id/resumeMainExcersise" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" android:src="@drawable/play_main_progress" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>
