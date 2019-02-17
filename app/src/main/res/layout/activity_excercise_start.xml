@@ -62,7 +62,7 @@
         android:layout_below="@+id/imageView"
         android:layout_marginTop="80sp"
         android:textSize="18sp"
-        android:text="@string/string_pushups"
+        android:text="@string/desc_pushups"
         android:padding="15sp"
         android:textStyle="bold"
         android:id="@+id/excercise_name_detail"/>

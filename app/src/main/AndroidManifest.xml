@@ -22,6 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ExcerciseStartedActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ExcerciseStartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity android:name=".ExcerciseDetailActivity" />
+        <activity android:name=".ExcerciseActivity" />
     </application>
 
 </manifest>

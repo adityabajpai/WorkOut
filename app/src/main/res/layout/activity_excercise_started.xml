@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExcerciseStartedActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="6"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progress_bar_excercise1"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:minHeight="50dp"
+            android:layout_weight="1"
+            android:progressDrawable="@drawable/myprogresssbar" />
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar_excercise2"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5sp"
+            android:layout_height="10dp"
+            android:minHeight="50dp"
+            android:layout_weight="1"
+            android:progressDrawable="@drawable/myprogresssbar" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_excercise3"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5sp"
+            android:minHeight="50dp"
+            android:layout_weight="1"
+            android:progressDrawable="@drawable/myprogresssbar" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_excercise4"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:minHeight="50dp"
+            android:layout_marginLeft="5sp"
+            android:layout_weight="1"
+            android:progressDrawable="@drawable/myprogresssbar" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_excercise5"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:minHeight="50dp"
+            android:layout_marginLeft="5sp"
+            android:layout_weight="1"
+            android:progressDrawable="@drawable/myprogresssbar" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_excercise6"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:minHeight="50dp"
+            android:layout_marginLeft="5sp"
+            android:layout_weight="1"
+            android:progressDrawable="@drawable/myprogresssbar" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:minHeight="50dp"
+        android:layout_alignParentBottom="true"
+        android:progressDrawable="@drawable/myprogresssbar" />
+
+    <ViewFlipper
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="300dp"
+        android:id="@+id/flipper">
+
+    </ViewFlipper>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:id="@+id/name"
+        android:layout_above="@+id/progress_bar"/>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:id="@+id/countDown"
+            android:textSize="25dp"
+            android:text="0"
+            android:gravity="end"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="/20"
+            android:layout_gravity="center_vertical"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/play"
+        android:layout_marginRight="15dp"/>
+
+</RelativeLayout>

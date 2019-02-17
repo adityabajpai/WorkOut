@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -25,7 +23,6 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     LinearLayout ll1, ll2, ll3, ll4, ll5, ll6, ll7, ll8, ll9, ll10, ll11, ll12, ll13, ll14, ll15, ll16, ll17, ll18, ll19, ll20, ll21, ll22, ll23, ll24, ll25, ll26, ll27, ll28, ll29, ll30;
-//    SeekBar sk1, sk2, sk3, sk4, sk5, sk6, sk7, sk8, sk9, sk10, sk11, sk12, sk13, sk14, sk15, sk16, sk17, sk18, sk19, sk20, sk21, sk22, sk23, sk24, sk25, sk26, sk27, sk28, sk29, sk30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,69 +60,6 @@ public class HomeActivity extends AppCompatActivity
         ll28 = findViewById(R.id.linear28);
         ll29 = findViewById(R.id.linear29);
         ll30 = findViewById(R.id.linear30);
-
-//        sk1 = findViewById(R.id.seek1);
-//        sk2 = findViewById(R.id.seek2);
-//        sk3 = findViewById(R.id.seek3);
-//        sk4 = findViewById(R.id.seek4);
-//        sk5 = findViewById(R.id.seek5);
-//        sk6 = findViewById(R.id.seek6);
-//        sk7 = findViewById(R.id.seek7);
-//        sk8 = findViewById(R.id.seek8);
-//        sk9 = findViewById(R.id.seek9);
-//        sk10 = findViewById(R.id.seek10);
-//        sk11 = findViewById(R.id.seek11);
-//        sk12 = findViewById(R.id.seek12);
-//        sk13 = findViewById(R.id.seek13);
-//        sk14 = findViewById(R.id.seek14);
-//        sk15 = findViewById(R.id.seek15);
-//        sk16 = findViewById(R.id.seek16);
-//        sk17 = findViewById(R.id.seek17);
-//        sk18 = findViewById(R.id.seek18);
-//        sk19 = findViewById(R.id.seek19);
-//        sk20 = findViewById(R.id.seek20);
-//        sk21 = findViewById(R.id.seek21);
-//        sk22 = findViewById(R.id.seek22);
-//        sk23 = findViewById(R.id.seek23);
-//        sk24 = findViewById(R.id.seek24);
-//        sk25 = findViewById(R.id.seek25);
-//        sk26 = findViewById(R.id.seek26);
-//        sk27 = findViewById(R.id.seek27);
-//        sk28 = findViewById(R.id.seek28);
-//        sk29 = findViewById(R.id.seek29);
-//        sk30 = findViewById(R.id.seek30);
-
-
-//        sk1.setClickable(false);
-//        sk2.setClickable(false);
-//        sk3.setClickable(false);
-//        sk4.setClickable(false);
-//        sk5.setClickable(false);
-//        sk6.setClickable(false);
-//        sk7.setClickable(false);
-//        sk8.setClickable(false);
-//        sk9.setClickable(false);
-//        sk10.setClickable(false);
-//        sk12.setClickable(false);
-//        sk11.setClickable(false);
-//        sk13.setClickable(false);
-//        sk14.setClickable(false);
-//        sk15.setClickable(false);
-//        sk16.setClickable(false);
-//        sk17.setClickable(false);
-//        sk18.setClickable(false);
-//        sk19.setClickable(false);
-//        sk20.setClickable(false);
-//        sk21.setClickable(false);
-//        sk22.setClickable(false);
-//        sk23.setClickable(false);
-//        sk24.setClickable(false);
-//        sk25.setClickable(false);
-//        sk26.setClickable(false);
-//        sk27.setClickable(false);
-//        sk28.setClickable(false);
-//        sk29.setClickable(false);
-//        sk30.setClickable(false);
 
 
 
@@ -376,7 +310,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -388,7 +322,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.tip) {
             return true;
         }
 

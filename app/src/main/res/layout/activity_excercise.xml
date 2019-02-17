@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20sp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:id="@+id/linearPushUps"
                     android:orientation="vertical">
 
@@ -51,13 +51,13 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.3"
                     android:padding="10sp"
+                    android:layout_gravity="center"
                     android:layout_height="wrap_content">
 
                     <ViewFlipper
                         android:layout_width="70dp"
-                        android:layout_marginLeft="50sp"
                         android:id="@+id/viewFlipperPushUps"
                         android:layout_height="70dp">
 
@@ -84,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20sp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:id="@+id/linearSquats"
                     android:orientation="vertical">
 
@@ -114,14 +114,13 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="0.3"
                         android:padding="10sp"
                         android:layout_height="wrap_content">
 
                         <ViewFlipper
                             android:layout_width="70dp"
                             android:id="@+id/viewFlipperSquats"
-                            android:layout_marginLeft="50sp"
                             android:layout_height="70dp">
 
                         </ViewFlipper>
@@ -149,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20sp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:id="@+id/linearLegRaise"
                     android:orientation="vertical">
 
@@ -176,12 +175,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:layout_weight="1">
+                    android:layout_weight="0.3">
 
                     <ViewFlipper
                         android:layout_width="70dp"
                         android:id="@+id/viewFlipperLegRaise"
-                        android:layout_marginLeft="50sp"
                         android:layout_height="70dp">
 
                     </ViewFlipper>
@@ -208,7 +206,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20sp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:id="@+id/linearJumpingJack"
                     android:orientation="vertical">
 
@@ -235,12 +233,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:layout_weight="1">
+                    android:layout_weight="0.3">
 
                     <ViewFlipper
                         android:layout_width="70dp"
                         android:id="@+id/viewFlipperJumpingJack"
-                        android:layout_marginLeft="50sp"
                         android:layout_height="70dp">
 
                     </ViewFlipper>
@@ -268,7 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20sp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:id="@+id/linearSquatsAgain"
                     android:orientation="vertical">
 
@@ -294,12 +291,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:layout_weight="1">
+                    android:layout_weight="0.3">
 
                     <ViewFlipper
                         android:layout_width="70dp"
                         android:id="@+id/viewFlipperSquatsAgain"
-                        android:layout_marginLeft="50sp"
                         android:layout_height="70dp">
 
                     </ViewFlipper>
@@ -327,7 +323,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="20sp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:id="@+id/linearPlankWithLegFit"
                     android:orientation="vertical">
 
@@ -355,12 +351,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:layout_weight="1">
+                    android:layout_weight="0.3">
 
                     <ViewFlipper
                         android:layout_width="70dp"
                         android:id="@+id/viewFlipperPlankWithLegFit"
-                        android:layout_marginLeft="50sp"
                         android:layout_height="70dp">
 
                     </ViewFlipper>
