@@ -1,10 +1,12 @@
-package com.android.workout;
+package com.android.workout.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import com.android.workout.R;
 
 public class ExcerciseDetailActivity extends AppCompatActivity {
 

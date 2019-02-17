@@ -1,4 +1,4 @@
-package com.android.workout;
+package com.android.workout.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,18 +17,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.workout.R;
 import com.bumptech.glide.Glide;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    LinearLayout ll1, ll2, ll3, ll4, ll5, ll6, ll7, ll8, ll9, ll10, ll11, ll12, ll13, ll14, ll15, ll16, ll17, ll18, ll19, ll20, ll21, ll22, ll23, ll24, ll25, ll26, ll27, ll28, ll29, ll30;
+    LinearLayout ll1, ll2, ll3, ll4, ll5, ll6, ll7, ll8, ll9,
+            ll10, ll11, ll12, ll13, ll14, ll15, ll16, ll17, ll18,
+            ll19, ll20, ll21, ll22, ll23, ll24, ll25, ll26, ll27, ll28, ll29, ll30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         ImageView imageView = findViewById(R.id.imageView);
         ll1 = findViewById(R.id.linear1);
         ll2 = findViewById(R.id.linear2);
@@ -66,7 +69,7 @@ public class HomeActivity extends AppCompatActivity
         ll1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this,ExcerciseActivity.class));
+                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
             }
         });
 
@@ -345,6 +348,7 @@ public class HomeActivity extends AppCompatActivity
             Toast.makeText(HomeActivity.this,"BMI Calculator",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.language) {
             Toast.makeText(HomeActivity.this,"Language",Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(getApplicationContext(), CustomLanguageActivity.class));
         } else if (id == R.id.share) {
             Toast.makeText(HomeActivity.this,"Share",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.feedback) {

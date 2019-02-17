@@ -31,9 +31,9 @@
     <color name="cardview_light_background">#ffffffff</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <color name="colorAccent">#66BB6A</color>
-    <color name="colorPrimary">#66BB6A</color>
-    <color name="colorPrimaryDark">#66BB6A</color>
+    <color name="colorAccent">#00d1e8</color>
+    <color name="colorPrimary">#0d230d</color>
+    <color name="colorPrimaryDark">#0d230d</color>
     <color name="colorText">#fcfcfc</color>
     <color name="colorgrey">#e5e4e4</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>

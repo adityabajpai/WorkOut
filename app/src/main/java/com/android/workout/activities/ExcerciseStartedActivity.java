@@ -1,19 +1,19 @@
-package com.android.workout;
+package com.android.workout.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import com.android.workout.R;
 
 public class ExcerciseStartedActivity extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                     .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(ExcerciseStartedActivity.this,ExcerciseActivity.class));
+                            startActivity(new Intent(ExcerciseStartedActivity.this, ExcerciseActivity.class));
                             finish();
                         }
                     }).setNegativeButton("no", null).show();
@@ -54,6 +54,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_excercise_started);
+
         progressBar = findViewById(R.id.progress_bar);
         progressBar_excercise1 = findViewById(R.id.progress_bar_excercise1);
         progressBar_excercise1.setMax(20);
@@ -129,10 +130,6 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
 //        }
 //        viewFlipper.setFlipInterval(500);
 //        viewFlipper.setAutoStart(true);
-
-
-
-
 
         t = new Thread(){
             @Override
@@ -292,73 +289,6 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
         };
 
         t.start();
-        //completeExcercise(excercise_number,excercise_name[excercise_number]);
 
     }
-
-////    private void completeExcercise(int excercise_number, final String current_excercie) {
-////        if(current_excercie.equals("plankWithLegFit"))
-////        {
-////            progressBar_excercise1.setProgress(max[5]);
-////            return;
-////        }
-////        else
-////        {
-////            Toast.makeText(ExcerciseStartedActivity.this,current_excercie+" started",Toast.LENGTH_LONG).show();
-////            progressBar.setMax(max[excercise_number]);
-////            final int temp = max[excercise_number];
-////            Log.d("temp",temp+"");
-////            Log.d("current_excercise",excercise_name[excercise_number]);
-////            t = new Thread(){
-////                @Override
-////                public void run() {
-////                    while (count<=temp)
-////                    {
-////                        try {
-////                            Thread.sleep(1000);
-////                            runOnUiThread(new Runnable() {
-////                                @Override
-////                                public void run() {
-////                                    count++;
-////                                    progressBar.setProgress(count);
-////                                }
-////                            });
-////                        }catch (Exception e){
-////                            e.printStackTrace();
-////                        }
-////                    }
-////                }
-////            };
-////            t.start();
-////            if(current_excercie.equals("pushUps"))
-////            {
-////                Log.d("msg","pushups done");
-////                progressBar_excercise1.setProgress(max[0]);
-////            }
-////            else if(current_excercie.equals("squats"))
-////            {
-////                Log.d("msg","squats done");
-////                progressBar_excercise1.setProgress(max[1]);
-////            }
-////            else if(current_excercie.equals("legRaise"))
-////            {
-////                Log.d("msg","legRaise done");
-////                progressBar_excercise1.setProgress(max[2]);
-////            }
-////            else if(current_excercie.equals("jumpingJack"))
-////            {
-////                Log.d("msg","jumpingJack done");
-////                progressBar_excercise1.setProgress(max[3]);
-////            }
-////            else if(current_excercie.equals("squatsAgain"))
-////            {
-////                Log.d("msg","squatsAgain done");
-////                progressBar_excercise1.setProgress(max[4]);
-////            }
-////            progressBar.setProgress(0);
-////            count = 0;
-////            excercise_number++;
-////            completeExcercise(excercise_number,excercise_name[excercise_number]);
-////        }
-//    }
 }

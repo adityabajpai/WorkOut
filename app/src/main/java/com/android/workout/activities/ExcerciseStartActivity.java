@@ -1,14 +1,14 @@
-package com.android.workout;
+package com.android.workout.activities;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.android.workout.R;
 
 public class ExcerciseStartActivity extends AppCompatActivity{
 
@@ -53,7 +53,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                                 count--;
                                 if(count==0)
                                 {
-                                    startActivity(new Intent(ExcerciseStartActivity.this,ExcerciseStartedActivity.class));
+                                    startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class));
                                     finish();
                                     mySong.stop();
                                 }
@@ -73,7 +73,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                 t.interrupt();
                 count=0;
                 mySong.stop();
-                startActivity(new Intent(ExcerciseStartActivity.this,ExcerciseStartedActivity.class));
+                startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class));
                 finish();
             }
         });

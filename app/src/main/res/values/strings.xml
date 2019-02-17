@@ -20,6 +20,11 @@
 <string name="Grapes">Grapes</string>
 <string name="Greentea">Green tea</string>
 <string name="LeanBeef">Lean Beef</string>
+	<string name="string_pushups">Initially, face-down prone position on the floor. Stretch your arms and touch the floor. Raise yourself by pushing the ground away from you. Repeat this.</string>
+	<string name="string_squats">Stand with your legs a few inches apart. Stretch your arms to the front and bring the body down, till your thighs are parallel to the floor. Now come back to the initial position. Repeat it.</string>
+	<string name="string_legRaise">Lie down on the ground. Raise your legs slowly until your feet are perpendicular to the ground. Now, slowly lower your legs. Repeat it.</string>
+	<string name="string_jumpingJack">Initially, stand by keeping your feet, few inches wide. Now, just jump and extend your arms overhead with that slightly bend your knees and extend your legs. Now come back to the starting position and repeat this.</string>
+	<string name="string_planWithLegFit">Be on your toes and forearms with your body straight. Raise your left leg with few seconds as its is possible. Now, lower left leg and raise your right leg. Now, vome back to initial position. Repeat this.</string>
 <string name="Lemon">Lemon</string>
 <string name="Lemonjuice">Lemon juice</string>
 <string name="Mealpaln">Meal plans</string>

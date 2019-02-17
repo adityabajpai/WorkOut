@@ -1,16 +1,16 @@
-package com.android.workout;
+package com.android.workout.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
+
+import com.android.workout.R;
 
 public class ExcerciseActivity extends AppCompatActivity {
 
@@ -119,7 +119,7 @@ public class ExcerciseActivity extends AppCompatActivity {
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ExcerciseActivity.this,ExcerciseStartActivity.class);
+                Intent intent = new Intent(ExcerciseActivity.this, ExcerciseStartActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -131,7 +131,7 @@ public class ExcerciseActivity extends AppCompatActivity {
                 Log.d("excercise",excercise);
                 Bundle bundle = new Bundle();
                 bundle.putString("excercise",excercise);
-                Intent intent = new Intent(ExcerciseActivity.this,ExcerciseDetailActivity.class);
+                Intent intent = new Intent(ExcerciseActivity.this, ExcerciseDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
