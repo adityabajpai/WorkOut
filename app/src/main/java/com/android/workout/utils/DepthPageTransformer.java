@@ -1,9 +1,10 @@
 package com.android.workout.utils;
 
 import android.os.Build;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
-public class DepthPageTransformer {
+public class DepthPageTransformer implements ViewPager.PageTransformer {
 
     public static final float MAX_SCALE = 1.0f;
     public static final float MIN_SCALE = 0.8f;

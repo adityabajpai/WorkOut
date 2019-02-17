@@ -326,7 +326,7 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.tip) {
-            return true;
+            startActivity(new Intent(getApplicationContext(),TipsActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

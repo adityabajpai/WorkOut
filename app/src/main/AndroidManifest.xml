@@ -31,6 +31,8 @@
 
         <activity android:name=".activities.ExcerciseDetailActivity" />
         <activity android:name=".activities.ExcerciseActivity" />
+        <activity android:name=".activities.TipsActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
