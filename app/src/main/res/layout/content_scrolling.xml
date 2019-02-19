@@ -22,6 +22,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -42,12 +43,29 @@
                         android:textSize="20sp" />
 
 
-                    <ProgressBar
-                        android:id="@+id/seek1"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent1"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek1"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent1" />
+
+                    </RelativeLayout>
 
 
                 </LinearLayout>
@@ -57,7 +75,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -77,12 +95,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek2"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent2"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek2"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent2" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -91,8 +126,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -111,12 +147,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek3"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent3"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek3"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent3" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -133,6 +186,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -152,12 +206,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek4"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent4"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek4"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent4" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -166,7 +237,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -186,12 +257,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek5"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent5"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek5"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent5" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -200,8 +288,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -220,12 +309,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek6"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent6"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek6"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent6" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -242,6 +348,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -261,12 +368,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek7"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent7"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek7"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent7" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -275,7 +399,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -295,12 +419,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek8"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent8"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek8"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent8" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -309,8 +450,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -329,12 +471,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek9"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent9"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek9"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent9" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -346,12 +505,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:padding="5sp"
             android:weightSum="3">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -371,12 +530,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek10"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent10"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek10"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent10" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -385,7 +561,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -405,12 +581,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek11"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent11"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek11"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent11" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -419,8 +612,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -435,16 +629,33 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20sp"
                         android:gravity="center"
-                        android:text="Rest Day"
+                        android:text="Day 12"
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek12"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent12"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek12"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent12" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -461,6 +672,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -480,12 +692,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek13"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent13"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek13"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent13" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -494,7 +723,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -514,12 +743,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek14"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent14"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek14"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent14" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -528,8 +774,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -548,12 +795,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek15"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent15"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek15"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent15" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -570,6 +834,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -589,12 +854,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek16"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent16"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek16"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent16" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -603,7 +885,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -623,12 +905,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek17"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent17"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek17"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent17" />
+
+                    </RelativeLayout>
 
 
                 </LinearLayout>
@@ -638,8 +937,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -658,12 +958,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek18"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent18"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek18"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent18" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -680,6 +997,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -699,12 +1017,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek19"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent19"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek19"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent19" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -713,7 +1048,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -733,12 +1068,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek20"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent20"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek20"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent20" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -747,8 +1099,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -767,12 +1120,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek21"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent21"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek21"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent21" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -789,6 +1159,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -808,12 +1179,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek22"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent22"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek22"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent22" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -822,7 +1210,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -842,12 +1230,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek23"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent23"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek23"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent23" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -856,8 +1261,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -876,12 +1282,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek24"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent24"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek24"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent24" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -898,6 +1321,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -917,12 +1341,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek25"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent25"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek25"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent25" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -931,7 +1372,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -951,12 +1392,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek26"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent26"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek26"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent26" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -965,8 +1423,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -985,12 +1444,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek27"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent27"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek27"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent27" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -1001,12 +1477,14 @@
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5sp"
             android:orientation="horizontal"
             android:weightSum="3">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -1027,12 +1505,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek28"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent28"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek28"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent28" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -1041,7 +1536,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_weight="1">
 
@@ -1061,12 +1556,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek29"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent29"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek29"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent29" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -1075,8 +1587,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -1095,12 +1608,29 @@
                         android:textColor="#000"
                         android:textSize="20sp" />
 
-                    <ProgressBar
-                        android:id="@+id/seek30"
-                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp" />
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/percent30"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:text="0%"
+                            android:textColor="@color/colorApp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/seek30"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:layout_toEndOf="@+id/percent30" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 

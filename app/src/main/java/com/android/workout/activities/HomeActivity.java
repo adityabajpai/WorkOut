@@ -343,7 +343,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.meals_Plan) {
             Toast.makeText(HomeActivity.this,"Meals Plan",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.reminder) {
-            Toast.makeText(HomeActivity.this,"Reminder",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this,ReminderActivity.class));
         } else if (id == R.id.bmi_Calculator) {
             Toast.makeText(HomeActivity.this,"BMI Calculator",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.language) {

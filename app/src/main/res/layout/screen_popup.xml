@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/popup_element"
+    android:background="#fff"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="450dp">
+
+        <TimePicker
+            android:layout_width="300dp"
+            android:id="@+id/timePicker"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_height="350dp">
+
+        </TimePicker>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="15dp"
+            android:layout_height="40dp">
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:text="CANCEL"
+                android:id="@+id/cancel"
+                android:textStyle="bold"
+                android:textColor="@color/colorApp"
+                />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:text="OK"
+                android:id="@+id/ok"
+                android:textStyle="bold"
+                android:textColor="@color/colorApp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
