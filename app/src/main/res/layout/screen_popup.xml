@@ -4,50 +4,82 @@
     android:layout_width="match_parent"
     android:id="@+id/popup_element"
     android:background="#fff"
-    android:gravity="center"
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_centerVertical="true"
         android:layout_height="wrap_content">
 
         <TimePicker
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:id="@+id/timePicker"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content">
+            android:layout_height="350dp">
 
         </TimePicker>
 
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/timePicker"-->
+            <!--android:gravity="end">-->
+
+            <!--<Button-->
+                <!--android:id="@+id/cancel"-->
+                <!--style="@style/Base.Widget.AppCompat.Button.Borderless"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:text="CANCEL"-->
+                <!--android:textColor="@color/colorApp"-->
+                <!--android:textStyle="bold" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/ok"-->
+                <!--style="@style/Base.Widget.AppCompat.Button.Borderless"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_toEndOf="@+id/cancel"-->
+                <!--android:text="OK"-->
+                <!--android:textColor="@color/colorApp"-->
+                <!--android:textStyle="bold" />-->
+
+        <!--</RelativeLayout>-->
+
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_below="@+id/timePicker"
+            android:gravity="end">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:text="CANCEL"
                 android:id="@+id/cancel"
-                android:textStyle="bold"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CANCEL"
+                android:gravity="end"
+                android:layout_weight="0.5"
                 android:textColor="@color/colorApp"
-                />
+                android:textStyle="bold" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:text="OK"
                 android:id="@+id/ok"
-                android:textStyle="bold"
+                android:layout_weight="1.5"
+                android:gravity="start"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OK"
                 android:textColor="@color/colorApp"
-                />
+                android:textStyle="bold" />
 
         </LinearLayout>
+
 
     </RelativeLayout>
 

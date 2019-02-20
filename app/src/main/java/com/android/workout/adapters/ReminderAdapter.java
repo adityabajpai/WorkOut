@@ -50,6 +50,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.ViewHo
         viewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+			    Toast.makeText(context,viewHolder.getAdapterPosition()+"",Toast.LENGTH_LONG).show();
 				reminders.remove(viewHolder.getAdapterPosition());
 				notifyDataSetChanged();
 				Snackbar snack = Snackbar.make(v, "Deleted", 3000);
