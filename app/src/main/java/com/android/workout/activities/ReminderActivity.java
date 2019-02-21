@@ -76,7 +76,7 @@ public class ReminderActivity extends AppCompatActivity {
             // We need to get the instance of the LayoutInflater
             LayoutInflater inflater = (LayoutInflater) ReminderActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             final View layout = inflater.inflate(R.layout.screen_popup,(ViewGroup) findViewById(R.id.popup_element));
-            pwindo = new PopupWindow(layout, 620, 830, true);
+            pwindo = new PopupWindow(layout, 620, 1200, true);
             pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
             analogClock = layout.findViewById(R.id.timePicker);
             analogClock.setIs24HourView(true);
@@ -113,7 +113,7 @@ public class ReminderActivity extends AppCompatActivity {
         arrayList = new ArrayList<String>();
         LayoutInflater inflater = (LayoutInflater) ReminderActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View layout = inflater.inflate(R.layout.days,(ViewGroup) findViewById(R.id.popup_element));
-        pwindow_days = new PopupWindow(layout, 630, 830, true);
+        pwindow_days = new PopupWindow(layout, 850, 1200, true);
         pwindow_days.showAtLocation(layout, Gravity.CENTER, 0, 0);
         checkBox_sunday = layout.findViewById(R.id.sunday);
         checkBox_monday = layout.findViewById(R.id.monday);

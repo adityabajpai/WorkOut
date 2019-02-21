@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.*;
 
 import com.android.workout.R;
+import com.android.workout.adapters.MealsAdapter;
 import com.bumptech.glide.Glide;
 
 public class HomeActivity extends AppCompatActivity
@@ -363,6 +364,7 @@ public class HomeActivity extends AppCompatActivity
             Toast.makeText(HomeActivity.this, "Training Plan", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.meals_Plan) {
             Toast.makeText(HomeActivity.this, "Meals Plan", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), MealsMainActivity.class));
         } else if (id == R.id.reminder) {
             Toast.makeText(HomeActivity.this, "Reminder", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(HomeActivity.this,ReminderActivity.class));
@@ -375,6 +377,7 @@ public class HomeActivity extends AppCompatActivity
 //            startActivity(new Intent(getApplicationContext(), CustomLanguageActivity.class));
         } else if (id == R.id.share) {
             Toast.makeText(HomeActivity.this, "Share", Toast.LENGTH_SHORT).show();
+            shareApp();
         } else if (id == R.id.feedback) {
             Toast.makeText(HomeActivity.this, "FeedBack", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.rate_Us) {
@@ -599,5 +602,29 @@ public class HomeActivity extends AppCompatActivity
                 }
             }
         }
+    }
+    private void shareApp() {
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.SEND");
+        intent.putExtra("android.intent.extra.SUBJECT", getResources().getString(R.string.app_name));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("https://play.google.com/store/apps/details?id=");
+        stringBuilder.append(getApplicationContext().getPackageName());
+        String stringBuilder2 = stringBuilder.toString();
+        StringBuilder stringBuilder3 = new StringBuilder();
+        stringBuilder3.append(getResources().getString(R.string.amazingapp));
+        stringBuilder3.append(getResources().getString(R.string.app_name));
+        stringBuilder3.append(getResources().getString(R.string.awesome));
+        stringBuilder3.append("\n\n");
+        stringBuilder3.append(getResources().getString(R.string.keepsfit));
+        stringBuilder3.append("\n\n");
+        stringBuilder3.append(getResources().getString(R.string.download));
+        stringBuilder3.append("\n");
+        stringBuilder3.append(stringBuilder2);
+        stringBuilder2 = stringBuilder3.toString();
+        intent.putExtra("android.intent.extra.TEXT", stringBuilder2);
+        intent.putExtra("android.intent.extra.STREAM", stringBuilder2);
+        intent.setType("text/plain");
+        startActivity(intent);
     }
 }
