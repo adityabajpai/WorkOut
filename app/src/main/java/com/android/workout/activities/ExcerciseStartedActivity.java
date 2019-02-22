@@ -51,6 +51,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                     .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            t.interrupt();
                             startActivity(new Intent(ExcerciseStartedActivity.this, ExcerciseActivity.class));
                             finish();
                         }
@@ -273,8 +274,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 }
                 viewFlipper_jumpingJack.stopFlipping();
                 viewFlipper_jumpingJack.setVisibility(View.INVISIBLE);
-                progressBar.setProgress(0);
                 progressBar_excercise4.setProgress(15);
+                progressBar.setProgress(0);
                 tv_countDown.setText("0");
                 count=0;
 
@@ -343,6 +344,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 progressBar.setProgress(0);
                 progressBar_excercise6.setProgress(30);
                 tv_countDown.setText("0");
+                t.interrupt();
+                startActivity(new Intent(ExcerciseStartedActivity.this,HomeActivity.class));
             }
         };
 

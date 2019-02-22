@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
     int count=10;
     TextView btn_skip;
     Thread t;
+    boolean flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         t = new Thread(){
             @Override
             public void run() {
-                while (count>=2)
+                while (count>=2 && flag)
                 {
                     try {
                         Thread.sleep(1000);
@@ -80,7 +82,8 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         floatingActionButton_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                flag = false;
+                Log.d("Hello",t.isAlive()+"");
                 mySong.pause();
                 floatingActionButton_pause.setVisibility(View.INVISIBLE);
                 floatingActionButton_play.setVisibility(View.VISIBLE);
@@ -89,6 +92,13 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         floatingActionButton_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flag=true;
+                try {
+                    t.start();
+                }catch (Exception e)
+                {
+
+                }
                 mySong.start();
                 floatingActionButton_pause.setVisibility(View.VISIBLE);
                 floatingActionButton_play.setVisibility(View.INVISIBLE);
@@ -96,7 +106,6 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         });
 
     }
-
 
     @Override
     public void onBackPressed() {
