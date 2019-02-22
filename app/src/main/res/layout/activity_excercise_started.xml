@@ -89,7 +89,52 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_height="300dp"
-        android:id="@+id/flipper">
+        android:id="@+id/flipper_pushups">
+
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="300dp"
+        android:id="@+id/flipper_squats">
+
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="300dp"
+        android:id="@+id/flipper_legRaise">
+
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="300dp"
+        android:id="@+id/flipper_jumpingjack">
+
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="300dp"
+        android:id="@+id/flipper_squatsAgain">
+
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="300dp"
+        android:id="@+id/flipper_plankwithlegFit">
 
     </ViewFlipper>
 
@@ -125,6 +170,7 @@
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:text="/20"
+            android:id="@+id/totalset"
             android:layout_gravity="center_vertical"
             android:textSize="25dp"
             android:textStyle="bold"/>

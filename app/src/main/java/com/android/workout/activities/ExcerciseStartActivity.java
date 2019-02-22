@@ -80,6 +80,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         floatingActionButton_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mySong.pause();
                 floatingActionButton_pause.setVisibility(View.INVISIBLE);
                 floatingActionButton_play.setVisibility(View.VISIBLE);

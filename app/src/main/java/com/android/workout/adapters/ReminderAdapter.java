@@ -54,14 +54,6 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.ViewHo
 				reminders.remove(viewHolder.getAdapterPosition());
 				notifyDataSetChanged();
 				Snackbar snack = Snackbar.make(v, "Deleted", 3000);
-				snack.setAction("Undo", new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						reminders.add(viewHolder.getAdapterPosition(),reminder);
-						notifyDataSetChanged();
-					}
-				});
-				snack.setActionTextColor(Color.GREEN);
 
 				snack.show();
 			}

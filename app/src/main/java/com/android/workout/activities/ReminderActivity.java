@@ -6,26 +6,21 @@ import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AnalogClock;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.android.workout.R;
 import com.android.workout.adapters.ReminderAdapter;
 import com.android.workout.model.Reminder;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,8 +47,6 @@ public class ReminderActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView2);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        progressDialog = new ProgressDialog(this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         reminderList = new ArrayList<>();
@@ -73,7 +66,6 @@ public class ReminderActivity extends AppCompatActivity {
     {
         try
         {
-            // We need to get the instance of the LayoutInflater
             LayoutInflater inflater = (LayoutInflater) ReminderActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             final View layout = inflater.inflate(R.layout.screen_popup,(ViewGroup) findViewById(R.id.popup_element));
             pwindo = new PopupWindow(layout, 620, 1200, true);
