@@ -7,25 +7,29 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.*;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.android.workout.R;
-import com.android.workout.adapters.MealsAdapter;
 import com.android.workout.database.DatabaseOperations;
 import com.bumptech.glide.Glide;
 
@@ -457,11 +461,15 @@ public class HomeActivity extends AppCompatActivity
                                                         if (!weight.getText().toString().matches("") && Integer.parseInt(weight.getText().toString()) >= 5) {
                                                             //if (Integer.parseInt(this.f3315b.weight.getText().toString()) <= TsExtractor.TS_STREAM_TYPE_HDMV_DTS) {
                                                                 int b = calculateBMI(calculateMetres(Float.parseFloat(ft.getText().toString()), Float.parseFloat(inches.getText().toString())), calculateweight(Float.parseFloat(weight.getText().toString())));
-                                                                prefsEditor = mSharedPreferences.edit();
-                                                                prefsEditor.putFloat("BMI", (float) b);
-                                                                prefsEditor.putFloat("HEIGHT", Heightincms);
-                                                                prefsEditor.apply();
+//                                                                prefsEditor = mSharedPreferences.edit();
+//                                                                prefsEditor.putFloat("BMI", (float) b);
+//                                                                prefsEditor.putFloat("HEIGHT", Heightincms);
+//                                                                prefsEditor.apply();
+                                                            Bundle bundle = new Bundle();
+                                                            bundle.putFloat("BMI",(float)b);
+                                                            bundle.putFloat("HEIGHT",Heightincms);
                                                                 intent = new Intent(HomeActivity.this, CalculateActivity.class);
+                                                                intent.putExtras(bundle);
                                                             //}
                                                         }
                                                         
@@ -471,18 +479,22 @@ public class HomeActivity extends AppCompatActivity
                                                             if (!weight.getText().toString().matches("") && Integer.parseInt(weight.getText().toString()) >= 11) {
                                                                 if (Integer.parseInt(weight.getText().toString()) <= 286) {
                                                                     float b2 = (float) calculateBMI(calculateMetres(Float.parseFloat(ft.getText().toString()), Float.parseFloat(inches.getText().toString())), calculateweight(Float.parseFloat(weight.getText().toString())));
-                                                                    prefsEditor = mSharedPreferences.edit();
-                                                                    prefsEditor.putFloat("BMI", b2);
-                                                                    prefsEditor.putFloat("HEIGHT", Heightincms);
-                                                                    prefsEditor.apply();
+//                                                                    prefsEditor = mSharedPreferences.edit();
+//                                                                    prefsEditor.putFloat("BMI", b2);
+//                                                                    prefsEditor.putFloat("HEIGHT", Heightincms);
+//                                                                    prefsEditor.apply();
+                                                                    Bundle bundle = new Bundle();
+                                                                    bundle.putFloat("BMI",(float)b2);
+                                                                    bundle.putFloat("HEIGHT",Heightincms);
                                                                     intent = new Intent(HomeActivity.this, CalculateActivity.class);
+                                                                    intent.putExtras(bundle);
                                                                 }
                                                             }
                                                             
                                                             i = R.string.weightrangelb;
                                                         }
                                                     }
-                                                    HomeActivity.this.startActivity(intent.putExtra("BMI", mSharedPreferences.getFloat("BMI", 0.0f)).putExtra("HEIGHT", mSharedPreferences.getFloat("HEIGHT", 0.0f)));
+                                                    HomeActivity.this.startActivity(intent);
                                                     dialog.dismiss();
                                                     return;
                                                 }
@@ -672,4 +684,5 @@ public class HomeActivity extends AppCompatActivity
         intent.setType("text/plain");
         startActivity(intent);
     }
+
 }

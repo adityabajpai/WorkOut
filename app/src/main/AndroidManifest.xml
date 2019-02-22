@@ -53,6 +53,9 @@
 
         <activity android:name=".activities.MealsMainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        
+        <activity android:name=".activities.CalculateActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

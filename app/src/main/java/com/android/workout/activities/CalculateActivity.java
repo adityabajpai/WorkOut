@@ -19,6 +19,7 @@ import com.android.workout.utils.ProgressItem;
 import java.util.ArrayList;
 
 public class CalculateActivity extends Activity {
+
     private float Heightincms = 0.0f;
     private double bmiblueSpan = 4.0d;
     private double bmigreenSpan = 7.0d;
@@ -54,7 +55,6 @@ public class CalculateActivity extends Activity {
     private TextView wght2;
     private TextView wght4;
     private EditText year;
-
     protected void onCreate(@Nullable Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.layout_calculate);
@@ -492,8 +492,8 @@ public class CalculateActivity extends Activity {
             CalculateActivity f3280b;
             @Override
             public void onClick(View r5) {
-                throw new UnsupportedOperationException("Method not decompiled: " +
-                        "com.outthinking.weightlossformen.activities.CalculateActivity.3.onClick(android.view.View):void");
+//                throw new UnsupportedOperationException("Method not decompiled: " +
+//                        "com.outthinking.weightlossformen.activities.CalculateActivity.3.onClick(android.view.View):void");
             }
         });
         dialog.show();

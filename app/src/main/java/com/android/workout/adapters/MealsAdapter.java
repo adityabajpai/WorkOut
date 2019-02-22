@@ -29,7 +29,7 @@ public class MealsAdapter extends Adapter<MealsAdapter.MealsRecyclerViewHolders>
     private Context context;
     private List<MealsItemObject> itemList;
     private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor prefsEditor = this.mSharedPreferences.edit();
+//    private SharedPreferences.Editor prefsEditor = this.mSharedPreferences.edit();
 
     class MealsRecyclerViewHolders extends ViewHolder implements View.OnClickListener{
         public CardView cardview1;
