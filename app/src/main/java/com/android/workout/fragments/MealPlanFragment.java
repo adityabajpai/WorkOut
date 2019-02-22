@@ -23,11 +23,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MealPlanFragment extends Fragment {
+
     private static final String TAG = "RecyclerViewFragment";
     private Button mShoppingBtn;
+
     private List<MealsItemObject> getAllItemList() {
+
         List<MealsItemObject> arrayList = new ArrayList();
         int i = 0;
+
         while (i < 30) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(getResources().getString(R.string.day));
@@ -35,6 +39,7 @@ public class MealPlanFragment extends Fragment {
             stringBuilder.append(i);
             arrayList.add(new MealsItemObject(stringBuilder.toString()));
         }
+
         return arrayList;
     }
 
@@ -49,12 +54,12 @@ public class MealPlanFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         setHasOptionsMenu(true);
-        RecyclerView recyclerView = (RecyclerView) inflate.findViewById(R.id.recycler);
+        RecyclerView recyclerView = inflate.findViewById(R.id.recycler);
         Adapter mealsAdapter = new MealsAdapter(getActivity(), getAllItemList());
         LayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setAdapter(mealsAdapter);
         recyclerView.setLayoutManager(gridLayoutManager);
-        this.mShoppingBtn = (Button) inflate.findViewById(R.id.shoppinglistbtn);
+        this.mShoppingBtn = inflate.findViewById(R.id.shoppinglistbtn);
         this.mShoppingBtn.setOnClickListener(new C10511(this));
         return inflate;
     }

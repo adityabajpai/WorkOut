@@ -392,7 +392,6 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.language) {
             Toast.makeText(HomeActivity.this, "Language", Toast.LENGTH_SHORT).show();
             customs();
-//            startActivity(new Intent(getApplicationContext(), CustomLanguageActivity.class));
         } else if (id == R.id.share) {
             Toast.makeText(HomeActivity.this, "Share", Toast.LENGTH_SHORT).show();
             shareApp();

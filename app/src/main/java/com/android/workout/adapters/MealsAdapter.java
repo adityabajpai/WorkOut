@@ -43,9 +43,9 @@ public class MealsAdapter extends Adapter<MealsAdapter.MealsRecyclerViewHolders>
             LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
 //            layoutParams.setMargins(5, 5, 5, 5);
 //            layoutParams.weight = 1.0f;
-            this.cardview1 = (CardView) view.findViewById(R.id.cardviewone);
+            this.cardview1 = view.findViewById(R.id.cardviewone);
             this.cardview1.setLayoutParams(layoutParams);
-            this.countryName = (TextView) view.findViewById(R.id.row_day);
+            this.countryName = view.findViewById(R.id.row_day);
         }
         public void onClick(View view) {
             Fragment dailyMeal = new DailyMeal();
@@ -68,7 +68,7 @@ public class MealsAdapter extends Adapter<MealsAdapter.MealsRecyclerViewHolders>
         return this.itemList.size();
     }
     public void onBindViewHolder(MealsRecyclerViewHolders mealsRecyclerViewHolders, int i) {
-        mealsRecyclerViewHolders.countryName.setText(((MealsItemObject) this.itemList.get(i)).getName());
+        mealsRecyclerViewHolders.countryName.setText(this.itemList.get(i).getName());
         i++;
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("DAY_");
