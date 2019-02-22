@@ -4,10 +4,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,7 +26,10 @@ import android.widget.*;
 
 import com.android.workout.R;
 import com.android.workout.adapters.MealsAdapter;
+import com.android.workout.database.DatabaseOperations;
 import com.bumptech.glide.Glide;
+
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,45 +56,42 @@ public class HomeActivity extends AppCompatActivity
     private boolean flagbrasil=false;
     private boolean flagusa=false;
     private boolean flagspain=false;
+    public int width;
+    public int height;
+    private Context context;
+    private SharedPreferences launchDataPreferences;
+    DatabaseOperations f5639h;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        this.width = displayMetrics.widthPixels;
+        this.height = displayMetrics.heightPixels;
+        this.context = this;
         Toolbar toolbar = findViewById(R.id.toolbar);
         ImageView imageView = findViewById(R.id.imageView);
-        ll1 = findViewById(R.id.linear1);
-        ll2 = findViewById(R.id.linear2);
-        ll3 = findViewById(R.id.linear3);
-        ll4 = findViewById(R.id.linear4);
-        ll5 = findViewById(R.id.linear5);
-        ll6 = findViewById(R.id.linear6);
-        ll7 = findViewById(R.id.linear7);
-        ll8 = findViewById(R.id.linear8);
-        ll9 = findViewById(R.id.linear9);
-        ll10 = findViewById(R.id.linear10);
-        ll11 = findViewById(R.id.linear11);
-        ll12 = findViewById(R.id.linear12);
-        ll13 = findViewById(R.id.linear13);
-        ll14 = findViewById(R.id.linear14);
-        ll15 = findViewById(R.id.linear15);
-        ll16 = findViewById(R.id.linear16);
-        ll17 = findViewById(R.id.linear17);
-        ll18 = findViewById(R.id.linear18);
-        ll19 = findViewById(R.id.linear19);
-        ll20 = findViewById(R.id.linear20);
-        ll21 = findViewById(R.id.linear21);
-        ll22 = findViewById(R.id.linear22);
-        ll23 = findViewById(R.id.linear23);
-        ll24 = findViewById(R.id.linear24);
-        ll25 = findViewById(R.id.linear25);
-        ll26 = findViewById(R.id.linear26);
-        ll27 = findViewById(R.id.linear27);
-        ll28 = findViewById(R.id.linear28);
-        ll29 = findViewById(R.id.linear29);
-        ll30 = findViewById(R.id.linear30);
+        Glide.with(this)
+                .load(R.drawable.wo)
+                .into(imageView);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        setLayouts();
+        layoutActions();
+        this.launchDataPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
 
+    private void layoutActions() {
         ll1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -296,30 +301,39 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
             }
         });
+    }
 
-        Glide.with(this)
-                .load(R.drawable.wo)
-                .into(imageView);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+    private void setLayouts() {
+        ll1 = findViewById(R.id.linear1);
+        ll2 = findViewById(R.id.linear2);
+        ll3 = findViewById(R.id.linear3);
+        ll4 = findViewById(R.id.linear4);
+        ll5 = findViewById(R.id.linear5);
+        ll6 = findViewById(R.id.linear6);
+        ll7 = findViewById(R.id.linear7);
+        ll8 = findViewById(R.id.linear8);
+        ll9 = findViewById(R.id.linear9);
+        ll10 = findViewById(R.id.linear10);
+        ll11 = findViewById(R.id.linear11);
+        ll12 = findViewById(R.id.linear12);
+        ll13 = findViewById(R.id.linear13);
+        ll14 = findViewById(R.id.linear14);
+        ll15 = findViewById(R.id.linear15);
+        ll16 = findViewById(R.id.linear16);
+        ll17 = findViewById(R.id.linear17);
+        ll18 = findViewById(R.id.linear18);
+        ll19 = findViewById(R.id.linear19);
+        ll20 = findViewById(R.id.linear20);
+        ll21 = findViewById(R.id.linear21);
+        ll22 = findViewById(R.id.linear22);
+        ll23 = findViewById(R.id.linear23);
+        ll24 = findViewById(R.id.linear24);
+        ll25 = findViewById(R.id.linear25);
+        ll26 = findViewById(R.id.linear26);
+        ll27 = findViewById(R.id.linear27);
+        ll28 = findViewById(R.id.linear28);
+        ll29 = findViewById(R.id.linear29);
+        ll30 = findViewById(R.id.linear30);
     }
 
     @Override
@@ -390,7 +404,18 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Log.e("Language changed",lang);
+        Intent refresh = new Intent(this, HomeActivity.class);
+        startActivity(refresh);
+        finish();
+    }
     private void loadCalculateActivity() {
         final Dialog dialog = new Dialog(this, R.style.AppTheme);
         dialog.getWindow().getAttributes().windowAnimations = R.style.PauseDialogAnimation;
@@ -518,8 +543,28 @@ public class HomeActivity extends AppCompatActivity
         this.lang_portugese.setOnClickListener(new C10204(this));
         this.lang_english.setOnClickListener(new C10215(this));
         this.lang_spain.setOnClickListener(new C10226(this));
-//        this.select.setOnClickListener(new C10237(this));
+        this.select.setOnClickListener(new C10237(this));
         dialog.show();
+    }
+    class C10237 implements View.OnClickListener{
+        final HomeActivity homeActivity;
+
+        public C10237(HomeActivity homeActivity) {
+            this.homeActivity = homeActivity;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(this.homeActivity.flagbrasil){
+               setLocale("kn");
+            }
+            else if(this.homeActivity.flagspain){
+                setLocale("hi");
+            }
+            else{
+                setLocale("en");
+            }
+        }
     }
     class C10204 implements View.OnClickListener {
         /* renamed from: a */
