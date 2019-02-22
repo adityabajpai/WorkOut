@@ -492,8 +492,78 @@ public class CalculateActivity extends Activity {
             CalculateActivity f3280b;
             @Override
             public void onClick(View r5) {
-//                throw new UnsupportedOperationException("Method not decompiled: " +
-//                        "com.outthinking.weightlossformen.activities.CalculateActivity.3.onClick(android.view.View):void");
+                int i;
+                if (year.getText().toString().equals("") || months.getText().toString().equals("") || ft.getText().toString().equals("") || inches.getText().toString().equals("") || weight.getText().toString().equals("")) {
+
+                    i = R.string.fields;
+                } else {
+                    if (!year.getText().toString().matches("") && Integer.parseInt(year.getText().toString()) >= 5) {
+                        if (Integer.parseInt(year.getText().toString()) <= 100) {
+                            if (!months.getText().toString().matches("") && Integer.parseInt(months.getText().toString()) >= 0) {
+                                if (Integer.parseInt(months.getText().toString()) <= 12) {
+                                    if (!ft.getText().toString().matches("") && Integer.parseInt(ft.getText().toString()) >= 2) {
+                                        if (Integer.parseInt(ft.getText().toString()) <= 7) {
+                                            if (!inches.getText().toString().matches("") && Integer.parseInt(inches.getText().toString()) >= 0) {
+                                                if (Integer.parseInt(inches.getText().toString()) <= 12) {
+                                                    Intent intent = null;
+                                                    if (kg.isChecked()) {
+                                                        if (!weight.getText().toString().matches("") && Integer.parseInt(weight.getText().toString()) >= 5) {
+                                                            //if (Integer.parseInt(this.f3315b.weight.getText().toString()) <= TsExtractor.TS_STREAM_TYPE_HDMV_DTS) {
+                                                            int b = calculateBMI(calculateMetres(Float.parseFloat(ft.getText().toString()), Float.parseFloat(inches.getText().toString())), calculateweight(Float.parseFloat(weight.getText().toString())));
+//                                                                prefsEditor = mSharedPreferences.edit();
+//                                                                prefsEditor.putFloat("BMI", (float) b);
+//                                                                prefsEditor.putFloat("HEIGHT", Heightincms);
+//                                                                prefsEditor.apply();
+                                                            Bundle bundle = new Bundle();
+                                                            bundle.putFloat("BMI",(float)b);
+                                                            bundle.putFloat("HEIGHT",Heightincms);
+                                                            intent = new Intent(CalculateActivity.this, CalculateActivity.class);
+                                                            intent.putExtras(bundle);
+                                                            //}
+                                                        }
+
+                                                        i = R.string.weightrange;
+                                                    } else {
+                                                        if (lbs.isChecked()) {
+                                                            if (!weight.getText().toString().matches("") && Integer.parseInt(weight.getText().toString()) >= 11) {
+                                                                if (Integer.parseInt(weight.getText().toString()) <= 286) {
+                                                                    float b2 = (float) calculateBMI(calculateMetres(Float.parseFloat(ft.getText().toString()), Float.parseFloat(inches.getText().toString())), calculateweight(Float.parseFloat(weight.getText().toString())));
+//                                                                    prefsEditor = mSharedPreferences.edit();
+//                                                                    prefsEditor.putFloat("BMI", b2);
+//                                                                    prefsEditor.putFloat("HEIGHT", Heightincms);
+//                                                                    prefsEditor.apply();
+                                                                    Bundle bundle = new Bundle();
+                                                                    bundle.putFloat("BMI",(float)b2);
+                                                                    bundle.putFloat("HEIGHT",Heightincms);
+                                                                    intent = new Intent(CalculateActivity.this, CalculateActivity.class);
+                                                                    intent.putExtras(bundle);
+                                                                }
+                                                            }
+
+                                                            i = R.string.weightrangelb;
+                                                        }
+                                                    }
+                                                    CalculateActivity.this.startActivity(intent);
+                                                    dialog.dismiss();
+                                                    finish();
+                                                    return;
+                                                }
+                                            }
+
+                                            i = R.string.inchrange;
+                                        }
+                                    }
+
+                                    i = R.string.feetrange;
+                                }
+                            }
+
+                            i = R.string.monthrange;
+                        }
+                    }
+
+                    i = R.string.agerange;
+                }
             }
         });
         dialog.show();
