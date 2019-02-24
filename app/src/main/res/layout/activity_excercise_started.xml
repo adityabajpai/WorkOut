@@ -9,182 +9,321 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:weightSum="6"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <ProgressBar
-            android:id="@+id/progress_bar_excercise1"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:minHeight="50dp"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/myprogresssbar" />
-
-
-        <ProgressBar
-            android:id="@+id/progress_bar_excercise2"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="5sp"
-            android:layout_height="10dp"
-            android:minHeight="50dp"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/myprogresssbar" />
-
-        <ProgressBar
-            android:id="@+id/progress_bar_excercise3"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginLeft="5sp"
-            android:minHeight="50dp"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/myprogresssbar" />
-
-        <ProgressBar
-            android:id="@+id/progress_bar_excercise4"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:minHeight="50dp"
-            android:layout_marginLeft="5sp"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/myprogresssbar" />
-
-        <ProgressBar
-            android:id="@+id/progress_bar_excercise5"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:minHeight="50dp"
-            android:layout_marginLeft="5sp"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/myprogresssbar" />
-
-        <ProgressBar
-            android:id="@+id/progress_bar_excercise6"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:minHeight="50dp"
-            android:layout_marginLeft="5sp"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/myprogresssbar" />
-
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:minHeight="50dp"
-        android:layout_alignParentBottom="true"
-        android:progressDrawable="@drawable/myprogresssbar" />
-
-    <ViewFlipper
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="300dp"
-        android:id="@+id/flipper_pushups">
-
-    </ViewFlipper>
-
-    <ViewFlipper
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="300dp"
-        android:id="@+id/flipper_squats">
-
-    </ViewFlipper>
-
-    <ViewFlipper
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="300dp"
-        android:id="@+id/flipper_legRaise">
-
-    </ViewFlipper>
-
-    <ViewFlipper
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="300dp"
-        android:id="@+id/flipper_jumpingjack">
-
-    </ViewFlipper>
-
-    <ViewFlipper
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="300dp"
-        android:id="@+id/flipper_squatsAgain">
-
-    </ViewFlipper>
-
-    <ViewFlipper
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="300dp"
-        android:id="@+id/flipper_plankwithlegFit">
-
-    </ViewFlipper>
-
-    <TextView
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp"
-        android:textSize="20dp"
-        android:id="@+id/name"
-        android:layout_above="@+id/progress_bar"/>
+        android:visibility="invisible"
+        android:id="@+id/nextExcericseBeforeStart"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:layout_width="60dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:id="@+id/countDown"
-            android:textSize="25dp"
-            android:text="0"
-            android:gravity="end"
-            android:layout_gravity="center_vertical"
-            android:textStyle="bold"/>
+            android:weightSum="2"
+            android:padding="10dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:text="/20"
-            android:id="@+id/totalset"
-            android:layout_gravity="center_vertical"
-            android:textSize="25dp"
-            android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="3"
+                android:layout_gravity="center"
+                android:layout_weight="0.8">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:text="NEXT"/>
+
+                <TextView
+                    android:id="@+id/nextExcerciseName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="SQUATS"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="x20"
+                    android:textColor="@color/colorApp"
+                    android:id="@+id/nextExcerciTotalSet"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ViewFlipper
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="1.2"
+                    android:id="@+id/viewFlipperNextExcerciseSquats">
+
+                </ViewFlipper>
+
+                <ViewFlipper
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="1.2"
+                    android:visibility="invisible"
+                    android:id="@+id/viewFlipperNextExcerciseLegRaise">
+
+                </ViewFlipper>
+
+                <ViewFlipper
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="1.2"
+                    android:visibility="invisible"
+                    android:id="@+id/viewFlipperNextExcerciseJumpingJack">
+
+                </ViewFlipper>
+
+                <ViewFlipper
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="1.2"
+                    android:visibility="invisible"
+                    android:id="@+id/viewFlipperNextExcerciseSquatsAgain">
+
+                </ViewFlipper>
+
+                <ViewFlipper
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="1.2"
+                    android:visibility="invisible"
+                    android:id="@+id/viewFlipperNextExcercisePlankWithLegFit">
+
+                </ViewFlipper>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/imageView"
+                android:background="@drawable/qo"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50sp"
+                android:text="10"
+                android:id="@+id/countDownNextExcercise"
+                android:textColor="@color/colorApp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="100dp"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/button"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/play"
-        android:layout_marginRight="15dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/excerciselayout"
+        android:visibility="visible"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="6"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progress_bar_excercise1"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:minHeight="50dp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/myprogresssbar" />
+
+
+            <ProgressBar
+                android:id="@+id/progress_bar_excercise2"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5sp"
+                android:layout_height="10dp"
+                android:minHeight="50dp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/myprogresssbar" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_excercise3"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5sp"
+                android:minHeight="50dp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/myprogresssbar" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_excercise4"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:minHeight="50dp"
+                android:layout_marginLeft="5sp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/myprogresssbar" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_excercise5"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:minHeight="50dp"
+                android:layout_marginLeft="5sp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/myprogresssbar" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_excercise6"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:minHeight="50dp"
+                android:layout_marginLeft="5sp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/myprogresssbar" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:minHeight="50dp"
+            android:layout_alignParentBottom="true"
+            android:progressDrawable="@drawable/myprogresssbar" />
+
+        <ViewFlipper
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="300dp"
+            android:id="@+id/flipper_pushups">
+
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="300dp"
+            android:id="@+id/flipper_squats">
+
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="300dp"
+            android:id="@+id/flipper_legRaise">
+
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="300dp"
+            android:id="@+id/flipper_jumpingjack">
+
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="300dp"
+            android:id="@+id/flipper_squatsAgain">
+
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="300dp"
+            android:id="@+id/flipper_plankwithlegFit">
+
+        </ViewFlipper>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="20dp"
+            android:id="@+id/name"
+            android:layout_above="@+id/progress_bar"/>
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:id="@+id/countDown"
+                android:textSize="25dp"
+                android:text="0"
+                android:gravity="end"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="/20"
+                android:id="@+id/totalset"
+                android:layout_gravity="center_vertical"
+                android:textSize="25dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/button"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/play"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

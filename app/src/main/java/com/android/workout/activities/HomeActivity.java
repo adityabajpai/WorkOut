@@ -2,19 +2,23 @@ package com.android.workout.activities;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -33,6 +37,7 @@ import com.android.workout.R;
 import com.android.workout.database.DatabaseOperations;
 import com.bumptech.glide.Glide;
 
+import java.io.File;
 import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity
@@ -346,7 +351,22 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            HomeActivity.this.finish();
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
         }
     }
 
@@ -396,9 +416,22 @@ public class HomeActivity extends AppCompatActivity
             Toast.makeText(HomeActivity.this, "Share", Toast.LENGTH_SHORT).show();
             shareApp();
         } else if (id == R.id.feedback) {
-            Toast.makeText(HomeActivity.this, "FeedBack", Toast.LENGTH_SHORT).show();
+//            Intent email = new Intent(android.content.Intent.ACTION_SENDTO);
+//            email.setType("message/rfc822");
+//            email.putExtra(Intent.EXTRA_EMAIL, new String[] { "abc@gmail.com" });
+//            email.putExtra(Intent.EXTRA_SUBJECT, "eFeedBack on 30-Day Wight Loss");
+//            email.putExtra(Intent.EXTRA_TEXT, "");
+//            startActivity(Intent.createChooser(email,"Choose an Email client :"));
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                    "mailto","email@email.com", null));
+            intent.putExtra(Intent.EXTRA_SUBJECT, "FeedBack on 30-Day Wight Loss");
+            intent.putExtra(Intent.EXTRA_TEXT, "message");
+            startActivity(Intent.createChooser(intent, "Choose an Email client :"));
         } else if (id == R.id.rate_Us) {
-            Toast.makeText(HomeActivity.this, "Rate Us", Toast.LENGTH_SHORT).show();
+            Intent viewIntent =
+                    new Intent("android.intent.action.VIEW",
+                            Uri.parse("https://play.google.com/store/apps/details?id=com.android.workout"));
+            startActivity(viewIntent);
         } else if (id == R.id.restart_Progress) {
             Toast.makeText(HomeActivity.this, "Restart Progress", Toast.LENGTH_SHORT).show();
         }

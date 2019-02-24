@@ -72,6 +72,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 t.interrupt();
+                t=null;
                 count=0;
                 mySong.stop();
                 startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class));
