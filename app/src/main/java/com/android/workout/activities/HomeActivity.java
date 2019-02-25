@@ -20,6 +20,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -31,21 +33,26 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.workout.R;
+import com.android.workout.adapters.HomeAdapter;
 import com.android.workout.database.DatabaseOperations;
+import com.android.workout.model.Home;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    LinearLayout ll1, ll2, ll3, ll4, ll5, ll6, ll7, ll8, ll9,
-            ll10, ll11, ll12, ll13, ll14, ll15, ll16, ll17, ll18,
-            ll19, ll20, ll21, ll22, ll23, ll24, ll25, ll26, ll27, ll28, ll29, ll30;
+//    LinearLayout ll1, ll2, ll3, ll4, ll5, ll6, ll7, ll8, ll9,
+//            ll10, ll11, ll12, ll13, ll14, ll15, ll16, ll17, ll18,
+//            ll19, ll20, ll21, ll22, ll23, ll24, ll25, ll26, ll27, ll28, ll29, ll30;
     private float Heightincms = 0.0f;
     private EditText inches;
     private RadioButton lbs;
@@ -70,6 +77,13 @@ public class HomeActivity extends AppCompatActivity
     private Context context;
     private SharedPreferences launchDataPreferences;
     DatabaseOperations f5639h;
+    ArrayList<String> arrayList;
+    RecyclerView recyclerView;
+    private HomeAdapter adapter;
+    private List<Home> homeList;
+    TextView textView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +101,36 @@ public class HomeActivity extends AppCompatActivity
                 .into(imageView);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        setLayouts();
-        layoutActions();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        progressDialog = new ProgressDialog(this);
+        homeList = new ArrayList<>();
+//        homeList = new ArrayList<>();
+        Home imageUpload = new Home("Day 1","0","Day 2","0","Day 3","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Rest Day","0","Day 5","0","Day 6","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Day 7","0","Rest Day","0","Day 9","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Day 10","0","Day 11","0","Rest Day","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Day 13","0","Day 14","0","Day 15","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Rest Day","0","Day 17","0","Day 18","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Day 19","0","Rest Day","0","Day 21","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Day 22","0","Day 23","0","Rest Day","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Day 25","0","Day 26","0","Day 27","0");
+        homeList.add(imageUpload);
+        imageUpload = new Home("Rest Day","0","Day 29","0","Day 30","0");
+        homeList.add(imageUpload);
+        adapter = new HomeAdapter(getApplicationContext(), homeList);
+        recyclerView.setAdapter(adapter);
+//        setLayouts();
+//        layoutActions();
         this.launchDataPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -100,250 +142,250 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void layoutActions() {
-        ll1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
+//    private void layoutActions() {
+//        ll1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
+//            }
+//        });
+//
+//        ll5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll6.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll7.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll8.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
+//            }
+//        });
+//
+//        ll9.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll10.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll11.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll12.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
+//            }
+//        });
+//
+//        ll13.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll14.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll15.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll16.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
+//            }
+//        });
+//
+//        ll17.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll18.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll19.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll20.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
+//            }
+//        });
+//
+//        ll21.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll22.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll23.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll24.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
+//            }
+//        });
+//
+//        ll25.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll26.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll27.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll28.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
+//            }
+//        });
+//
+//        ll29.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//
+//        ll30.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
+//            }
+//        });
+//    }
 
-        ll2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll13.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll14.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll15.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll16.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll17.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll18.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll19.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll20.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll21.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll22.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll23.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll24.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll25.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll26.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll27.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll28.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll29.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-
-        ll30.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-            }
-        });
-    }
-
-    private void setLayouts() {
-        ll1 = findViewById(R.id.linear1);
-        ll2 = findViewById(R.id.linear2);
-        ll3 = findViewById(R.id.linear3);
-        ll4 = findViewById(R.id.linear4);
-        ll5 = findViewById(R.id.linear5);
-        ll6 = findViewById(R.id.linear6);
-        ll7 = findViewById(R.id.linear7);
-        ll8 = findViewById(R.id.linear8);
-        ll9 = findViewById(R.id.linear9);
-        ll10 = findViewById(R.id.linear10);
-        ll11 = findViewById(R.id.linear11);
-        ll12 = findViewById(R.id.linear12);
-        ll13 = findViewById(R.id.linear13);
-        ll14 = findViewById(R.id.linear14);
-        ll15 = findViewById(R.id.linear15);
-        ll16 = findViewById(R.id.linear16);
-        ll17 = findViewById(R.id.linear17);
-        ll18 = findViewById(R.id.linear18);
-        ll19 = findViewById(R.id.linear19);
-        ll20 = findViewById(R.id.linear20);
-        ll21 = findViewById(R.id.linear21);
-        ll22 = findViewById(R.id.linear22);
-        ll23 = findViewById(R.id.linear23);
-        ll24 = findViewById(R.id.linear24);
-        ll25 = findViewById(R.id.linear25);
-        ll26 = findViewById(R.id.linear26);
-        ll27 = findViewById(R.id.linear27);
-        ll28 = findViewById(R.id.linear28);
-        ll29 = findViewById(R.id.linear29);
-        ll30 = findViewById(R.id.linear30);
-    }
+//    private void setLayouts() {
+//        ll1 = findViewById(R.id.linear1);
+//        ll2 = findViewById(R.id.linear2);
+//        ll3 = findViewById(R.id.linear3);
+//        ll4 = findViewById(R.id.linear4);
+//        ll5 = findViewById(R.id.linear5);
+//        ll6 = findViewById(R.id.linear6);
+//        ll7 = findViewById(R.id.linear7);
+//        ll8 = findViewById(R.id.linear8);
+//        ll9 = findViewById(R.id.linear9);
+//        ll10 = findViewById(R.id.linear10);
+//        ll11 = findViewById(R.id.linear11);
+//        ll12 = findViewById(R.id.linear12);
+//        ll13 = findViewById(R.id.linear13);
+//        ll14 = findViewById(R.id.linear14);
+//        ll15 = findViewById(R.id.linear15);
+//        ll16 = findViewById(R.id.linear16);
+//        ll17 = findViewById(R.id.linear17);
+//        ll18 = findViewById(R.id.linear18);
+//        ll19 = findViewById(R.id.linear19);
+//        ll20 = findViewById(R.id.linear20);
+//        ll21 = findViewById(R.id.linear21);
+//        ll22 = findViewById(R.id.linear22);
+//        ll23 = findViewById(R.id.linear23);
+//        ll24 = findViewById(R.id.linear24);
+//        ll25 = findViewById(R.id.linear25);
+//        ll26 = findViewById(R.id.linear26);
+//        ll27 = findViewById(R.id.linear27);
+//        ll28 = findViewById(R.id.linear28);
+//        ll29 = findViewById(R.id.linear29);
+//        ll30 = findViewById(R.id.linear30);
+//    }
 
     @Override
     public void onBackPressed() {

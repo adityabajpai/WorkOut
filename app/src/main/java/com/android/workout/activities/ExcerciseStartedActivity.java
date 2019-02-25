@@ -171,7 +171,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(isRunningC1)
                 {
-                    
+
                 }
             }
         });
