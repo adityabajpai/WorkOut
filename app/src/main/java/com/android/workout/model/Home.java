@@ -8,6 +8,8 @@ public class Home {
     private String day3;
     private String progress3;
 
+    public Home(){}
+
     public Home(String day1, String progress1, String day2, String progress2, String day3, String progress3) {
         this.day1 = day1;
         this.progress1 = progress1;

@@ -5,12 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -31,18 +29,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.workout.R;
 import com.android.workout.adapters.HomeAdapter;
+import com.android.workout.adapters.WorkoutData;
 import com.android.workout.database.DatabaseOperations;
 import com.android.workout.model.Home;
 import com.bumptech.glide.Glide;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -50,9 +48,6 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-//    LinearLayout ll1, ll2, ll3, ll4, ll5, ll6, ll7, ll8, ll9,
-//            ll10, ll11, ll12, ll13, ll14, ll15, ll16, ll17, ll18,
-//            ll19, ll20, ll21, ll22, ll23, ll24, ll25, ll26, ll27, ll28, ll29, ll30;
     private float Heightincms = 0.0f;
     private EditText inches;
     private RadioButton lbs;
@@ -75,13 +70,14 @@ public class HomeActivity extends AppCompatActivity
     public int width;
     public int height;
     private Context context;
-    private SharedPreferences launchDataPreferences;
-    DatabaseOperations f5639h;
+    DatabaseOperations databaseOperations;
     ArrayList<String> arrayList;
     RecyclerView recyclerView;
     private HomeAdapter adapter;
-    private List<Home> homeList;
+    private List<WorkoutData> homeList;
     TextView textView;
+    TextView allProgess;
+    ProgressBar allProgressBar;
 
 
 
@@ -94,6 +90,12 @@ public class HomeActivity extends AppCompatActivity
         this.width = displayMetrics.widthPixels;
         this.height = displayMetrics.heightPixels;
         this.context = this;
+        databaseOperations = new DatabaseOperations(context);
+        if(databaseOperations.CheckDBEmpty()==0){
+            databaseOperations.insertExcALLDayData();
+        }
+        allProgess = findViewById(R.id.progressStatus);
+        allProgressBar = findViewById(R.id.mainProgressBar);
         Toolbar toolbar = findViewById(R.id.toolbar);
         ImageView imageView = findViewById(R.id.imageView);
         Glide.with(this)
@@ -103,35 +105,10 @@ public class HomeActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        progressDialog = new ProgressDialog(this);
-        homeList = new ArrayList<>();
-//        homeList = new ArrayList<>();
-        Home imageUpload = new Home("Day 1","0","Day 2","0","Day 3","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Rest Day","0","Day 5","0","Day 6","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Day 7","0","Rest Day","0","Day 9","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Day 10","0","Day 11","0","Rest Day","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Day 13","0","Day 14","0","Day 15","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Rest Day","0","Day 17","0","Day 18","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Day 19","0","Rest Day","0","Day 21","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Day 22","0","Day 23","0","Rest Day","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Day 25","0","Day 26","0","Day 27","0");
-        homeList.add(imageUpload);
-        imageUpload = new Home("Rest Day","0","Day 29","0","Day 30","0");
-        homeList.add(imageUpload);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        homeList = databaseOperations.getAllDaysProgress();
         adapter = new HomeAdapter(getApplicationContext(), homeList);
         recyclerView.setAdapter(adapter);
-//        setLayouts();
-//        layoutActions();
-        this.launchDataPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -141,251 +118,6 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
-//    private void layoutActions() {
-//        ll1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
-//            }
-//        });
-//
-//        ll5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll6.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll7.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll8.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
-//            }
-//        });
-//
-//        ll9.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll10.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll11.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll12.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
-//            }
-//        });
-//
-//        ll13.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll14.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll15.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll16.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
-//            }
-//        });
-//
-//        ll17.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll18.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll19.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll20.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
-//            }
-//        });
-//
-//        ll21.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll22.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll23.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll24.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
-//            }
-//        });
-//
-//        ll25.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll26.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll27.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll28.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, RestDayActivity.class));
-//            }
-//        });
-//
-//        ll29.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//
-//        ll30.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(HomeActivity.this, ExcerciseActivity.class));
-//            }
-//        });
-//    }
-
-//    private void setLayouts() {
-//        ll1 = findViewById(R.id.linear1);
-//        ll2 = findViewById(R.id.linear2);
-//        ll3 = findViewById(R.id.linear3);
-//        ll4 = findViewById(R.id.linear4);
-//        ll5 = findViewById(R.id.linear5);
-//        ll6 = findViewById(R.id.linear6);
-//        ll7 = findViewById(R.id.linear7);
-//        ll8 = findViewById(R.id.linear8);
-//        ll9 = findViewById(R.id.linear9);
-//        ll10 = findViewById(R.id.linear10);
-//        ll11 = findViewById(R.id.linear11);
-//        ll12 = findViewById(R.id.linear12);
-//        ll13 = findViewById(R.id.linear13);
-//        ll14 = findViewById(R.id.linear14);
-//        ll15 = findViewById(R.id.linear15);
-//        ll16 = findViewById(R.id.linear16);
-//        ll17 = findViewById(R.id.linear17);
-//        ll18 = findViewById(R.id.linear18);
-//        ll19 = findViewById(R.id.linear19);
-//        ll20 = findViewById(R.id.linear20);
-//        ll21 = findViewById(R.id.linear21);
-//        ll22 = findViewById(R.id.linear22);
-//        ll23 = findViewById(R.id.linear23);
-//        ll24 = findViewById(R.id.linear24);
-//        ll25 = findViewById(R.id.linear25);
-//        ll26 = findViewById(R.id.linear26);
-//        ll27 = findViewById(R.id.linear27);
-//        ll28 = findViewById(R.id.linear28);
-//        ll29 = findViewById(R.id.linear29);
-//        ll30 = findViewById(R.id.linear30);
-//    }
 
     @Override
     public void onBackPressed() {
@@ -441,47 +173,52 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.training_Plan) {
-            Toast.makeText(HomeActivity.this, "Training Plan", Toast.LENGTH_SHORT).show();
+            //
         } else if (id == R.id.meals_Plan) {
-            Toast.makeText(HomeActivity.this, "Meals Plan", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(), MealsMainActivity.class));
         } else if (id == R.id.reminder) {
-            Toast.makeText(HomeActivity.this, "Reminder", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(HomeActivity.this,ReminderActivity.class));
         } else if (id == R.id.bmi_Calculator) {
-            Toast.makeText(HomeActivity.this, "BMI Calculator", Toast.LENGTH_SHORT).show();
             loadCalculateActivity();
         } else if (id == R.id.language) {
-            Toast.makeText(HomeActivity.this, "Language", Toast.LENGTH_SHORT).show();
             customs();
         } else if (id == R.id.share) {
-            Toast.makeText(HomeActivity.this, "Share", Toast.LENGTH_SHORT).show();
             shareApp();
         } else if (id == R.id.feedback) {
-//            Intent email = new Intent(android.content.Intent.ACTION_SENDTO);
-//            email.setType("message/rfc822");
-//            email.putExtra(Intent.EXTRA_EMAIL, new String[] { "abc@gmail.com" });
-//            email.putExtra(Intent.EXTRA_SUBJECT, "eFeedBack on 30-Day Wight Loss");
-//            email.putExtra(Intent.EXTRA_TEXT, "");
-//            startActivity(Intent.createChooser(email,"Choose an Email client :"));
-            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                    "mailto","email@email.com", null));
-            intent.putExtra(Intent.EXTRA_SUBJECT, "FeedBack on 30-Day Wight Loss");
-            intent.putExtra(Intent.EXTRA_TEXT, "message");
-            startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+            getFeedback();
         } else if (id == R.id.rate_Us) {
-            Intent viewIntent =
-                    new Intent("android.intent.action.VIEW",
-                            Uri.parse("https://play.google.com/store/apps/details?id=com.android.workout"));
-            startActivity(viewIntent);
+            rateUs();
         } else if (id == R.id.restart_Progress) {
-            Toast.makeText(HomeActivity.this, "Restart Progress", Toast.LENGTH_SHORT).show();
+            restartProgress();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void restartProgress(){
+        databaseOperations.deleteTable();
+        databaseOperations.insertExcALLDayData();
+        allProgess.setText("0%");
+        allProgressBar.setProgress(0);
+    }
+
+    private void rateUs() {
+        Intent viewIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://play.google.com/store/apps/details?id=com.android.workout"));
+        startActivity(viewIntent);
+    }
+
+    private void getFeedback() {
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto","email@email.com", null));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "FeedBack on 30-Day Wight Loss");
+        intent.putExtra(Intent.EXTRA_TEXT, "message");
+        startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+    }
+
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
@@ -533,18 +270,12 @@ public class HomeActivity extends AppCompatActivity
                                                     Intent intent = null;
                                                     if (kg.isChecked()) {
                                                         if (!weight.getText().toString().matches("") && Integer.parseInt(weight.getText().toString()) >= 5) {
-                                                            //if (Integer.parseInt(this.f3315b.weight.getText().toString()) <= TsExtractor.TS_STREAM_TYPE_HDMV_DTS) {
                                                                 int b = calculateBMI(calculateMetres(Float.parseFloat(ft.getText().toString()), Float.parseFloat(inches.getText().toString())), calculateweight(Float.parseFloat(weight.getText().toString())));
-//                                                                prefsEditor = mSharedPreferences.edit();
-//                                                                prefsEditor.putFloat("BMI", (float) b);
-//                                                                prefsEditor.putFloat("HEIGHT", Heightincms);
-//                                                                prefsEditor.apply();
                                                             Bundle bundle = new Bundle();
                                                             bundle.putFloat("BMI",(float)b);
                                                             bundle.putFloat("HEIGHT",Heightincms);
                                                                 intent = new Intent(HomeActivity.this, CalculateActivity.class);
                                                                 intent.putExtras(bundle);
-                                                            //}
                                                         }
                                                         
                                                         i = R.string.weightrange;
@@ -553,10 +284,6 @@ public class HomeActivity extends AppCompatActivity
                                                             if (!weight.getText().toString().matches("") && Integer.parseInt(weight.getText().toString()) >= 11) {
                                                                 if (Integer.parseInt(weight.getText().toString()) <= 286) {
                                                                     float b2 = (float) calculateBMI(calculateMetres(Float.parseFloat(ft.getText().toString()), Float.parseFloat(inches.getText().toString())), calculateweight(Float.parseFloat(weight.getText().toString())));
-//                                                                    prefsEditor = mSharedPreferences.edit();
-//                                                                    prefsEditor.putFloat("BMI", b2);
-//                                                                    prefsEditor.putFloat("HEIGHT", Heightincms);
-//                                                                    prefsEditor.apply();
                                                                     Bundle bundle = new Bundle();
                                                                     bundle.putFloat("BMI",(float)b2);
                                                                     bundle.putFloat("HEIGHT",Heightincms);

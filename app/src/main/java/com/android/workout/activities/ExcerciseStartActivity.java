@@ -2,10 +2,9 @@ package com.android.workout.activities;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,11 +18,15 @@ public class ExcerciseStartActivity extends AppCompatActivity{
     int count=10;
     TextView btn_skip;
     Thread t;
+    Bundle  bundle;
+    int dayNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_excercise_start);
+        bundle = getIntent().getExtras();
+        dayNo = bundle.getInt("day");
         floatingActionButton_play = findViewById(R.id.play);
         floatingActionButton_pause = findViewById(R.id.pause);
         tvCountDown = findViewById(R.id.countDown);
@@ -54,7 +57,9 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                                 count--;
                                 if(count==0)
                                 {
-                                    startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class));
+                                    bundle = new Bundle();
+                                    bundle.putInt("day",dayNo);
+                                    startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class).putExtras(bundle));
                                     finish();
                                     mySong.stop();
                                 }
@@ -75,7 +80,9 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                 t=null;
                 count=0;
                 mySong.stop();
-                startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class));
+                bundle = new Bundle();
+                bundle.putInt("day",dayNo);
+                startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class).putExtras(bundle));
                 finish();
             }
         });

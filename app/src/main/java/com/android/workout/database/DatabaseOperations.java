@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.android.workout.adapters.WorkoutData;
 
@@ -33,6 +33,7 @@ public class DatabaseOperations{
         this.sqlite = this.dbHelper.getWritableDatabase();
         int delete = this.sqlite.delete(DatabaseHelper.f3363c, null, null);
         this.sqlite.close();
+        Log.e("deleteTable","DatabaseOperations");
         return delete;
     }
 
@@ -53,6 +54,7 @@ public class DatabaseOperations{
                     rawQuery.moveToNext();
                     arrayList.add(workoutData);
                 }
+                Log.e("getAllDaysProgress",""+arrayList.size());
             }
             this.sqlite.close();
         }
@@ -96,6 +98,7 @@ public class DatabaseOperations{
                 if (this.sqlite != null) {
                     try {
                         j = this.sqlite.insert(DatabaseHelper.f3363c, null, contentValues);
+                        Log.e("insertALLDayData called","DatabaseOPerations class");
                     } catch (Throwable e) {
                         e.printStackTrace();
                     }
@@ -139,6 +142,7 @@ public class DatabaseOperations{
                     stringBuilder2.append(str);
                     stringBuilder2.append("'");
                     i = sQLiteDatabase.update(str2, contentValues, stringBuilder2.toString(), null);
+                    Log.e("insertExcDayData called","DatabaseOPerations class");
                 } catch (Throwable e) {
                     e.printStackTrace();
                 }

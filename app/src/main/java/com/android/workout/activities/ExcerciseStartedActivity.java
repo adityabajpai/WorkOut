@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.PowerManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,12 +23,15 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.android.workout.R;
+import com.android.workout.adapters.WorkoutData;
+import com.android.workout.database.DatabaseOperations;
 
 
 public class ExcerciseStartedActivity extends AppCompatActivity {
 
     public static ProgressBar progressBar, progressBar_excercise1, progressBar_excercise2, progressBar_excercise3, progressBar_excercise4, progressBar_excercise5, progressBar_excercise6;
     Thread t, t1, t2, t3, t4, t5, t6;
+    private DatabaseOperations databaseOperations;
     int count = 0;
     Runnable runnable;
     Handler handler;
@@ -51,6 +55,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
     CountDownTimer c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12;
     boolean isRunningC1 = false, isRunningC2 = false, isRunningC3 = false, isRunningC4 = false, isRunningC5 = false, isRunningC6 = false;
     boolean isRunningC7 = false, isRunningC8 = false, isRunningC9 = false, isRunningC10 = false, isRunningC11 = false, isRunningC12 = false;
+    WorkoutData workoutData = new WorkoutData();
+    Bundle bundle;
+    int dayNo ;
 
 
     @Override
@@ -117,7 +124,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                         progressBar_excercise5.setProgress(0);
                         progressBar_excercise6.setProgress(0);
                         progressBar.setProgress(0);
-                        startActivity(new Intent(ExcerciseStartedActivity.this, ExcerciseActivity.class));
+                        int check = databaseOperations.insertExcDayData(workoutData.getDay(),workoutData.getProgress());
+                        Log.e("value inserted",""+check);
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putInt("day",dayNo);
+                        startActivity(new Intent(ExcerciseStartedActivity.this, ExcerciseActivity.class).putExtras(bundle1));
                         finish();
                     }
                 }).setNegativeButton("no", null).show();
@@ -127,7 +138,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_excercise_started);
-
+        bundle = getIntent().getExtras();
+        dayNo = bundle.getInt("day");
+        workoutData.setDay("Day "+dayNo);
+        databaseOperations = new DatabaseOperations(getApplicationContext());
+        workoutData.setProgress(0.0f);
         PowerManager powerManager = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
         @SuppressLint("InvalidWakeLockTag") final PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Lock");
         wakeLock.acquire();
@@ -244,6 +259,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC2 = false;
                 c1.cancel();
+                workoutData.setProgress(workoutData.getProgress()+(float)2000/125);
+                Log.e("progress",workoutData.getProgress()+"");
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
 
@@ -258,6 +275,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                         c2.cancel();
                         linearLayout.setVisibility(View.INVISIBLE);
                         relativeLayout.setVisibility(View.VISIBLE);
+                        workoutData.setProgress(workoutData.getProgress()+(float)2000/125);
                         viewFlipper_pushups.setVisibility(View.INVISIBLE);
                         viewFlipper_squats.setVisibility(View.VISIBLE);
                         progressBar_excercise1.setProgress(20);
@@ -274,6 +292,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                             public void onFinish() {
                                 isRunningC3 = false;
                                 c3.cancel();
+                                workoutData.setProgress(workoutData.getProgress()+(float)2000/125);
+                                Log.e("progress",workoutData.getProgress()+"");
                                 relativeLayout.setVisibility(View.INVISIBLE);
                                 linearLayout.setVisibility(View.VISIBLE);
                                 tv_nextExcerciseName.setText("LEG RAISE");
@@ -305,6 +325,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                             public void onFinish() {
                                                 isRunningC5 = false;
                                                 c5.cancel();
+                                                workoutData.setProgress(workoutData.getProgress()+(float)2000/125);
+                                                Log.e("progress",workoutData.getProgress()+"");
                                                 relativeLayout.setVisibility(View.INVISIBLE);
                                                 linearLayout.setVisibility(View.VISIBLE);
                                                 tv_nextExcerciseName.setText("JUMPING JACK");
@@ -320,12 +342,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                                     public void onFinish() {
                                                         isRunningC6 = false;
                                                         c6.cancel();
-                                                        //                                viewFlipper_squats.stopFlipping();
+//                                                        viewFlipper_squats.stopFlipping();
                                                         linearLayout.setVisibility(View.INVISIBLE);
                                                         relativeLayout.setVisibility(View.VISIBLE);
                                                         viewFlipper_legRaise.setVisibility(View.INVISIBLE);
                                                         viewFlipper_jumpingJack.setVisibility(View.VISIBLE);
-//                                viewFlipper_jumpingJack.startFlipping();
                                                         progressBar_excercise3.setProgress(20);
                                                         progressBar.setProgress(0);
                                                         tv_totalSet.setText("/15");

@@ -23,12 +23,15 @@ public class ExcerciseActivity extends AppCompatActivity {
     public int[] image_array_legRaise = {R.drawable.leg_raise_a,R.drawable.leg_raise_b};
     public int[] image_array_jumpingJack = {R.drawable.jumping_a,R.drawable.jumping_b,R.drawable.jumping_c};
     public int[] image_array_plank = {R.drawable.plank_with_leg_lift_a,R.drawable.plank_with_leg_lift_b,R.drawable.plank_with_leg_lift_c};
-
+    Bundle bundle;
+    int dayNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_excercise);
+        bundle = getIntent().getExtras();
+        dayNo = bundle.getInt("day");
         ll_pushups = findViewById(R.id.linearPushUps);
         ll_squats = findViewById(R.id.linearSquats);
         ll_legraise = findViewById(R.id.linearLegRaise);
@@ -119,7 +122,10 @@ public class ExcerciseActivity extends AppCompatActivity {
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bundle = new Bundle();
+                bundle.putInt("day",dayNo);
                 Intent intent = new Intent(ExcerciseActivity.this, ExcerciseStartActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
             }
