@@ -319,10 +319,21 @@
             android:layout_height="45dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/button"
+            android:id="@+id/button_play"
+            android:visibility="invisible"
             android:layout_marginBottom="15dp"
             android:layout_marginRight="15dp"
             android:src="@drawable/play"/>
+
+        <ImageButton
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/button_pause"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/pause"/>
 
     </RelativeLayout>
 
