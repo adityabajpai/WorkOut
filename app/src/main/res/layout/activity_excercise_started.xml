@@ -62,51 +62,62 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_weight="1.2"
                 android:layout_height="wrap_content">
 
-                <ViewFlipper
+                <Button
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_weight="1.2"
-                    android:id="@+id/viewFlipperNextExcerciseSquats">
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|end"
+                    android:id="@+id/skip"
+                    android:textSize="20dp"
+                    android:text="SKIP"/>
 
-                </ViewFlipper>
+                <!--<ViewFlipper-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_weight="1.2"-->
+                    <!--android:id="@+id/viewFlipperNextExcerciseSquats">-->
 
-                <ViewFlipper
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_weight="1.2"
-                    android:visibility="invisible"
-                    android:id="@+id/viewFlipperNextExcerciseLegRaise">
+                <!--</ViewFlipper>-->
 
-                </ViewFlipper>
+                <!--<ViewFlipper-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_weight="1.2"-->
+                    <!--android:visibility="invisible"-->
+                    <!--android:id="@+id/viewFlipperNextExcerciseLegRaise">-->
 
-                <ViewFlipper
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_weight="1.2"
-                    android:visibility="invisible"
-                    android:id="@+id/viewFlipperNextExcerciseJumpingJack">
+                <!--</ViewFlipper>-->
 
-                </ViewFlipper>
+                <!--<ViewFlipper-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_weight="1.2"-->
+                    <!--android:visibility="invisible"-->
+                    <!--android:id="@+id/viewFlipperNextExcerciseJumpingJack">-->
 
-                <ViewFlipper
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_weight="1.2"
-                    android:visibility="invisible"
-                    android:id="@+id/viewFlipperNextExcerciseSquatsAgain">
+                <!--</ViewFlipper>-->
 
-                </ViewFlipper>
+                <!--<ViewFlipper-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_weight="1.2"-->
+                    <!--android:visibility="invisible"-->
+                    <!--android:id="@+id/viewFlipperNextExcerciseSquatsAgain">-->
 
-                <ViewFlipper
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_weight="1.2"
-                    android:visibility="invisible"
-                    android:id="@+id/viewFlipperNextExcercisePlankWithLegFit">
+                <!--</ViewFlipper>-->
 
-                </ViewFlipper>
+                <!--<ViewFlipper-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="150dp"-->
+                    <!--android:layout_weight="1.2"-->
+                    <!--android:visibility="invisible"-->
+                    <!--android:id="@+id/viewFlipperNextExcercisePlankWithLegFit">-->
+
+                <!--</ViewFlipper>-->
+
 
             </RelativeLayout>
 
