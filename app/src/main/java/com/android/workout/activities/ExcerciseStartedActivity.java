@@ -212,6 +212,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 {
                     isPausedC1 = true;
                     viewFlipper_pushups.stopFlipping();
+                    progress1 = progress;
+                    Log.e("Progress paused",""+progress1);
                     Toast.makeText(ExcerciseStartedActivity.this, "C1", Toast.LENGTH_SHORT).show();
                 }
                 else if(isRunningC3)
@@ -259,7 +261,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                     img_btn_play.setVisibility(View.INVISIBLE);
                     img_btn_pause.setVisibility(View.VISIBLE);
                     final long millisInFuture = display_time1;
-                    new CountDownTimer(millisInFuture, 2000) {
+                    new CountDownTimer(totalTime42, 2000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
                             if(isPausedC1 || isCanceledC1)
@@ -271,11 +273,13 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                             else
                             {
                                 isRunningC1 = true;
+                                viewFlipper_pushups.startFlipping();
                                 progressBar.setMax(20);
                                 display_time1 = millisUntilFinished;
-                                progress = ((millisInFuture - display_time1) / 1000) / 2;
-                                progressBar.setProgress((int) progress);
-                                tv_countDown.setText(((millisInFuture - display_time1) / 1000) / 2 + "");
+                                progress = ((totalTime42 - display_time1) / 1000) / 2;
+                                progressBar.setProgress((int) (progress1+progress));
+                                tv_countDown.setText((int) (progress1+progress) + "");
+                                Log.e("Progress played",""+progress);
                             }
                         }
 
@@ -382,7 +386,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                     progressBar.setMax(20);
                     display_time1 = millisUntilFinished;
                     progress = ((totalTime42 - display_time1) / 1000) / 2;
-                    progress1 = progress;
+                    //progress1 = progress;
                     progressBar.setProgress((int) progress);
                     tv_countDown.setText(((totalTime42 - display_time1) / 1000) / 2 + "");
                 }
@@ -394,6 +398,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 c1.cancel();
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
+                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 c2.start();
             }
         }.start();
@@ -442,6 +448,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC3 = false;
                 c3.cancel();
+                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
                 tv_nextExcerciseName.setText("LEG RAISE");
@@ -496,6 +504,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC5 = false;
                 c5.cancel();
+                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
                 tv_nextExcerciseName.setText("JUMPING JACK");
@@ -553,6 +563,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC7 = false;
                 c7.cancel();
+                workoutData.setProgress(workoutData.getProgress()+((float)1500/125));
+                Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
                 tv_nextExcerciseName.setText("SQUATS");
@@ -610,6 +622,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC9 = false;
                 c9.cancel();
+                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
                 tv_nextExcerciseName.setText("PLANK WITH LEG FIT");
@@ -667,6 +681,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC11 = false;
                 c11.cancel();
+                workoutData.setProgress(workoutData.getProgress()+((float)3000/125));
+                Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
                 c12.start();
@@ -687,6 +703,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 isRunningC12 = false;
+                int check = databaseOperations.insertExcDayData(workoutData.getDay(),workoutData.getProgress());
+                Log.e("value inserted",""+check);
                 c12.cancel();
                 progressBar_excercise6.setProgress(30);
                 startActivity(new Intent(ExcerciseStartedActivity.this,HomeActivity.class));

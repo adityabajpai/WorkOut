@@ -33,19 +33,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="5sp">
+                android:padding="5sp"
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/percent1"
-                    android:layout_width="20dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7sp"
                     android:text="0%"
+                    android:layout_weight="1.5"
                     android:textColor="@color/colorApp"
                     android:textStyle="bold" />
 
                 <ProgressBar
                     android:id="@+id/seek1"
+                    android:layout_weight=".5"
                     style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

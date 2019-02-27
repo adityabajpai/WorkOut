@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,7 +17,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -32,13 +30,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.workout.R;
 import com.android.workout.adapters.HomeAdapter;
 import com.android.workout.adapters.WorkoutData;
 import com.android.workout.database.DatabaseOperations;
-import com.android.workout.model.Home;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -92,6 +88,7 @@ public class HomeActivity extends AppCompatActivity
         this.context = this;
         databaseOperations = new DatabaseOperations(context);
         if(databaseOperations.CheckDBEmpty()==0){
+            Log.e("HomeActivity","database was empty");
             databaseOperations.insertExcALLDayData();
         }
         allProgess = findViewById(R.id.progressStatus);
@@ -107,7 +104,15 @@ public class HomeActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         homeList = databaseOperations.getAllDaysProgress();
+        int totalProgressApp = 0;
+        for(WorkoutData workoutData:homeList){
+            totalProgressApp += (int)workoutData.getProgress();
+        }
+        totalProgressApp = (100)/30;
+        allProgess.setText(totalProgressApp+"%");
+        allProgressBar.setProgress(totalProgressApp);
         adapter = new HomeAdapter(getApplicationContext(), homeList);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -118,6 +123,8 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    //use the color for app #8d6363
 
     @Override
     public void onBackPressed() {
@@ -202,6 +209,8 @@ public class HomeActivity extends AppCompatActivity
         databaseOperations.insertExcALLDayData();
         allProgess.setText("0%");
         allProgressBar.setProgress(0);
+        adapter.notifyDataSetChanged();
+        recreate();
     }
 
     private void rateUs() {
