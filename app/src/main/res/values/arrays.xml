@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="alternater_heeltouch">
+        <item>@drawable/alternater_hell_touches_a</item>
+        <item>@drawable/alternater_hell_touches_b</item>
+        <item>@drawable/alternater_hell_touches_a</item>
+        <item>@drawable/alternater_hell_touches_c</item>
+        <item>@drawable/alternater_hell_touches_a</item>
+    </array>
+    <array name="arm_crunches">
+        <item>@drawable/arm_reaching_crunches_a</item>
+        <item>@drawable/arm_reaching_crunches_b</item>
+        <item>@drawable/arm_reaching_crunches_a</item>
+    </array>
+    <array name="basic_crunches">
+        <item>@drawable/basic_crunches_a</item>
+        <item>@drawable/basic_crunches_b</item>
+        <item>@drawable/basic_crunches_a</item>
+    </array>
+    <array name="bench_dips">
+        <item>@drawable/bench_dips_a</item>
+        <item>@drawable/bench_dips_b</item>
+        <item>@drawable/bench_dips_a</item>
+    </array>
+    <array name="bicycle_crunches">
+        <item>@drawable/bicyle_crunches_a</item>
+        <item>@drawable/bicyle_crunches_b</item>
+        <item>@drawable/bicyle_crunches_a</item>
+        <item>@drawable/bicyle_crunches_c</item>
+        <item>@drawable/bicyle_crunches_a</item>
+    </array>
+    <string-array name="day1">
+        <item>@string/pushups</item>
+        <item>@string/squats</item>
+        <item>@string/leg_raise</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/squats</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <string-array name="day10">
+        <item>@string/jumping_jacks</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/arm_crunches</item>
+        <item>@string/lunge</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day10_cycles">
+        <item>20</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>22</item>
+        <item>45</item>
+    </integer-array>
+    <string-array name="day11">
+        <item>@string/pushups</item>
+        <item>@string/lunge</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/bench_dips</item>
+        <item>@string/squats</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day11_cycles">
+        <item>25</item>
+        <item>26</item>
+        <item>30</item>
+        <item>25</item>
+        <item>25</item>
+        <item>45</item>
+    </integer-array>
+    <array name="day12" />
+    <array name="day12_cycles" />
+    <string-array name="day13">
+        <item>@string/jumping_jacks</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/arm_crunches</item>
+        <item>@string/high_knees</item>
+        <item>@string/squats</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day13_cycles">
+        <item>12</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>26</item>
+        <item>50</item>
+    </integer-array>
+    <string-array name="day14">
+        <item>@string/squats</item>
+        <item>@string/leg_raise</item>
+        <item>@string/bench_dips</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/arm_crunches</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day14_cycles">
+        <item>20</item>
+        <item>30</item>
+        <item>25</item>
+        <item>15</item>
+        <item>20</item>
+        <item>15</item>
+        <item>24</item>
+        <item>50</item>
+    </integer-array>
+    <string-array name="day15">
+        <item>@string/lunge</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/v_crunches</item>
+        <item>@string/pushups</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/lunge</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day15_cycles">
+        <item>16</item>
+        <item>30</item>
+        <item>15</item>
+        <item>30</item>
+        <item>14</item>
+        <item>16</item>
+        <item>14</item>
+        <item>50</item>
+    </integer-array>
+    <array name="day16" />
+    <array name="day16_cycles" />
+    <string-array name="day17">
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/v_crunches</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/lunge</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day17_cycles">
+        <item>20</item>
+        <item>15</item>
+        <item>15</item>
+        <item>14</item>
+        <item>24</item>
+        <item>20</item>
+        <item>14</item>
+        <item>60</item>
+    </integer-array>
+    <string-array name="day18">
+        <item>@string/pushups</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/squats</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/squats</item>
+    </string-array>
+    <integer-array name="day18_cycles">
+        <item>30</item>
+        <item>16</item>
+        <item>25</item>
+        <item>60</item>
+        <item>15</item>
+        <item>16</item>
+        <item>26</item>
+        <item>25</item>
+    </integer-array>
+    <string-array name="day19">
+        <item>@string/jumping_jacks</item>
+        <item>@string/v_crunches</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/high_knees</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/high_knees</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day19_cycles">
+        <item>15</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>30</item>
+        <item>20</item>
+        <item>15</item>
+        <item>35</item>
+    </integer-array>
+    <integer-array name="day1_cycles">
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+    </integer-array>
+    <string-array name="day2">
+        <item>@string/pushups</item>
+        <item>@string/high_knees</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/bench_dips</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <array name="day20" />
+    <array name="day20_cycles" />
+    <string-array name="day21">
+        <item>@string/pushups</item>
+        <item>@string/v_crunches</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/pushups</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day21_cycles">
+        <item>30</item>
+        <item>25</item>
+        <item>25</item>
+        <item>18</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>25</item>
+        <item>20</item>
+        <item>30</item>
+    </integer-array>
+    <string-array name="day22">
+        <item>@string/pushups</item>
+        <item>@string/squats</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/pushups</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day22_cycles">
+        <item>20</item>
+        <item>30</item>
+        <item>20</item>
+        <item>30</item>
+        <item>25</item>
+        <item>35</item>
+        <item>20</item>
+        <item>20</item>
+        <item>26</item>
+        <item>40</item>
+    </integer-array>
+    <string-array name="day23">
+        <item>@string/jumping_jacks</item>
+        <item>@string/high_knees</item>
+        <item>@string/lunge</item>
+        <item>@string/v_crunches</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/bench_dips</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day23_cycles">
+        <item>15</item>
+        <item>20</item>
+        <item>26</item>
+        <item>30</item>
+        <item>30</item>
+        <item>20</item>
+        <item>15</item>
+        <item>15</item>
+        <item>35</item>
+        <item>15</item>
+        <item>40</item>
+    </integer-array>
+    <array name="day24" />
+    <array name="day24_cycles" />
+    <string-array name="day25">
+        <item>@string/basic_crunches</item>
+        <item>@string/v_crunches</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/high_knees</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/high_knees</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day25_cycles">
+        <item>20</item>
+        <item>30</item>
+        <item>30</item>
+        <item>16</item>
+        <item>30</item>
+        <item>35</item>
+        <item>25</item>
+        <item>20</item>
+        <item>25</item>
+        <item>26</item>
+        <item>40</item>
+    </integer-array>
+    <string-array name="day26">
+        <item>@string/pushups</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/lunge</item>
+        <item>@string/v_crunches</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/lunge</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/pushups</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day26_cycles">
+        <item>20</item>
+        <item>20</item>
+        <item>16</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>40</item>
+        <item>26</item>
+        <item>30</item>
+        <item>45</item>
+    </integer-array>
+    <string-array name="day27">
+        <item>@string/squats</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/v_crunches</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/v_crunches</item>
+        <item>@string/vertical_leg_crunches</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day27_cycles">
+        <item>30</item>
+        <item>20</item>
+        <item>15</item>
+        <item>15</item>
+        <item>16</item>
+        <item>40</item>
+        <item>15</item>
+        <item>15</item>
+        <item>16</item>
+        <item>45</item>
+    </integer-array>
+    <array name="day28" />
+    <array name="day28_cycles" />
+    <string-array name="day29">
+        <item>@string/basic_crunches</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/squats</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/squats</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day29_cycles">
+        <item>20</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>40</item>
+        <item>30</item>
+        <item>20</item>
+        <item>25</item>
+        <item>26</item>
+        <item>45</item>
+    </integer-array>
+    <integer-array name="day2_cycles">
+        <item>22</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>15</item>
+        <item>30</item>
+    </integer-array>
+    <string-array name="day3">
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/leg_raise</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <string-array name="day30">
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/lunge</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/pushups</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/lunge</item>
+        <item>@string/pushups</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/leg_up_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day30_cycles">
+        <item>20</item>
+        <item>16</item>
+        <item>20</item>
+        <item>20</item>
+        <item>45</item>
+        <item>20</item>
+        <item>30</item>
+        <item>20</item>
+        <item>30</item>
+        <item>20</item>
+        <item>30</item>
+        <item>50</item>
+    </integer-array>
+    <integer-array name="day3_cycles">
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>35</item>
+    </integer-array>
+    <array name="day4" />
+    <array name="day4_cycles" />
+    <string-array name="day5">
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/pushups</item>
+        <item>@string/lunge</item>
+        <item>@string/jumping_jacks</item>
+        <item>@string/bench_dips</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day5_cycles">
+        <item>26</item>
+        <item>25</item>
+        <item>30</item>
+        <item>20</item>
+        <item>20</item>
+        <item>35</item>
+    </integer-array>
+    <string-array name="day6">
+        <item>@string/high_knees</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/plank_with_leg_lift</item>
+        <item>@string/bench_dips</item>
+        <item>@string/arm_crunches</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day6_cycles">
+        <item>26</item>
+        <item>25</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>40</item>
+    </integer-array>
+    <string-array name="day7">
+        <item>@string/lunge</item>
+        <item>@string/basic_crunches</item>
+        <item>@string/bicycle_crunches</item>
+        <item>@string/flutter_kicks</item>
+        <item>@string/bench_dips</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day7_cycles">
+        <item>20</item>
+        <item>26</item>
+        <item>20</item>
+        <item>22</item>
+        <item>20</item>
+        <item>40</item>
+    </integer-array>
+    <array name="day8" />
+    <array name="day8_cycles" />
+    <string-array name="day9">
+        <item>@string/pushups</item>
+        <item>@string/alternater_heeltouch</item>
+        <item>@string/leg_raise</item>
+        <item>@string/lunge</item>
+        <item>@string/squats</item>
+        <item>@string/plank_with_leg_lift</item>
+    </string-array>
+    <integer-array name="day9_cycles">
+        <item>25</item>
+        <item>26</item>
+        <item>25</item>
+        <item>25</item>
+        <item>25</item>
+        <item>40</item>
+    </integer-array>
+    <string-array name="day_list">
+        <item>@string/mon</item>
+        <item>@string/tu</item>
+        <item>@string/wed</item>
+        <item>@string/thri</item>
+        <item>@string/fri</item>
+        <item>@string/sat</item>
+        <item>@string/sun</item>
+    </string-array>
+    <array name="flutter_kicks">
+        <item>@drawable/flutter_kicks_a</item>
+        <item>@drawable/flutter_kicks_b</item>
+        <item>@drawable/flutter_kicks_c</item>
+        <item>@drawable/flutter_kicks_b</item>
+        <item>@drawable/flutter_kicks_a</item>
+        <item>@drawable/flutter_kicks_d</item>
+        <item>@drawable/flutter_kicks_e</item>
+        <item>@drawable/flutter_kicks_d</item>
+    </array>
+    <array name="high_knees">
+        <item>@drawable/high_knees_a</item>
+        <item>@drawable/high_knees_b</item>
+    </array>
+    <array name="jumping_jacks">
+        <item>@drawable/jumping_a</item>
+        <item>@drawable/jumping_b</item>
+        <item>@drawable/jumping_c</item>
+        <item>@drawable/jumping_b</item>
+        <item>@drawable/jumping_a</item>
+    </array>
+    <array name="leg_raise">
+        <item>@drawable/leg_raise_a</item>
+        <item>@drawable/leg_raise_b</item>
+        <item>@drawable/leg_raise_a</item>
+    </array>
+    <array name="leg_up_crunches">
+        <item>@drawable/leg_up_crunches_a</item>
+        <item>@drawable/leg_up_crunches_b</item>
+        <item>@drawable/leg_up_crunches_a</item>
+    </array>
+    <array name="lunge">
+        <item>@drawable/lunge_a</item>
+        <item>@drawable/lunge_b</item>
+        <item>@drawable/lunge_a</item>
+        <item>@drawable/lunge_c</item>
+        <item>@drawable/lunge_a</item>
+    </array>
+    <array name="plank_with_leg_lift">
+        <item>@drawable/plank_with_leg_lift_a</item>
+        <item>@drawable/plank_with_leg_lift_b</item>
+        <item>@drawable/plank_with_leg_lift_a</item>
+        <item>@drawable/plank_with_leg_lift_c</item>
+    </array>
+    <array name="pushups">
+        <item>@drawable/push_up_a</item>
+        <item>@drawable/push_up_b</item>
+        <item>@drawable/push_up_a</item>
+    </array>
+    <array name="squats">
+        <item>@drawable/squats_a</item>
+        <item>@drawable/squats_b</item>
+        <item>@drawable/squats_a</item>
+    </array>
+    <string-array name="tips">
+        <item>@string/tip1</item>
+        <item>@string/tip2</item>
+        <item>@string/tip3</item>
+        <item>@string/tip4</item>
+        <item>@string/tip5</item>
+        <item>@string/tip6</item>
+        <item>@string/tip7</item>
+        <item>@string/tip8</item>
+        <item>@string/tip9</item>
+        <item>@string/tip10</item>
+    </string-array>
+    <array name="v_crunches">
+        <item>@drawable/v_crunches_a</item>
+        <item>@drawable/v_crunches_b</item>
+        <item>@drawable/v_crunches_a</item>
+    </array>
+    <array name="vertical_leg_crunches">
+        <item>@drawable/vertical_leg_crunches_a</item>
+        <item>@drawable/vertical_leg_crunches_b</item>
+        <item>@drawable/vertical_leg_crunches_a</item>
+    </array>
+
+
+    <array name="day1Excercise">
+        <item>@array/pushups</item>
+        <item>@array/squats</item>
+        <item>@array/leg_raise</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day2Excercise">
+        <item>@array/pushups</item>
+        <item>@array/high_knees</item>
+        <item>@array/basic_crunches</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/bench_dips</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day3Excercise">
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/leg_raise</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/bicycle_crunches</item>
+        <item>@array/flutter_kicks</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day4Excercise">
+        <item>@array/pushups</item>
+        <item>@array/squats</item>
+        <item>@array/leg_raise</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day5Excercise">
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/bench_dips</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day6Excercise">
+        <item>@array/high_knees</item>
+        <item>@array/flutter_kicks</item>
+        <item>@array/plank_with_leg_lift</item>
+        <item>@array/bench_dips</item>
+        <item>@array/arm_crunches</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day7Excercise">
+        <item>@array/lunge</item>
+        <item>@array/basic_crunches</item>
+        <item>@array/bicycle_crunches</item>
+        <item>@array/flutter_kicks</item>
+        <item>@array/bench_dips</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day8Excercise">
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/bench_dips</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day9Excercise">
+        <item>@array/pushups</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/leg_raise</item>
+        <item>@array/lunge</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day10Excercise">
+        <item>@array/jumping_jacks</item>
+        <item>@array/basic_crunches</item>
+        <item>@array/arm_crunches</item>
+        <item>@array/lunge</item>
+        <item>@array/bicycle_crunches</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day11Excercise">
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/bench_dips</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day12Excercise">
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/bench_dips</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day13Excercise">
+        <item>@array/jumping_jacks</item>
+        <item>@array/basic_crunches</item>
+        <item>@array/arm_crunches</item>
+        <item>@array/high_knees</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <!--//8888888888888888888888888888888888888888-->
+
+    <array name="day14Excercise">
+        <item>@array/squats</item>
+        <item>@array/leg_raise</item>
+        <item>@array/bench_dips</item>
+        <item>@array/basic_crunches</item>
+        <item>@array/arm_crunches</item>
+        <item>@array/basic_crunches</item>
+    </array>
+
+    <array name="day15Excercise">
+        <item>@array/lunge</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/v_crunches</item>
+        <item>@array/pushups</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/lunge</item>
+    </array>
+
+    <array name="day16Excercise">
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/bench_dips</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day17Excercise">
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/vertical_leg_crunches</item>
+        <item>@array/v_crunches</item>
+        <item>@array/jumping_jacks</item>
+        <item>@array/bicycle_crunches</item>
+        <item>@array/lunge</item>
+    </array>
+
+    <array name="day18Excercise">
+        <item>@array/pushups</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+        <item>@array/leg_up_crunches</item>
+        <item>@array/alternater_heeltouch</item>
+    </array>
+
+    <array name="day19Excercise">
+        <item>@array/jumping_jacks</item>
+        <item>@array/v_crunches</item>
+        <item>@array/vertical_leg_crunches</item>
+        <item>@array/high_knees</item>
+        <item>@array/plank_with_leg_lift</item>
+        <item>@array/high_knees</item>
+    </array>
+
+    <array name="day20Excercise">
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/bench_dips</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <!--//000000000000000000000000000000000000000000000000000000000000000000000-->
+
+    <array name="day21Excercise">
+        <item>@array/pushups</item>
+        <item>@array/v_crunches</item>
+        <item>@array/vertical_leg_crunches</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/basic_crunches</item>
+        <item>@array/pushups</item>
+    </array>
+
+    <array name="day22Excercise">
+        <item>@array/pushups</item>
+        <item>@array/squats</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/flutter_kicks</item>
+        <item>@array/leg_up_crunches</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day23Excercise">
+        <item>@array/jumping_jacks</item>
+        <item>@array/high_knees</item>
+        <item>@array/lunge</item>
+        <item>@array/v_crunches</item>
+        <item>@array/vertical_leg_crunches</item>
+        <item>@array/bench_dips</item>
+    </array>
+
+    <array name="day24Excercise">
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/bench_dips</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day25Excercise">
+        <item>@array/basic_crunches</item>
+        <item>@array/v_crunches</item>
+        <item>@array/vertical_leg_crunches</item>
+        <item>@array/high_knees</item>
+        <item>@array/flutter_kicks</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day26Excercise">
+        <item>@array/pushups</item>
+        <item>@array/basic_crunches</item>
+        <item>@array/lunge</item>
+        <item>@array/v_crunches</item>
+        <item>@array/vertical_leg_crunches</item>
+        <item>@array/lunge</item>
+    </array>
+
+    <array name="day27Excercise">
+        <item>@array/squats</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/v_crunches</item>
+        <item>@array/vertical_leg_crunches</item>
+        <item>@array/bicycle_crunches</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day28Excercise">
+        <item>@array/pushups</item>
+        <item>@array/lunge</item>
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/bench_dips</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+    </array>
+
+    <array name="day29Excercise">
+        <item>@array/basic_crunches</item>
+        <item>@array/leg_up_crunches</item>
+        <item>@array/flutter_kicks</item>
+        <item>@array/squats</item>
+        <item>@array/plank_with_leg_lift</item>
+        <item>@array/squats</item>
+    </array>
+
+    <array name="day30Excercise">
+        <item>@array/alternater_heeltouch</item>
+        <item>@array/lunge</item>
+        <item>@array/leg_up_crunches</item>
+        <item>@array/pushups</item>
+        <item>@array/plank_with_leg_lift</item>
+        <item>@array/jumping_jacks</item>
+    </array>
+
+    <array name="total">
+        <item>@array/day1Excercise</item>
+        <item>@array/day2Excercise</item>
+        <item>@array/day3Excercise</item>
+        <item>@array/day4Excercise</item>
+        <item>@array/day5Excercise</item>
+        <item>@array/day6Excercise</item>
+        <item>@array/day7Excercise</item>
+        <item>@array/day8Excercise</item>
+        <item>@array/day9Excercise</item>
+        <item>@array/day10Excercise</item>
+        <item>@array/day11Excercise</item>
+        <item>@array/day12Excercise</item>
+        <item>@array/day13Excercise</item>
+        <item>@array/day14Excercise</item>
+        <item>@array/day15Excercise</item>
+        <item>@array/day16Excercise</item>
+        <item>@array/day17Excercise</item>
+        <item>@array/day18Excercise</item>
+        <item>@array/day19Excercise</item>
+        <item>@array/day20Excercise</item>
+        <item>@array/day21Excercise</item>
+        <item>@array/day22Excercise</item>
+        <item>@array/day23Excercise</item>
+        <item>@array/day24Excercise</item>
+        <item>@array/day25Excercise</item>
+        <item>@array/day26Excercise</item>
+        <item>@array/day27Excercise</item>
+        <item>@array/day28Excercise</item>
+        <item>@array/day29Excercise</item>
+        <item>@array/day30Excercise</item>
+    </array>
+
+    <array name="cycles">
+        <item>@array/day1_cycles</item>
+        <item>@array/day2_cycles</item>
+        <item>@array/day3_cycles</item>
+        <item>@array/day4_cycles</item>
+        <item>@array/day5_cycles</item>
+        <item>@array/day6_cycles</item>
+        <item>@array/day7_cycles</item>
+        <item>@array/day8_cycles</item>
+        <item>@array/day9_cycles</item>
+        <item>@array/day10_cycles</item>
+        <item>@array/day11_cycles</item>
+        <item>@array/day12_cycles</item>
+        <item>@array/day13_cycles</item>
+        <item>@array/day14_cycles</item>
+        <item>@array/day15_cycles</item>
+        <item>@array/day16_cycles</item>
+        <item>@array/day17_cycles</item>
+        <item>@array/day18_cycles</item>
+        <item>@array/day19_cycles</item>
+        <item>@array/day20_cycles</item>
+        <item>@array/day21_cycles</item>
+        <item>@array/day22_cycles</item>
+        <item>@array/day23_cycles</item>
+        <item>@array/day24_cycles</item>
+        <item>@array/day25_cycles</item>
+        <item>@array/day26_cycles</item>
+        <item>@array/day27_cycles</item>
+        <item>@array/day28_cycles</item>
+        <item>@array/day29_cycles</item>
+        <item>@array/day30_cycles</item>
+    </array>
+
+    <array name="names">
+        <item>@array/day1</item>
+        <item>@array/day2</item>
+        <item>@array/day3</item>
+        <item>@array/day4</item>
+        <item>@array/day5</item>
+        <item>@array/day6</item>
+        <item>@array/day7</item>
+        <item>@array/day8</item>
+        <item>@array/day9</item>
+        <item>@array/day10</item>
+        <item>@array/day11</item>
+        <item>@array/day12</item>
+        <item>@array/day13</item>
+        <item>@array/day14</item>
+        <item>@array/day15</item>
+        <item>@array/day16</item>
+        <item>@array/day17</item>
+        <item>@array/day18</item>
+        <item>@array/day19</item>
+        <item>@array/day20</item>
+        <item>@array/day21</item>
+        <item>@array/day22</item>
+        <item>@array/day23</item>
+        <item>@array/day24</item>
+        <item>@array/day25</item>
+        <item>@array/day26</item>
+        <item>@array/day27</item>
+        <item>@array/day28</item>
+        <item>@array/day29</item>
+        <item>@array/day30</item>
+    </array>
+</resources>

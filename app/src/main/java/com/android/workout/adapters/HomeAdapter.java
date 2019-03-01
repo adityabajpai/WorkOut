@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.android.workout.R;
 import com.android.workout.activities.ExcerciseActivity;
 import com.android.workout.activities.HomeActivity;
+import com.android.workout.activities.RestDayActivity;
 import com.android.workout.database.DatabaseOperations;
 import com.android.workout.model.Home;
 
@@ -50,14 +51,101 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         viewHolder.ll1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
-                Bundle bundle  = new Bundle();
-                bundle.putInt("day",viewHolder.getAdapterPosition()+1);
-                Intent intent = new Intent(context,ExcerciseActivity.class);
-                intent.putExtras(bundle);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                if(viewHolder.getAdapterPosition()+1==4 || viewHolder.getAdapterPosition()+1==8 || viewHolder.getAdapterPosition()+1==12 || viewHolder.getAdapterPosition()+1==16 || viewHolder.getAdapterPosition()+1==20 || viewHolder.getAdapterPosition()+1==24 || viewHolder.getAdapterPosition()+1==28)
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Intent intent = new Intent(context, RestDayActivity.class);
+//                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+                else
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Bundle bundle  = new Bundle();
+                    bundle.putInt("day",viewHolder.getAdapterPosition()+1);
+                    Intent intent = new Intent(context,ExcerciseActivity.class);
+                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+        });
+        viewHolder.tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewHolder.getAdapterPosition()+1==4 || viewHolder.getAdapterPosition()+1==8 || viewHolder.getAdapterPosition()+1==12 || viewHolder.getAdapterPosition()+1==16 || viewHolder.getAdapterPosition()+1==20 || viewHolder.getAdapterPosition()+1==24 || viewHolder.getAdapterPosition()+1==28)
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Intent intent = new Intent(context, RestDayActivity.class);
+//                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+                else
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Bundle bundle  = new Bundle();
+                    bundle.putInt("day",viewHolder.getAdapterPosition()+1);
+                    Intent intent = new Intent(context,ExcerciseActivity.class);
+                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+        });
+        viewHolder.tv_progress1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewHolder.getAdapterPosition()+1==4 || viewHolder.getAdapterPosition()+1==8 || viewHolder.getAdapterPosition()+1==12 || viewHolder.getAdapterPosition()+1==16 || viewHolder.getAdapterPosition()+1==20 || viewHolder.getAdapterPosition()+1==24 || viewHolder.getAdapterPosition()+1==28)
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Intent intent = new Intent(context, RestDayActivity.class);
+//                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+                else
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Bundle bundle  = new Bundle();
+                    bundle.putInt("day",viewHolder.getAdapterPosition()+1);
+                    Intent intent = new Intent(context,ExcerciseActivity.class);
+                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+        });
+        viewHolder.progressBar1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewHolder.getAdapterPosition()+1==4 || viewHolder.getAdapterPosition()+1==8 || viewHolder.getAdapterPosition()+1==12 || viewHolder.getAdapterPosition()+1==16 || viewHolder.getAdapterPosition()+1==20 || viewHolder.getAdapterPosition()+1==24 || viewHolder.getAdapterPosition()+1==28)
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Intent intent = new Intent(context, RestDayActivity.class);
+//                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+                else
+                {
+                    Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
+                    Bundle bundle  = new Bundle();
+                    bundle.putInt("day",viewHolder.getAdapterPosition()+1);
+                    Intent intent = new Intent(context,ExcerciseActivity.class);
+                    intent.putExtras(bundle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
             }
         });
     }

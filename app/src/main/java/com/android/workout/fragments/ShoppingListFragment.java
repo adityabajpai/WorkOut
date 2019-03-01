@@ -36,11 +36,13 @@ public class ShoppingListFragment extends Fragment {
         setHasOptionsMenu(true);
         TabLayout tabLayout = (TabLayout) inflate.findViewById(R.id.tab_layout);
         tabLayout.setTabTextColors(getResources().getColor(R.color.black), getResources().getColor(R.color.colorAccent));
-        tabLayout.addTab(tabLayout.newTab().setText((CharSequence) "WEEK 1"));
-        tabLayout.addTab(tabLayout.newTab().setText((CharSequence) "WEEK 2"));
-        tabLayout.addTab(tabLayout.newTab().setText((CharSequence) "WEEK 3"));
-        tabLayout.addTab(tabLayout.newTab().setText((CharSequence) "WEEK 4"));
-        tabLayout.addTab(tabLayout.newTab().setText((CharSequence) "WEEK 5"));
+        tabLayout.addTab(tabLayout.newTab().setText( R.string.week1));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.week2));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.week3));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.week4));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.week5));
+//        tabLayout.addTab(tabLayout.newTab().setText((CharSequence) "WEEK 4"));
+//        tabLayout.addTab(tabLayout.newTab().setText((CharSequence) "WEEK 5"));
         tabLayout.setTabGravity(0);
         final ViewPager viewPager = (ViewPager) inflate.findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getFragmentManager(), tabLayout.getTabCount()));

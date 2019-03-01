@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -88,6 +89,10 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
     WorkoutData workoutData = new WorkoutData();
     Bundle bundle;
     int dayNo ;
+    String day_details="";
+
+    long totaltime1, totaltime3, totaltime5, totaltime7, totaltime9, totaltime11;
+    String name1, name3, name5 ,name7, name9, name11;
 
 
     @Override
@@ -170,6 +175,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                         Log.e("value inserted",""+check);
                         Bundle bundle1 = new Bundle();
                         bundle1.putInt("day",dayNo);
+
                         startActivity(new Intent(ExcerciseStartedActivity.this, ExcerciseActivity.class).putExtras(bundle1));
                         finish();
                     }
@@ -182,6 +188,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_excercise_started);
         bundle = getIntent().getExtras();
         dayNo = bundle.getInt("day");
+        day_details = "day"+dayNo+"Excercise";
         workoutData.setDay("Day "+dayNo);
         databaseOperations = new DatabaseOperations(getApplicationContext());
         workoutData.setProgress(0.0f);
@@ -189,18 +196,38 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
         @SuppressLint("InvalidWakeLockTag") final PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Lock");
         wakeLock.acquire(10*60*1000L /*10 minutes*/);
         progressBar = findViewById(R.id.progress_bar);
+        final TypedArray typedArray_cycles = getResources().obtainTypedArray(R.array.cycles);
+        int cycles_on_day = typedArray_cycles.getResourceId(dayNo-1,-1);
+        final int[] typedArray_cycles1 = getResources().getIntArray(cycles_on_day);
+        totaltime1 = (typedArray_cycles1[0]*2000)+2000;
+        totaltime3 = (typedArray_cycles1[1]*2000)+2000;
+        totaltime5 = (typedArray_cycles1[2]*2000)+2000;
+        totaltime7 = (typedArray_cycles1[3]*2000)+2000;
+        totaltime9 = (typedArray_cycles1[4]*2000)+2000;
+        totaltime11 = (typedArray_cycles1[5]*2000)+2000;
+        Log.e("totaltime",totaltime1+" "+totaltime3+" "+totaltime5+" "+totaltime7+" "+totaltime9+" "+totaltime11);
+
+        final TypedArray typedArray_name = getResources().obtainTypedArray(R.array.names);
+        int names_on_day = typedArray_name.getResourceId(dayNo-1,-1);
+        final String[] typedArray_names1 = getResources().getStringArray(names_on_day);
+        name1 = (typedArray_names1[0]);
+        name3 = (typedArray_names1[1]);
+        name5 = (typedArray_names1[2]);
+        name7 = (typedArray_names1[3]);
+        name9 = (typedArray_names1[4]);
+        name11 = (typedArray_names1[5]);
         progressBar_excercise1 = findViewById(R.id.progress_bar_excercise1);
-        progressBar_excercise1.setMax(20);
+        progressBar_excercise1.setMax((int) ((totaltime1-2000)/2000));
         progressBar_excercise2 = findViewById(R.id.progress_bar_excercise2);
-        progressBar_excercise2.setMax(20);
+        progressBar_excercise2.setMax((int) ((totaltime3-2000)/2000));
         progressBar_excercise3 = findViewById(R.id.progress_bar_excercise3);
-        progressBar_excercise3.setMax(20);
+        progressBar_excercise3.setMax((int) ((totaltime5-2000)/2000));
         progressBar_excercise4 = findViewById(R.id.progress_bar_excercise4);
-        progressBar_excercise4.setMax(15);
+        progressBar_excercise4.setMax((int) ((totaltime7-2000)/2000));
         progressBar_excercise5 = findViewById(R.id.progress_bar_excercise5);
-        progressBar_excercise5.setMax(20);
+        progressBar_excercise5.setMax((int) ((totaltime9-2000)/2000));
         progressBar_excercise6 = findViewById(R.id.progress_bar_excercise6);
-        progressBar_excercise6.setMax(30);
+        progressBar_excercise6.setMax((int) ((totaltime11-2000)/2000));
         progressBar_excercise1.setProgress(0);
         progressBar_excercise2.setProgress(0);
         progressBar_excercise3.setProgress(0);
@@ -346,18 +373,18 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                 Log.e("else","done");
                                 isRunningC1 = true;
                                 viewFlipper_pushups.startFlipping();
-                                progressBar.setMax(20);
+                                progressBar.setMax((int) ((totaltime1-2000)/2000));
                                 display_time1 = millisUntilFinished;
                                 if(first)
                                 {
                                     Log.e("first","done");
-                                    progress = ((totalTime42 - display_time1) / 1000) / 2;
+                                    progress = ((totaltime1 - display_time1) / 1000) / 2;
                                     progressBar.setProgress((int) (progress_stored+progress));
                                     tv_countDown.setText((int) (progress_stored+progress)+"");
                                     Log.e("Progress played",""+progress+progress_stored);
                                     first=false;
                                 }
-                                progress = ((totalTime42 - display_time1) / 1000) / 2;
+                                progress = ((totaltime1 - display_time1) / 1000) / 2;
                                 progressBar.setProgress((int) (progress));
                                 tv_countDown.setText((int) (progress)+"");
                                 Log.e("Progress played",""+progress);
@@ -400,18 +427,18 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                 Log.e("else third","done");
                                 isRunningC3 = true;
                                 viewFlipper_squats.startFlipping();
-                                progressBar.setMax(20);
+                                progressBar.setMax((int) ((totaltime3-2000)/2000));
                                 display_time3 = millisUntilFinished;
                                 if(third)
                                 {
                                     Log.e("third","done");
-                                    progress = ((totalTime42 - display_time3) / 1000) / 2;
+                                    progress = ((totaltime3 - display_time3) / 1000) / 2;
                                     progressBar.setProgress((int) (progress_stored+progress));
                                     tv_countDown.setText((int) (progress_stored+progress)+"");
                                     Log.e("Progress played third",""+progress+progress_stored);
                                     third=false;
                                 }
-                                progress = ((totalTime42 - display_time3) / 1000) / 2;
+                                progress = ((totaltime3 - display_time3) / 1000) / 2;
                                 progressBar.setProgress((int) (progress));
                                 tv_countDown.setText((int) (progress)+"");
                                 Log.e("Progress played third",""+progress);
@@ -454,18 +481,18 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                 Log.e("else FIVE","done");
                                 isRunningC5 = true;
                                 viewFlipper_legRaise.startFlipping();
-                                progressBar.setMax(20);
+                                progressBar.setMax((int) ((totaltime5-2000)/2000));
                                 display_time5 = millisUntilFinished;
                                 if(fifth)
                                 {
                                     Log.e("FIVE","done");
-                                    progress = ((totalTime42 - display_time5) / 1000) / 2;
+                                    progress = ((totaltime5 - display_time5) / 1000) / 2;
                                     progressBar.setProgress((int) (progress_stored+progress));
                                     tv_countDown.setText((int) (progress_stored+progress)+"");
                                     Log.e("Progress played FIVE",""+progress+progress_stored);
                                     fifth=false;
                                 }
-                                progress = ((totalTime42 - display_time5) / 1000) / 2;
+                                progress = ((totaltime5 - display_time5) / 1000) / 2;
                                 progressBar.setProgress((int) (progress));
                                 tv_countDown.setText((int) (progress)+"");
                                 Log.e("Progress played FIVE",""+progress);
@@ -508,18 +535,18 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                 Log.e("else SEVEN","done");
                                 isRunningC7 = true;
                                 viewFlipper_jumpingJack.startFlipping();
-                                progressBar.setMax(15);
+                                progressBar.setMax((int) ((totaltime7-2000)/2000));
                                 display_time7 = millisUntilFinished;
                                 if(seventh)
                                 {
                                     Log.e("SEVEN","done");
-                                    progress = ((totalTime32 - display_time7) / 1000) / 2;
+                                    progress = ((totaltime7 - display_time7) / 1000) / 2;
                                     progressBar.setProgress((int) (progress_stored+progress));
                                     tv_countDown.setText((int) (progress_stored+progress)+"");
                                     Log.e("Progress played SEVEN",""+progress+progress_stored);
                                     seventh=false;
                                 }
-                                progress = ((totalTime32 - display_time7) / 1000) / 2;
+                                progress = ((totaltime7 - display_time7) / 1000) / 2;
                                 progressBar.setProgress((int) (progress));
                                 tv_countDown.setText((int) (progress)+"");
                                 Log.e("Progress played SEVEN",""+progress);
@@ -562,18 +589,18 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                 Log.e("else NINE","done");
                                 isRunningC9 = true;
                                 viewFlipper_squatsAgain.startFlipping();
-                                progressBar.setMax(20);
+                                progressBar.setMax((int) ((totaltime9-2000)/2000));
                                 display_time9 = millisUntilFinished;
                                 if(ninth)
                                 {
                                     Log.e("NINE","done");
-                                    progress = ((totalTime42 - display_time9) / 1000) / 2;
+                                    progress = ((totaltime9 - display_time9) / 1000) / 2;
                                     progressBar.setProgress((int) (progress_stored+progress));
                                     tv_countDown.setText((int) (progress_stored+progress)+"");
                                     Log.e("Progress played NINE",""+progress+progress_stored);
                                     ninth=false;
                                 }
-                                progress = ((totalTime42 - display_time9) / 1000) / 2;
+                                progress = ((totaltime9 - display_time9) / 1000) / 2;
                                 progressBar.setProgress((int) (progress));
                                 tv_countDown.setText((int) (progress)+"");
                                 Log.e("Progress played NINE",""+progress);
@@ -616,18 +643,18 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                                 Log.e("else ELEVEN","done");
                                 isRunningC11 = true;
                                 viewFlipper_plankwithlegFit.startFlipping();
-                                progressBar.setMax(30);
+                                progressBar.setMax((int) ((totaltime11-2000)/2000));
                                 display_time11 = millisUntilFinished;
                                 if(eleventh)
                                 {
                                     Log.e("ELEVEN","done");
-                                    progress = ((totalTime62 - display_time11) / 1000) / 2;
+                                    progress = ((totaltime11 - display_time11) / 1000) / 2;
                                     progressBar.setProgress((int) (progress_stored+progress));
                                     tv_countDown.setText((int) (progress_stored+progress)+"");
                                     Log.e("Progress played ELEVEN",""+progress+progress_stored);
                                     eleventh=false;
                                 }
-                                progress = ((totalTime62 - display_time11) / 1000) / 2;
+                                progress = ((totaltime11 - display_time11) / 1000) / 2;
                                 progressBar.setProgress((int) (progress));
                                 tv_countDown.setText((int) (progress)+"");
                                 Log.e("Progress played ELEVEN",""+progress);
@@ -653,56 +680,79 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
         viewFlipper_squatsAgain.setVisibility(View.INVISIBLE);
         viewFlipper_plankwithlegFit.setVisibility(View.INVISIBLE);
         int check = 0;
-        for (int i = 0; i < image_array_pushUps.length; i++) {
+        //typedArray_total main hr din ki array hain
+        final TypedArray typedArray_totalDays = getResources().obtainTypedArray(R.array.total);
+        int day_no_from_array = typedArray_totalDays.getResourceId(dayNo-1,-1);
+        Log.e("day_no_from_array",day_no_from_array+"");
+        final TypedArray typedArray1 = getResources().obtainTypedArray(day_no_from_array);
+        final int temp1 = typedArray1.getResourceId(0,-1);
+        final TypedArray testArrayIcon1 = getResources().obtainTypedArray(temp1);
+        for (int i = 0; i < getResources().getStringArray(temp1).length; i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setImageResource(image_array_pushUps[i]);
+            imageView.setImageResource(testArrayIcon1.getResourceId(i,-1));
             viewFlipper_pushups.addView(imageView);
         }
         viewFlipper_pushups.setFlipInterval(1000);
         viewFlipper_pushups.setAutoStart(true);
 //        viewFlipper_pushups.stopFlipping();
 
-        for (int i = 0; i < image_array_squats.length; i++) {
+        final int temp2 = typedArray1.getResourceId(1,-1);
+        final TypedArray testArrayIcon2 = getResources().obtainTypedArray(temp2);
+//        final TypedArray testArrayIcon2 = getResources().obtainTypedArray(R.array.squats);
+        for (int i = 0; i < getResources().getStringArray(temp2).length; i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setImageResource(image_array_squats[i]);
+            imageView.setImageResource(testArrayIcon2.getResourceId(i,-1));
             viewFlipper_squats.addView(imageView);
         }
         viewFlipper_squats.setFlipInterval(1000);
         viewFlipper_squats.setAutoStart(true);
 
-        for (int i = 0; i < image_array_legRaise.length; i++) {
+        final int temp3 = typedArray1.getResourceId(2,-1);
+        final TypedArray testArrayIcon3 = getResources().obtainTypedArray(temp3);
+//        final TypedArray testArrayIcon3 = getResources().obtainTypedArray(R.array.leg_raise);
+        for (int i = 0; i < getResources().getStringArray(temp3).length; i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setImageResource(image_array_legRaise[i]);
+            imageView.setImageResource(testArrayIcon3.getResourceId(i,-1));
             viewFlipper_legRaise.addView(imageView);
         }
         viewFlipper_legRaise.setFlipInterval(1000);
         viewFlipper_legRaise.setAutoStart(true);
 
-        for (int i = 0; i < image_array_jumpingJack.length; i++) {
+        final int temp4 = typedArray1.getResourceId(3,-1);
+        final TypedArray testArrayIcon4 = getResources().obtainTypedArray(temp4);
+//        final TypedArray testArrayIcon4 = getResources().obtainTypedArray(R.array.jumping_jacks);
+        for (int i = 0; i < getResources().getStringArray(temp4).length; i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setImageResource(image_array_jumpingJack[i]);
+            imageView.setImageResource(testArrayIcon4.getResourceId(i,-1));
             viewFlipper_jumpingJack.addView(imageView);
         }
         viewFlipper_jumpingJack.setFlipInterval(1000);
         viewFlipper_jumpingJack.setAutoStart(true);
 
-        for (int i = 0; i < image_array_squats.length; i++) {
+
+        final int temp5 = typedArray1.getResourceId(4,-1);
+        final TypedArray testArrayIcon5 = getResources().obtainTypedArray(temp5);
+//        final TypedArray testArrayIcon5 = getResources().obtainTypedArray(R.array.squats);
+        for (int i = 0; i < getResources().getStringArray(temp5).length; i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setImageResource(image_array_squats[i]);
+            imageView.setImageResource(testArrayIcon5.getResourceId(i,-1));
             viewFlipper_squatsAgain.addView(imageView);
         }
         viewFlipper_squatsAgain.setFlipInterval(1000);
         viewFlipper_squatsAgain.setAutoStart(true);
 
-        for (int i = 0; i < image_array_plank.length; i++) {
+
+        final TypedArray testArrayIcon6 = getResources().obtainTypedArray(R.array.plank_with_leg_lift);
+        for (int i = 0; i < getResources().getStringArray(R.array.plank_with_leg_lift).length; i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setImageResource(image_array_plank[i]);
+            imageView.setImageResource(testArrayIcon6.getResourceId(i,-1));
             viewFlipper_plankwithlegFit.addView(imageView);
         }
         viewFlipper_plankwithlegFit.setFlipInterval(1000);
         viewFlipper_plankwithlegFit.setAutoStart(true);
+        tv_totalSet.setText("/"+(int) ((totaltime1-2000)/2000));
 
-        c1 = new CountDownTimer(totalTime42, 2000) {
+        c1 = new CountDownTimer(totaltime1, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(isPausedC1 || isCanceledC1)
@@ -714,11 +764,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 else
                 {
                     isRunningC1 = true;
-                    progressBar.setMax(20);
+                    progressBar.setMax((int) ((totaltime1-2000)/2000));
                     display_time1 = millisUntilFinished;
-                    progress = ((totalTime42 - display_time1) / 1000) / 2;
+                    progress = ((totaltime1 - display_time1) / 1000) / 2;
                     progressBar.setProgress((int) progress);
-                    tv_countDown.setText(((totalTime42 - display_time1) / 1000) / 2 + "");
+                    tv_countDown.setText(((totaltime1 - display_time1) / 1000) / 2 + "");
                 }
             }
 
@@ -728,6 +778,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 c1.cancel();
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
+                tv_nextExcerciseName.setText(name3);
+                tv_nextExcerciseTotalSet.setText("x"+ ((totaltime3-2000)/2000));
                 workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 c2.start();
@@ -749,12 +801,13 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 relativeLayout.setVisibility(View.VISIBLE);
                 viewFlipper_pushups.setVisibility(View.INVISIBLE);
                 viewFlipper_squats.setVisibility(View.VISIBLE);
-                progressBar_excercise1.setProgress(20);
+                tv_totalSet.setText("/"+(int) ((totaltime3-2000)/2000));
+                progressBar_excercise1.setProgress((int) ((totaltime1-2000)/2000));
                 progressBar.setProgress(0);
                 c3.start();
             }
         };
-        c3 = new CountDownTimer(totalTime42, 2000) {
+        c3 = new CountDownTimer(totaltime3, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(isPausedC3 || isCanceledC3)
@@ -766,11 +819,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 else
                 {
                     isRunningC3 = true;
-                    progressBar.setMax(20);
+                    progressBar.setMax((int) (((totaltime3)-2000)/2000));
                     display_time3 = millisUntilFinished;
-                    progress = ((totalTime42 - display_time3) / 1000) / 2;
+                    progress = (((totaltime3) - display_time3) / 1000) / 2;
                     progressBar.setProgress((int) progress);
-                    tv_countDown.setText(((totalTime42 - display_time3) / 1000) / 2 + "");
+                    tv_countDown.setText((((totaltime3) - display_time3) / 1000) / 2 + "");
                 }
             }
 
@@ -782,7 +835,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
-                tv_nextExcerciseName.setText("LEG RAISE");
+                tv_nextExcerciseName.setText(name5);
+                tv_nextExcerciseTotalSet.setText("x"+((totaltime5-2000)/2000));
                 c4.start();
             }
         };
@@ -805,12 +859,13 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 viewFlipper_squats.stopFlipping();
                 viewFlipper_squats.setVisibility(View.INVISIBLE);
                 viewFlipper_legRaise.setVisibility(View.VISIBLE);
-                progressBar_excercise2.setProgress(20);
+                tv_totalSet.setText("/"+(int) ((totaltime5-2000)/2000));
+                progressBar_excercise2.setProgress((int) ((totaltime3-2000)/2000));
                 progressBar.setProgress(0);
                 c5.start();
             }
         };
-        c5 = new CountDownTimer(totalTime42, 2000) {
+        c5 = new CountDownTimer(totaltime5, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(isPausedC5 || isCanceledC5)
@@ -823,11 +878,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 {
 
                     isRunningC5 = true;
-                    progressBar.setMax(20);
+                    progressBar.setMax((int) ((totaltime5-2000)/2000));
                     display_time5 = millisUntilFinished;
-                    progress = ((totalTime42 - display_time5) / 1000) / 2;
+                    progress = ((totaltime5 - display_time5) / 1000) / 2;
                     progressBar.setProgress((int) progress);
-                    tv_countDown.setText(((totalTime42 - display_time5) / 1000) / 2 + "");
+                    tv_countDown.setText(((totaltime5 - display_time5) / 1000) / 2 + "");
                 }
             }
 
@@ -839,8 +894,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
-                tv_nextExcerciseName.setText("JUMPING JACK");
-                tv_nextExcerciseTotalSet.setText("x15");
+                tv_nextExcerciseName.setText(name7);
+                tv_nextExcerciseTotalSet.setText("x"+((totaltime7-2000)/2000));
                 c6.start();
             }
         };
@@ -864,13 +919,13 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 viewFlipper_legRaise.setVisibility(View.INVISIBLE);
                 viewFlipper_jumpingJack.setVisibility(View.VISIBLE);
 //                                viewFlipper_jumpingJack.startFlipping();
-                progressBar_excercise3.setProgress(20);
+                progressBar_excercise3.setProgress((int) ((totaltime5-2000)/2000));
                 progressBar.setProgress(0);
-                tv_totalSet.setText("/15");
+                tv_totalSet.setText("/"+(int) ((totaltime7-2000)/2000));
                 c7.start();
             }
         };
-        c7 = new CountDownTimer(totalTime32, 2000) {
+        c7 = new CountDownTimer(totaltime7, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(isPausedC7 || isCanceledC7)
@@ -883,11 +938,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 {
 
                     isRunningC7 =true;
-                    progressBar.setMax(15);
+                    progressBar.setMax((int) ((totaltime7-2000)/2000));
                     display_time7 = millisUntilFinished;
-                    progress = ((totalTime32 - display_time7) / 1000) / 2;
+                    progress = ((totaltime7 - display_time7) / 1000) / 2;
                     progressBar.setProgress((int) progress);
-                    tv_countDown.setText(((totalTime32 - display_time7) / 1000) / 2 + "");
+                    tv_countDown.setText(((totaltime7 - display_time7) / 1000) / 2 + "");
                 }
             }
 
@@ -899,8 +954,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
-                tv_nextExcerciseName.setText("SQUATS");
-                tv_nextExcerciseTotalSet.setText("x20");
+                tv_nextExcerciseName.setText(name9);
+                tv_nextExcerciseTotalSet.setText("x"+((totaltime9-2000)/2000));
                 c8.start();
             }
         };
@@ -924,13 +979,13 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 viewFlipper_jumpingJack.setVisibility(View.INVISIBLE);
                 viewFlipper_squatsAgain.setVisibility(View.VISIBLE);
 //                                        viewFlipper_squatsAgain.startFlipping();
-                progressBar_excercise4.setProgress(15);
+                progressBar_excercise4.setProgress((int) ((totaltime7-2000)/2000));
                 progressBar.setProgress(0);
-                tv_totalSet.setText("/20");
+                tv_totalSet.setText("/"+(int) ((totaltime9-2000)/2000));
                 c9.start();
             }
         };
-        c9 = new CountDownTimer(totalTime42, 2000) {
+        c9 = new CountDownTimer(totaltime9, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(isPausedC9 || isCanceledC9)
@@ -943,11 +998,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 {
 
                     isRunningC9=true;
-                    progressBar.setMax(20);
+                    progressBar.setMax((int) ((totaltime9-2000)/2000));
                     display_time9 = millisUntilFinished;
-                    progress = ((totalTime42 - display_time9) / 1000) / 2;
+                    progress = ((totaltime9 - display_time9) / 1000) / 2;
                     progressBar.setProgress((int) progress);
-                    tv_countDown.setText(((totalTime42 - display_time9) / 1000) / 2 + "");
+                    tv_countDown.setText(((totaltime9 - display_time9) / 1000) / 2 + "");
                 }
             }
 
@@ -959,8 +1014,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
-                tv_nextExcerciseName.setText("PLANK WITH LEG FIT");
-                tv_nextExcerciseTotalSet.setText("x30");
+                tv_nextExcerciseName.setText(name11);
+                tv_nextExcerciseTotalSet.setText("x"+((totaltime11-2000)/2000));
                 c10.start();
             }
         };
@@ -984,13 +1039,13 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 viewFlipper_squatsAgain.setVisibility(View.INVISIBLE);
                 viewFlipper_plankwithlegFit.setVisibility(View.VISIBLE);
 //                                                viewFlipper_plankwithlegFit.startFlipping();
-                progressBar_excercise5.setProgress(20);
+                progressBar_excercise5.setProgress((int) ((totaltime9-2000)/2000));
                 progressBar.setProgress(0);
-                tv_totalSet.setText("/30");
+                tv_totalSet.setText("/"+((totaltime11-2000)/2000));
                 c11.start();
             }
         };
-        c11 = new CountDownTimer(totalTime62, 2000) {
+        c11 = new CountDownTimer(totaltime11, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(isPausedC11 || isCanceledC11)
@@ -1003,11 +1058,11 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 {
 
                     isRunningC11 = true;
-                    progressBar.setMax(30);
+                    progressBar.setMax((int) ((totaltime11-2000)/2000));
                     display_time11 = millisUntilFinished;
-                    long progress = ((totalTime62 - display_time11) / 1000) / 2;
+                    long progress = ((totaltime11 - display_time11) / 1000) / 2;
                     progressBar.setProgress((int) progress);
-                    tv_countDown.setText(((totalTime62 - display_time11) / 1000) / 2 + "");
+                    tv_countDown.setText(((totaltime11 - display_time11) / 1000) / 2 + "");
                 }
             }
 
@@ -1028,7 +1083,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
 
                 isRunningC12= true;
                 tv_nextExcerciseTotalSet.setVisibility(View.INVISIBLE);
-                tv_nextExcerciseName.setText("TODAY EXCERCISE DONE");
+                tv_nextExcerciseName.setText(R.string.excercise_done);
                 display_time = millisUntilFinished;
                 tv_countDownNextExcercise.setText("" + display_time / 1000);
 
@@ -1040,7 +1095,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 int check = databaseOperations.insertExcDayData(workoutData.getDay(),workoutData.getProgress());
                 Log.e("value inserted",""+check);
                 c12.cancel();
-                progressBar_excercise6.setProgress(30);
+                progressBar_excercise6.setProgress((int) ((totaltime11-2000)/1000));
                 startActivity(new Intent(ExcerciseStartedActivity.this,HomeActivity.class));
                 finish();
                 progressBar_excercise1.setProgress(0);
