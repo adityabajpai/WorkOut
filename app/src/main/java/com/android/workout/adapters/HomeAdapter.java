@@ -48,6 +48,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         viewHolder.tv1.setText(home.getDay());
         viewHolder.tv_progress1.setText(((int)home.getProgress())+"%");
         viewHolder.progressBar1.setProgress((int)home.getProgress());
+        if((int)home.getProgress()==100){
+            Log.e("true","true");
+            viewHolder.ll1.setEnabled(false);
+        }
         viewHolder.ll1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

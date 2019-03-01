@@ -1,12 +1,12 @@
 package com.android.workout.activities;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,12 +50,10 @@ public class HomeActivity extends AppCompatActivity
     private RadioButton kg;
     private RadioButton male;
     private RadioButton female;
-    private SharedPreferences mSharedPreferences;
     private EditText ft;
     private EditText year;
     private EditText weight;
     private EditText months;
-    private SharedPreferences.Editor prefsEditor;
     private RadioButton lang_spain;
     private RadioButton lang_english;
     private RadioButton lang_portugese;
@@ -74,6 +72,10 @@ public class HomeActivity extends AppCompatActivity
     TextView textView;
     TextView allProgess;
     ProgressBar allProgressBar;
+    private static final String Locale_Preference = "Locale Preference";
+    private static final String Locale_KeyValue = "Saved Locale";
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
 
 
 
@@ -81,6 +83,8 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        sharedPreferences = getSharedPreferences(Locale_Preference, Activity.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         this.width = displayMetrics.widthPixels;
@@ -108,7 +112,7 @@ public class HomeActivity extends AppCompatActivity
         for(WorkoutData workoutData:homeList){
             totalProgressApp += (int)workoutData.getProgress();
         }
-        totalProgressApp = (100)/30;
+        totalProgressApp = (totalProgressApp)/32;
         allProgess.setText(totalProgressApp+"%");
         allProgressBar.setProgress(totalProgressApp);
         adapter = new HomeAdapter(getApplicationContext(), homeList);
@@ -122,9 +126,9 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        loadLocale();
     }
 
-    //use the color for app #8d6363
 
     @Override
     public void onBackPressed() {
@@ -184,7 +188,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.meals_Plan) {
             startActivity(new Intent(getApplicationContext(), MealsMainActivity.class));
         } else if (id == R.id.reminder) {
-            startActivity(new Intent(HomeActivity.this,ReminderActivity.class));
+            startActivity(new Intent(HomeActivity.this, AlarmMainActivity.class));
         } else if (id == R.id.bmi_Calculator) {
             loadCalculateActivity();
         } else if (id == R.id.language) {
@@ -228,18 +232,6 @@ public class HomeActivity extends AppCompatActivity
         startActivity(Intent.createChooser(intent, "Choose an Email client :"));
     }
 
-    public void setLocale(String lang) {
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
-        Log.e("Language changed",lang);
-        Intent refresh = new Intent(this, HomeActivity.class);
-        startActivity(refresh);
-        finish();
-    }
     private void loadCalculateActivity() {
         final Dialog dialog = new Dialog(this, R.style.AppTheme);
         dialog.getWindow().getAttributes().windowAnimations = R.style.PauseDialogAnimation;
@@ -378,15 +370,40 @@ public class HomeActivity extends AppCompatActivity
         @Override
         public void onClick(View v) {
             if(this.homeActivity.flagbrasil){
-               setLocale("kn");
+               changeLocale("kn");
             }
             else if(this.homeActivity.flagspain){
-                setLocale("hi");
+                changeLocale("es");
             }
             else{
-                setLocale("en");
+                changeLocale("en");
             }
         }
+    }
+    public void changeLocale(String lang) {
+        if (lang.equalsIgnoreCase(""))
+            return;
+        Locale myLocale = new Locale(lang);//Set Selected Locale
+        saveLocale(lang);//Save the selected locale
+        Locale.setDefault(myLocale);//set new locale as default
+        Configuration config = new Configuration();//get Configuration
+        config.locale = myLocale;//set config locale as selected locale
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the config
+        Log.e("Language changed",lang);
+//        Intent refresh = new Intent(this, HomeActivity.class);
+//        startActivity(refresh);
+//        finish();
+    }
+
+    public void saveLocale(String lang) {
+        editor.putString(Locale_KeyValue, lang);
+        editor.commit();
+    }
+
+    //Get locale method in preferences
+    public void loadLocale() {
+        String language = sharedPreferences.getString(Locale_KeyValue, "");
+        changeLocale(language);
     }
     class C10204 implements View.OnClickListener {
         /* renamed from: a */
