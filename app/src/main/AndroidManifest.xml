@@ -37,35 +37,36 @@
         </activity>
         <activity
             android:name=".activities.ExcerciseStartedActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
+
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ExcerciseStartActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.TipsActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ExcerciseDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ExcerciseActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.AlarmMainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.MealsMainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.CalculateActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AA"
             android:screenOrientation="portrait"/>
         
         <service android:name=".fcm.MyFirebaseMessagingService" android:enabled="true" android:exported="true">

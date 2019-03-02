@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--<color name="colorApp">#66BB6A</color>-->
-    <color name="colorApp">#f57c00</color>
+    <color name="colorApp">#607d8b</color>
+    <color name="theme_color">#607d8b</color>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
@@ -35,9 +36,9 @@
     <!--<color name="colorAccent">#66BB6A</color>-->
     <!--<color name="colorPrimary">#66BB6A</color>-->
     <!--<color name="colorPrimaryDark">#66BB6A</color>-->
-    <color name="colorAccent">#f57c00</color>
-    <color name="colorPrimary">#f57c00</color>
-    <color name="colorPrimaryDark">#f57c00</color>
+    <color name="colorAccent">#607d8b</color>
+    <color name="colorPrimary">#607d8b</color>
+    <color name="colorPrimaryDark">#607d8b</color>
     <color name="colorText">#fcfcfc</color>
     <color name="colorgrey">#e5e4e4</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>

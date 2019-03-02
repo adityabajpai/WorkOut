@@ -1,51 +1,263 @@
-<RelativeLayout android:orientation="vertical" android:background="#fff3f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.CardView android:layout_gravity="bottom" android:id="@+id/buttons" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true" app:cardBackgroundColor="@android:color/transparent" app:cardElevation="1.0dip">
-        <Button android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/startexc" android:background="@drawable/button_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/start_exercise" android:textAllCaps="false" />
+<RelativeLayout
+    android:orientation="vertical"
+    android:background="#fff3f2f2"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.CardView
+        android:layout_gravity="bottom"
+        android:id="@+id/buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25.0dip"
+        android:layout_marginRight="25.0dip"
+        android:layout_marginBottom="15.0dip"
+        android:layout_alignParentBottom="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="1.0dip">
+        <Button
+            android:textSize="15.0sp"
+            android:textStyle="bold"
+            android:textColor="#ffffffff"
+            android:id="@+id/startexc"
+            android:background="@drawable/button_background"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_exercise"
+            android:textAllCaps="false" />
     </android.support.v7.widget.CardView>
-    <ScrollView android:id="@+id/scroll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@+id/buttons" android:layout_alignParentTop="true">
-        <RelativeLayout android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:orientation="vertical" android:id="@+id/weight_checklayout" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <android.support.v7.widget.CardView android:orientation="vertical" android:id="@+id/weight_cardview" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" app:cardCornerRadius="7.0dip" app:cardElevation="5.0dip">
-                    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="10.0dip">
-                        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/wght1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/weights" />
-                        <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/wght2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_marginLeft="10.0dip" android:text="Weight" />
-                        <com.android.workout.utils.CustomSeekBar android:id="@+id/bmiseekBar" android:layout_width="fill_parent" android:layout_height="25.0dip" android:layout_marginTop="10.0dip" android:max="50" android:progress="0" android:progressDrawable="@android:color/transparent" android:thumb="@drawable/seek_thumb_normal" android:thumbOffset="12.0dip" android:layout_below="@+id/wght2" />
-                        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/wght3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/bmikgm" android:layout_below="@+id/bmiseekBar" android:textAllCaps="false" />
-                        <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/wght4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:text="Weight" android:layout_below="@+id/bmiseekBar" />
-                        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@+id/wght3">
-                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                                <ImageView android:layout_gravity="center" android:id="@+id/iv1" android:background="@color/violet" android:layout_width="10.0dip" android:layout_height="10.0dip" />
-                                <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="0-15" />
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttons"
+        android:layout_alignParentTop="true">
+        <RelativeLayout
+            android:scrollbars="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:orientation="vertical"
+                android:id="@+id/weight_checklayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:orientation="vertical"
+                    android:id="@+id/weight_cardview"
+                    android:background="#ffffffff"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15.0dip"
+                    app:cardCornerRadius="7.0dip"
+                    app:cardElevation="5.0dip">
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10.0dip">
+                        <TextView
+                            android:textSize="15.0sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:id="@+id/wght1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10.0dip"
+                            android:text="@string/weights" />
+                        <TextView
+                            android:textSize="15.0sp"
+                            android:textStyle="normal"
+                            android:layout_toEndOf="@+id/wght1"
+                            android:textColor="@color/black"
+                            android:id="@+id/wght2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10.0dip"
+                            android:layout_marginLeft="10.0dip"
+                            android:text="Weight" />
+                        <com.android.workout.utils.CustomSeekBar
+                            android:id="@+id/bmiseekBar"
+                            android:layout_width="fill_parent"
+                            android:layout_height="25.0dip"
+                            android:layout_marginTop="10.0dip"
+                            android:max="50" android:progress="0"
+                            android:progressDrawable="@android:color/transparent"
+                            android:thumb="@drawable/seek_thumb_normal"
+                            android:thumbOffset="12.0dip"
+                            android:layout_below="@+id/wght2" />
+                        <TextView
+                            android:textSize="15.0sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:id="@+id/wght3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10.0dip"
+                            android:text="@string/bmikgm"
+                            android:layout_below="@+id/bmiseekBar"
+                            android:textAllCaps="false" />
+                        <TextView
+                            android:textSize="15.0sp"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"
+                            android:id="@+id/wght4"
+                            android:layout_toEndOf="@+id/wght3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10.0dip"
+                            android:layout_marginTop="10.0dip"
+                            android:text="Weight"
+                            android:layout_below="@+id/bmiseekBar" />
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10.0dip"
+                            android:layout_below="@+id/wght3">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:id="@+id/iv1"
+                                    android:background="@color/violet"
+                                    android:layout_width="10.0dip"
+                                    android:layout_height="10.0dip" />
+                                <TextView
+                                    android:textSize="15.0sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="1.0dip"
+                                    android:text="0-15" />
                             </LinearLayout>
-                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                                <ImageView android:layout_gravity="center" android:background="@color/blue" android:layout_width="10.0dip" android:layout_height="10.0dip" />
-                                <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="16-18" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:background="@color/blue"
+                                    android:layout_width="10.0dip"
+                                    android:layout_height="10.0dip" />
+                                <TextView
+                                    android:textSize="15.0sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="1.0dip"
+                                    android:text="16-18" />
                             </LinearLayout>
-                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                                <ImageView android:layout_gravity="center" android:background="@color/green" android:layout_width="10.0dip" android:layout_height="10.0dip" />
-                                <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="19-25" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:background="@color/green"
+                                    android:layout_width="10.0dip"
+                                    android:layout_height="10.0dip" />
+                                <TextView
+                                    android:textSize="15.0sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="1.0dip"
+                                    android:text="19-25" />
                             </LinearLayout>
                         </LinearLayout>
-                        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="150.0dip" android:layout_marginTop="10.0dip" android:layout_below="@+id/wght3">
-                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                                <ImageView android:layout_gravity="center" android:background="@color/yellow" android:layout_width="10.0dip" android:layout_height="10.0dip" />
-                                <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="26-30" />
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="150.0dip"
+                            android:layout_marginTop="10.0dip"
+                            android:layout_below="@+id/wght3">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:background="@color/yellow"
+                                    android:layout_width="10.0dip"
+                                    android:layout_height="10.0dip" />
+                                <TextView
+                                    android:textSize="15.0sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="1.0dip"
+                                    android:text="26-30" />
                             </LinearLayout>
-                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                                <ImageView android:layout_gravity="center" android:background="@color/orange" android:layout_width="10.0dip" android:layout_height="10.0dip" />
-                                <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="31-40" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:background="@color/orange"
+                                    android:layout_width="10.0dip"
+                                    android:layout_height="10.0dip" />
+                                <TextView
+                                    android:textSize="15.0sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="1.0dip"
+                                    android:text="31-40" />
                             </LinearLayout>
-                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                                <ImageView android:layout_gravity="center" android:background="@color/red" android:layout_width="10.0dip" android:layout_height="10.0dip" />
-                                <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="41-50" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:background="@color/red"
+                                    android:layout_width="10.0dip"
+                                    android:layout_height="10.0dip" />
+                                <TextView
+                                    android:textSize="15.0sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="1.0dip"
+                                    android:text="41-50" />
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
             </RelativeLayout>
-            <RelativeLayout android:orientation="vertical" android:id="@+id/height_checklayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@+id/weight_checklayout">
-                <android.support.v7.widget.CardView android:orientation="vertical" android:id="@+id/height_cardview" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" app:cardCornerRadius="7.0dip" app:cardElevation="5.0dip">
+            <RelativeLayout
+                android:orientation="vertical"
+                android:id="@+id/height_checklayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weight_checklayout">
+                <android.support.v7.widget.CardView
+                    android:orientation="vertical"
+                    android:id="@+id/height_cardview"
+                    android:background="#ffffffff"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginBottom="15.0dip"
+                    app:cardCornerRadius="7.0dip"
+                    app:cardElevation="5.0dip">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
@@ -67,6 +279,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10.0dip"
+                            android:layout_toEndOf="@+id/hght1"
                             android:layout_marginLeft="10.0dip"
                             android:text="Height"
                             android:textColor="@color/black"
@@ -102,6 +315,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/heightseekBar"
                             android:layout_margin="10.0dip"
+                            android:layout_toEndOf="@+id/hght3"
                             android:layout_marginLeft="10.0dip"
                             android:text="Height"
                             android:textColor="@color/black"
@@ -259,12 +473,45 @@
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
             </RelativeLayout>
-            <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@+id/height_checklayout">
-                <android.support.v7.widget.CardView android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" app:cardCornerRadius="7.0dip" app:cardElevation="5.0dip">
-                    <TextView android:textSize="15.0sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/height_desc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="ShortHeight:" />
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/height_checklayout">
+                <android.support.v7.widget.CardView
+                    android:orientation="vertical"
+                    android:background="#ffffffff"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginBottom="15.0dip"
+                    app:cardCornerRadius="7.0dip"
+                    app:cardElevation="5.0dip">
+                    <TextView
+                        android:textSize="15.0sp"
+                        android:textStyle="normal"
+                        android:textColor="@color/black"
+                        android:id="@+id/height_desc"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10.0dip"
+                        android:text="ShortHeight:" />
                 </android.support.v7.widget.CardView>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
-    <Button android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/edit" android:background="@drawable/button_background" android:layout_width="50.0dip" android:layout_height="35.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:text="Edit" android:layout_alignParentRight="true" android:textAllCaps="false" />
+    <Button
+        android:textSize="18.0sp"
+        android:textStyle="bold"
+        android:textColor="#ffffffff"
+        android:id="@+id/edit"
+        android:background="@drawable/button_background"
+        android:layout_width="50.0dip"
+        android:layout_height="35.0dip"
+        android:layout_marginTop="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:text="Edit"
+        android:layout_alignParentRight="true"
+        android:textAllCaps="false" />
 </RelativeLayout>

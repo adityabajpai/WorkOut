@@ -98,6 +98,63 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+        if(isRunningC1)
+        {
+            isPausedC1 = true;
+            viewFlipper_pushups.stopFlipping();
+            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C1",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            first = true;
+            Log.e("Progress paused",""+progress_stored);
+            Toast.makeText(ExcerciseStartedActivity.this, "C1", Toast.LENGTH_SHORT).show();
+        }
+        else if(isRunningC3)
+        {
+            isPausedC3 = true;
+            viewFlipper_squats.stopFlipping();
+            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C3",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            third = true;
+            Toast.makeText(ExcerciseStartedActivity.this, "C3", Toast.LENGTH_SHORT).show();
+        }
+        else if(isRunningC5)
+        {
+            isPausedC5 = true;
+            viewFlipper_legRaise.stopFlipping();
+            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C5",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            fifth = true;
+            Toast.makeText(ExcerciseStartedActivity.this, "C5", Toast.LENGTH_SHORT).show();
+        }
+        else if(isRunningC7)
+        {
+            isPausedC7 = true;
+            viewFlipper_jumpingJack.stopFlipping();
+            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C7",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            seventh = true;
+            Toast.makeText(ExcerciseStartedActivity.this, "C7", Toast.LENGTH_SHORT).show();
+        }
+        else if(isRunningC9)
+        {
+            isPausedC9 = true;
+            viewFlipper_squatsAgain.stopFlipping();
+            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C9",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            ninth = true;
+            Toast.makeText(ExcerciseStartedActivity.this, "C9", Toast.LENGTH_SHORT).show();
+        }
+        else if(isRunningC11)
+        {
+            isPausedC11 = true;
+            viewFlipper_plankwithlegFit.stopFlipping();
+            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C11",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            eleventh = true;
+            Toast.makeText(ExcerciseStartedActivity.this, "C11", Toast.LENGTH_SHORT).show();
+        }
+        img_btn_pause.setVisibility(View.INVISIBLE);
+        img_btn_play.setVisibility(View.VISIBLE);
         new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
                 .setMessage("Would you like to repeat this workout?")
                 .setPositiveButton("yes", new DialogInterface.OnClickListener() {
