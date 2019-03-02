@@ -45,9 +45,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         WorkoutData home =homes.get(viewHolder.getAdapterPosition());
-        viewHolder.tv1.setText(home.getDay());
-        viewHolder.tv_progress1.setText(((int)home.getProgress())+"%");
-        viewHolder.progressBar1.setProgress((int)home.getProgress());
+        if((i+1)%4==0){
+            viewHolder.tv1.setText("Rest Day");
+            viewHolder.tv_progress1.setVisibility(View.INVISIBLE);
+            viewHolder.progressBar1.setVisibility(View.INVISIBLE);
+
+        }else{
+            viewHolder.tv1.setText(home.getDay());
+            viewHolder.tv_progress1.setText(((int)home.getProgress())+"%");
+            viewHolder.progressBar1.setProgress((int)home.getProgress());
+        }
         if((int)home.getProgress()==100){
             Log.e("true","true");
             viewHolder.ll1.setEnabled(false);

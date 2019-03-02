@@ -37,7 +37,7 @@
     <!--<color name="colorPrimary">#66BB6A</color>-->
     <!--<color name="colorPrimaryDark">#66BB6A</color>-->
     <color name="colorAccent">#607d8b</color>
-    <color name="colorPrimary">#607d8b</color>
+    <color name="colorPrimary">#ff0d230d</color>
     <color name="colorPrimaryDark">#607d8b</color>
     <color name="colorText">#fcfcfc</color>
     <color name="colorgrey">#e5e4e4</color>

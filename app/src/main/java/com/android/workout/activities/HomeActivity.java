@@ -69,8 +69,9 @@ public class HomeActivity extends AppCompatActivity
     RecyclerView recyclerView;
     private HomeAdapter adapter;
     private List<WorkoutData> homeList;
-    TextView textView;
-    TextView allProgess;
+    private TextView textView;
+    private TextView allProgess;
+    private TextView daysLeftView;
     ProgressBar allProgressBar;
     private static final String Locale_Preference = "Locale Preference";
     private static final String Locale_KeyValue = "Saved Locale";
@@ -97,6 +98,7 @@ public class HomeActivity extends AppCompatActivity
         }
         allProgess = findViewById(R.id.progressStatus);
         allProgressBar = findViewById(R.id.mainProgressBar);
+        daysLeftView = findViewById(R.id.daysleft);
         Toolbar toolbar = findViewById(R.id.toolbar);
         ImageView imageView = findViewById(R.id.imageView);
         Glide.with(this)
@@ -108,11 +110,19 @@ public class HomeActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         homeList = databaseOperations.getAllDaysProgress();
-        int totalProgressApp = 0;
+        int totalProgressApp = 0,totalCompleteDays=0;
         for(WorkoutData workoutData:homeList){
-            totalProgressApp += (int)workoutData.getProgress();
+            int x = (int)workoutData.getProgress();
+            totalProgressApp += x;
+            if(x == 100){
+                totalCompleteDays++;
+            }
         }
         totalProgressApp = (totalProgressApp)/32;
+        if(totalProgressApp == 100){
+            restartProgress();
+        }
+        daysLeftView.setText((30-totalCompleteDays)+" days left");
         allProgess.setText(totalProgressApp+"%");
         allProgressBar.setProgress(totalProgressApp);
         adapter = new HomeAdapter(getApplicationContext(), homeList);

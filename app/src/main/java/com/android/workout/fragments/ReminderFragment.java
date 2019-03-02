@@ -245,9 +245,10 @@ public class ReminderFragment extends Fragment {
         }
         for (int k = 0;; k = 1)
         {
-            paramAlarmHelper.schedulePendingIntent(i, j, k);
             i = Integer.parseInt(getHourFormat().format(paramCalendar.getTime()));
             j = Integer.parseInt(getMinuteFormat().format(paramCalendar.getTime()));
+            paramAlarmHelper.schedulePendingIntent(i, j, k);
+            break;
         }
     }
 }

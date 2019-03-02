@@ -28,10 +28,10 @@ import android.widget.Toast;
 import com.android.workout.R;
 
 public class DailyMeal extends Fragment {
-    private static final String TAG = "DailyMeal";
-    Context context;
-    private Boolean vegdietenabled;
-    private Boolean stddietenabled;
+
+    Context a;
+    private Boolean complete;
+    private FloatingActionButton completed;
     private Button mBtnStdDiet;
     private Button mBtnVegDiet;
     private LinearLayout mLayoutStdDiet;
@@ -42,15 +42,16 @@ public class DailyMeal extends Fragment {
     private int screenWidth;
     private ScrollView scrollstddietfood;
     private ScrollView scrollvegdietfood;
-    private Boolean complete;
-    private FloatingActionButton completed;
+    private Boolean stddietenabled;
+    private Boolean vegdietenabled;
 
-    public DailyMeal(){}
+    public DailyMeal() {}
 
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        this.context = getActivity();
+    public void onCreate(Bundle paramBundle) {
+        super.onCreate(paramBundle);
+        a = getActivity();
     }
+
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == 16908332) {
             getFragmentManager().popBackStack();
@@ -66,863 +67,808 @@ public class DailyMeal extends Fragment {
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         screenWidth = displayMetrics.widthPixels;
         screenHeight = displayMetrics.heightPixels;
-        Toolbar toolbar  = (Toolbar)inflate.findViewById(R.id.toolbar);
-        TextView titleHead = (TextView)inflate.findViewById(R.id.tittletext);
+        Toolbar toolbar  = inflate.findViewById(R.id.toolbar);
+        TextView titleHead = inflate.findViewById(R.id.tittletext);
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Day ");
         ((StringBuilder)localObject).append(getArguments().getInt("DAY"));
-        titleHead.setText(((StringBuilder)localObject).toString());
+        titleHead.setText(localObject.toString());
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         setHasOptionsMenu(true);
         toolbar.getNavigationIcon().mutate().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
-        scrollstddietfood = ((ScrollView)inflate.findViewById(R.id.scrollstddietfood));
-        scrollvegdietfood = ((ScrollView)inflate.findViewById(R.id.scrollvegdietfood));
+        scrollstddietfood = inflate.findViewById(R.id.scrollstddietfood);
+        scrollvegdietfood = inflate.findViewById(R.id.scrollvegdietfood);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         prefsEditor = mSharedPreferences.edit();
-//        paramLayoutInflater = new StringBuilder();
-//        paramLayoutInflater.append("DAY_");
-//        paramLayoutInflater.append(getArguments().getInt("DAY"));
-//        paramLayoutInflater.append("_CHECKED");
-//        localObject = paramLayoutInflater.toString();
-//        paramLayoutInflater = new StringBuilder();
-//        paramLayoutInflater.append("DAY_");
-//        paramLayoutInflater.append(getArguments().getInt("DAY"));
-//        paramLayoutInflater.append("_STDDIET");
-//        final String str1 = paramLayoutInflater.toString();
-//        paramLayoutInflater = new StringBuilder();
-//        paramLayoutInflater.append("DAY_");
-//        paramLayoutInflater.append(getArguments().getInt("DAY"));
-//        paramLayoutInflater.append("_VEGDIET");
-//        final String str2 = paramLayoutInflater.toString();
-//        complete = Boolean.valueOf(mSharedPreferences.getBoolean((String)localObject, false));
-//        stddietenabled = Boolean.valueOf(mSharedPreferences.getBoolean(str1, false));
-//        vegdietenabled = Boolean.valueOf(mSharedPreferences.getBoolean(str2, false));
-        completed = ((FloatingActionButton)inflate.findViewById(R.id.fab));
-        mBtnStdDiet = ((Button)inflate.findViewById(R.id.Stddiet));
-        mBtnVegDiet = ((Button)inflate.findViewById(R.id.vegdiet));
-        mLayoutStdDiet = ((LinearLayout)inflate.findViewById(R.id.stddietfood));
-        mLayoutVegDiet = ((LinearLayout)inflate.findViewById(R.id.vegdietfood));
-//        paramLayoutInflater = (TextView)inflate.findViewById(2131361860);
-        TextView localTextView1 = (TextView)inflate.findViewById(R.id.brkfast1);
-        TextView localTextView2 = (TextView)inflate.findViewById(R.id.brkfast2);
-//        TextView localTextView3 = (TextView)inflate.findViewById(2131362012);
-//        TextView localTextView4 = (TextView)inflate.findViewById(2131362169);
-//        TextView localTextView5 = (TextView)inflate.findViewById(2131362170);
-//        TextView localTextView6 = (TextView)inflate.findViewById(2131362171);
-//        TextView localTextView7 = (TextView)inflate.findViewById(2131361916);
-//        TextView localTextView8 = (TextView)inflate.findViewById(2131361917);
-//        TextView localTextView9 = (TextView)inflate.findViewById(2131361918);
-//        TextView localTextView10 = (TextView)inflate.findViewById(2131362304);
-//        TextView localTextView11 = (TextView)inflate.findViewById(2131362305);
-//        TextView localTextView12 = (TextView)inflate.findViewById(2131362332);
-//        TextView localTextView13 = (TextView)inflate.findViewById(2131362333);
-//        TextView localTextView14 = (TextView)inflate.findViewById(2131362334);
-//        TextView localTextView15 = (TextView)inflate.findViewById(2131362335);
-//        TextView localTextView16 = (TextView)inflate.findViewById(2131362336);
-//        TextView localTextView17 = (TextView)inflate.findViewById(2131362329);
-//        TextView localTextView18 = (TextView)inflate.findViewById(2131362330);
-//        paramViewGroup = (TextView)paramBundle.findViewById(2131362331);
-        switch (getArguments().getInt("DAY"))
-        {
-            default:
-                break;
+        localObject = new StringBuilder();
+        ((StringBuilder) localObject).append("DAY_");
+        ((StringBuilder) localObject).append(getArguments().getInt("DAY"));
+        ((StringBuilder) localObject).append("_CHECKED");
+        localObject = localObject.toString();
+        Object obj1 = new StringBuilder();
+        ((StringBuilder) obj1).append("DAY_");
+        ((StringBuilder) obj1).append(getArguments().getInt("DAY"));
+        ((StringBuilder) obj1).append("_STDDIET");
+        final String str1 = obj1.toString();
+        obj1 = new StringBuilder();
+        ((StringBuilder) obj1).append("DAY_");
+        ((StringBuilder) obj1).append(getArguments().getInt("DAY"));
+        ((StringBuilder) obj1).append("_VEGDIET");
+        final String str2 = obj1.toString();
+        complete = Boolean.valueOf(mSharedPreferences.getBoolean((String)localObject, false));
+        stddietenabled = Boolean.valueOf(mSharedPreferences.getBoolean(str1, false));
+        vegdietenabled = Boolean.valueOf(mSharedPreferences.getBoolean(str2, false));
+        completed = inflate.findViewById(R.id.fab);
+        mBtnStdDiet = inflate.findViewById(R.id.Stddiet);
+        mBtnVegDiet = inflate.findViewById(R.id.vegdiet);
+        mLayoutStdDiet = inflate.findViewById(R.id.stddietfood);
+        mLayoutVegDiet = inflate.findViewById(R.id.vegdietfood);
+        TextView breakfast1 = inflate.findViewById(R.id.brkfast1);
+        TextView breakfast2 = inflate.findViewById(R.id.brkfast2);
+        TextView lunch1 = inflate.findViewById(R.id.lunch1);
+        TextView lunch2 = inflate.findViewById(R.id.lunch2);
+        TextView snack1 = inflate.findViewById(R.id.snack1);
+        TextView snack2 = inflate.findViewById(R.id.snack2);
+        TextView snack3 = inflate.findViewById(R.id.snack3);
+        TextView dinner1 = inflate.findViewById(R.id.dinner1);
+        TextView dinner2 = inflate.findViewById(R.id.dinner2);
+        TextView dinner3 = inflate.findViewById(R.id.dinner3);
+        TextView vegbreakfast1 = inflate.findViewById(R.id.vegbrkfast1);
+        TextView vegbreakfast2 = inflate.findViewById(R.id.vegbrkfast2);
+        TextView veglunch1 = inflate.findViewById(R.id.veglunch1);
+        TextView veglunch2 = inflate.findViewById(R.id.veglunch2);
+        TextView vegsnack1 = inflate.findViewById(R.id.vegsnack1);
+        TextView vegsnack2 = inflate.findViewById(R.id.vegsnack2);
+        TextView vegsnack3 = inflate.findViewById(R.id.vegsnack3);
+        TextView vegdinner1 = inflate.findViewById(R.id.vegdinner1);
+        TextView vegdinner2 = inflate.findViewById(R.id.vegdinner2);
+        TextView vegdinner3 = inflate.findViewById(R.id.vegdinner3);
+        switch(getArguments().getInt("DAY")) {
             case 30:
-//                paramLayoutInflater.setText(getResources().getString(2131755387));
-                localTextView1.setText(getResources().getString(R.string.fivealmonds));
-                localTextView2.setText(getResources().getString(R.string.Brownbread));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755220));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755038));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755387));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
+                breakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedtuna));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fivewalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.Pineappleslicesorgrapes));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setVisibility(8);
                 break;
             case 29:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-                localTextView1.setText(getResources().getString(R.string.fivealmonds));
-                localTextView2.setText(getResources().getString(R.string.Brownbread));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755247));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755059));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755247));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.oatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
             case 28:
-//                paramLayoutInflater.setText(getResources().getString(2131755408));
-                localTextView1.setText(getResources().getString(R.string.fivealmonds));
-                localTextView2.setText(getResources().getString(R.string.Brownbread));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755248));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755041));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755248));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                break;
-//            case 27:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755058));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755220));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755386));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                break;
-//            case 26:
-//                paramLayoutInflater.setText(getResources().getString(2131755387));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755055));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755247));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755059));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755247));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                break;
-//            case 25:
-//                paramLayoutInflater.setText(getResources().getString(2131755409));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755058));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755052));
-//                localTextView8.setText(getResources().getString(2131755015));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755409));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755041));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 24:
-//                paramLayoutInflater.setText(getResources().getString(2131755387));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755044));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755248));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755048));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755248));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                break;
-//            case 23:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755057));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755220));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755386));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755057));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 22:
-//                paramLayoutInflater.setText(getResources().getString(2131755246));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755056));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755218));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755040));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755218));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                break;
-//            case 21:
-//                paramLayoutInflater.setText(getResources().getString(2131755409));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755043));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755388));
-//                localTextView6.setText(getResources().getString(2131755371));
-//                localTextView7.setText(getResources().getString(2131755048));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755409));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755388));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 20:
-//                paramLayoutInflater.setText(getResources().getString(2131755387));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755058));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755386));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755387));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755057));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                break;
-//            case 19:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755056));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755247));
-//                localTextView6.setText(getResources().getString(2131755371));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755041));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755247));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 18:
-//                paramLayoutInflater.setText(getResources().getString(2131755408));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755058));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755052));
-//                localTextView8.setText(getResources().getString(2131755015));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755387));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 17:
-//                paramLayoutInflater.setText(getResources().getString(2131755409));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755044));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755248));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755048));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755409));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755040));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755248));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 16:
-//                paramLayoutInflater.setText(getResources().getString(2131755408));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755058));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755038));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755387));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755057));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                break;
-//            case 15:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755055));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755247));
-//                localTextView6.setText(getResources().getString(2131755371));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755247));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 14:
-//                paramLayoutInflater.setText(getResources().getString(2131755408));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755043));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755248));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755048));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755041));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755248));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                break;
-//            case 13:
-//                paramLayoutInflater.setText(getResources().getString(2131755387));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755056));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755374));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755386));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755387));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755059));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 12:
-//                paramLayoutInflater.setText(getResources().getString(2131755409));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755044));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755247));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755409));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755040));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755247));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                break;
-//            case 11:
-//                paramLayoutInflater.setText(getResources().getString(2131755387));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755059));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755374));
-//                localTextView7.setText(getResources().getString(2131755052));
-//                localTextView8.setText(getResources().getString(2131755015));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755387));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 10:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755055));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755248));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755048));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755059));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755248));
-//                localTextView16.setText(getResources().getString(2131755371));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                break;
-//            case 9:
-//                paramLayoutInflater.setText(getResources().getString(2131755387));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755058));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755386));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755387));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755057));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755220));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 8:
-//                paramLayoutInflater.setText(getResources().getString(2131755409));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755042));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755218));
-//                localTextView6.setText(getResources().getString(2131755371));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755409));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755218));
-//                localTextView16.setText(getResources().getString(2131755371));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                break;
-//            case 7:
-//                paramLayoutInflater.setText(getResources().getString(2131755408));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755056));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755388));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755048));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755041));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755388));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                break;
-//            case 6:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755057));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755386));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755057));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                break;
-//            case 5:
-//                paramLayoutInflater.setText(getResources().getString(2131755408));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755044));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755325));
-//                localTextView5.setText(getResources().getString(2131755247));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755382));
-//                localTextView8.setText(getResources().getString(2131755023));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755040));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755325));
-//                localTextView15.setText(getResources().getString(2131755247));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                break;
-//            case 4:
-//                paramLayoutInflater.setText(getResources().getString(2131755409));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755058));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755052));
-//                localTextView8.setText(getResources().getString(2131755015));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755409));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755057));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755052));
-//                localTextView18.setText(getResources().getString(2131755024));
-//                break;
-//            case 3:
-//                paramLayoutInflater.setText(getResources().getString(2131755408));
-//                localTextView1.setText(getResources().getString(2131755017));
-//                localTextView2.setText(getResources().getString(2131755055));
-//                localTextView3.setText(getResources().getString(2131755051));
-//                localTextView4.setText(getResources().getString(2131755326));
-//                localTextView5.setText(getResources().getString(2131755248));
-//                localTextView6.setText(getResources().getString(2131755217));
-//                localTextView7.setText(getResources().getString(2131755048));
-//                localTextView8.setText(getResources().getString(2131755011));
-//                localTextView9.setText(getResources().getString(2131755259));
-//                localTextView10.setText(getResources().getString(2131755408));
-//                localTextView11.setText(getResources().getString(2131755017));
-//                localTextView12.setText(getResources().getString(2131755060));
-//                localTextView13.setText(getResources().getString(2131755051));
-//                localTextView14.setText(getResources().getString(2131755326));
-//                localTextView15.setText(getResources().getString(2131755248));
-//                localTextView16.setText(getResources().getString(2131755217));
-//                localTextView17.setText(getResources().getString(2131755278));
-//                localTextView18.setText(getResources().getString(2131755037));
-//                paramLayoutInflater = getResources().getString(2131755259);
-//                paramViewGroup.setText(paramLayoutInflater);
-//                break;
-//            case 2:
-//                paramLayoutInflater.setText(getResources().getString(2131755328));
-//                localTextView1.setText(getResources().getString(2131755034));
-//                localTextView2.setText(getResources().getString(2131755059));
-//                localTextView3.setText(getResources().getString(2131755011));
-//                localTextView4.setText(getResources().getString(2131755327));
-//                localTextView5.setText(getResources().getString(2131755013));
-//                localTextView6.setText(getResources().getString(2131755245));
-//                localTextView7.setText(getResources().getString(2131755016));
-//                localTextView8.setText(getResources().getString(2131755038));
-//                localTextView9.setVisibility(8);
-//                localTextView10.setText(getResources().getString(2131755328));
-//                localTextView11.setText(getResources().getString(2131755034));
-//                localTextView12.setText(getResources().getString(2131755059));
-//                localTextView13.setText(getResources().getString(2131755011));
-//                localTextView14.setText(getResources().getString(2131755327));
-//                localTextView15.setText(getResources().getString(2131755013));
-//                localTextView16.setText(getResources().getString(2131755245));
-//                localTextView17.setText(getResources().getString(2131755049));
-//                localTextView18.setText(getResources().getString(2131755023));
-//                paramViewGroup.setVisibility(8);
-//                break;
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedtuna));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithmushroom));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setVisibility(8);
+                break;
+            case 27:
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithsteamcookedsalmon));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fivewalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.threePineappleslicesorgrapes));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setVisibility(8);
+                break;
+            case 26:
+                breakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatchickenwrapChickenbreastslettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setVisibility(8);
+                break;
+            case 25:
+                breakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithsteamcookedsalmon));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                dinner2.setText(getResources().getString(R.string.Chickenbreasts));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithmushroom));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 24:
+                breakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedtuna));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.Steamcookedleanbeef));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setVisibility(8);
+                break;
+            case 23:
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fivewalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.threePineappleslicesorgrapes));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 22:
+                breakfast1.setText(getResources().getString(R.string.fourboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatfishwrapSteamcookedtunalettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fiveoatmealcookies));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithleafygreenspinachbroccoli));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.fiveoatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setVisibility(8);
+                break;
+            case 21:
+                breakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedchickenbreasts));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.threeslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.sixalmonds));
+                dinner1.setText(getResources().getString(R.string.Steamcookedleanbeef));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.threeslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 20:
+                breakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithsteamcookedsalmon));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.threePineappleslicesorgrapes));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setVisibility(8);
+                break;
+            case 19:
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatfishwrapSteamcookedtunalettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                snack3.setText(getResources().getString(R.string.sixalmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithmushroom));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 18:
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithsteamcookedsalmon));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                dinner2.setText(getResources().getString(R.string.Chickenbreasts));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 17:
+                breakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedtuna));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.Steamcookedleanbeef));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithleafygreenspinachbroccoli));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 16:
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithsteamcookedsalmon));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.Pineappleslicesorgrapes));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setVisibility(8);
+                break;
+            case 15:
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatchickenwrapChickenbreastslettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                snack3.setText(getResources().getString(R.string.sixalmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 14:
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedchickenbreasts));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.Steamcookedleanbeef));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithmushroom));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setVisibility(8);
+                break;
+            case 13:
+                breakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatfishwrapSteamcookedtunalettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.sixalmonds));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.threePineappleslicesorgrapes));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 12:
+                breakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedtuna));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithleafygreenspinachbroccoli));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setVisibility(8);
+                break;
+            case 11:
+                breakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.sixwalnuts));
+                dinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                dinner2.setText(getResources().getString(R.string.Chickenbreasts));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 10:
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatchickenwrapChickenbreastslettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.Steamcookedleanbeef));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.sixalmonds));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setVisibility(8);
+                break;
+            case 9:
+                breakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithsteamcookedsalmon));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.threePineappleslicesorgrapes));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.threeboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fivewalnuts));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 8:
+                breakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.RedricewithsteamcookedLeanbeef));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fiveoatmealcookies));
+                snack3.setText(getResources().getString(R.string.sixalmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.fiveoatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.sixalmonds));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setVisibility(8);
+                break;
+            case 7:
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatfishwrapSteamcookedtunalettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.threeslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.Steamcookedleanbeef));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithmushroom));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.threeslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 6:
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.threePineappleslicesorgrapes));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setVisibility(0);
+                break;
+            case 5:
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Redricewithsteamcookedtuna));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Redricewithleafygreenspinachbroccoli));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.fouroatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setVisibility(8);
+                break;
+            case 4:
+                breakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithsteamcookedsalmon));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                dinner2.setText(getResources().getString(R.string.Chickenbreasts));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoscrambledeggs));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithbroccoli));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setVisibility(8);
+                break;
+            case 3:
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.WholewheatchickenwrapChickenbreastslettucetomatoyogurtsauce));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                snack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.Steamcookedleanbeef));
+                dinner2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                dinner3.setText(getResources().getString(R.string.greekyogurt));
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.WholewheatvegetablewrapTomatoonioncucumberspinachcheese));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.oneglassofamlajuice));
+                vegsnack2.setText(getResources().getString(R.string.fourslicesofpineapple));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.leafygreenssoupbroccolispinachlettuce));
+                vegdinner2.setText(getResources().getString(R.string.Pineappleslices));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            case 2:
+                breakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                breakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                lunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                snack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                snack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                snack3.setText(getResources().getString(R.string.fourWalnuts));
+                dinner1.setText(getResources().getString(R.string.Chickensoup));
+                dinner2.setText(getResources().getString(R.string.Pineappleslicesorgrapes));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.onescrambledegg));
+                vegbreakfast2.setText(getResources().getString(R.string.Oatswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.Wholewheatpastawithveggies));
+                veglunch2.setText(getResources().getString(R.string.BoiledvegetablesSpinachbeanscabbagetomato));
+                vegsnack1.setText(getResources().getString(R.string.oneglassoflemonjuicewithhoney));
+                vegsnack2.setText(getResources().getString(R.string.Brownbreadvegsandwich));
+                vegsnack3.setText(getResources().getString(R.string.fourWalnuts));
+                vegdinner1.setText(getResources().getString(R.string.Tomatosoup));
+                vegdinner2.setText(getResources().getString(R.string.Fruitsalad));
+                vegdinner3.setVisibility(8);
+                break;
+            case 1:
+                breakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                breakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                lunch1.setText(getResources().getString(R.string.redrice));
+                lunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                snack1.setText(getResources().getString(R.string.onecupofgreentea));
+                snack2.setText(getResources().getString(R.string.oatmealcookies));
+                snack3.setText(getResources().getString(R.string.fivealmonds));
+                dinner1.setText(getResources().getString(R.string.steamcookedchickenbreasts));
+                dinner2.setText(getResources().getString(R.string.Fruitsalad));
+                dinner3.setVisibility(8);
+                vegbreakfast1.setText(getResources().getString(R.string.twoboiledeggwhites));
+                vegbreakfast2.setText(getResources().getString(R.string.Cornflakeswithskimmedmilk));
+                veglunch1.setText(getResources().getString(R.string.redrice));
+                veglunch2.setText(getResources().getString(R.string.VegetablesaladCarrotcucumbercabbagelettuce));
+                vegsnack1.setText(getResources().getString(R.string.onecupofgreentea));
+                vegsnack2.setText(getResources().getString(R.string.oatmealcookies));
+                vegsnack3.setText(getResources().getString(R.string.fivealmonds));
+                vegdinner1.setText(getResources().getString(R.string.Vegetablesoup));
+                vegdinner2.setText(getResources().getString(R.string.Grapes));
+                vegdinner3.setText(getResources().getString(R.string.greekyogurt));
+                break;
+            default:break;
         }
-//        paramLayoutInflater.setText(getResources().getString(2131755408));
-        localTextView1.setText(getResources().getString(R.string.fivealmonds));
-        localTextView2.setText(getResources().getString(R.string.Brownbread));
-//        localTextView3.setText(getResources().getString(2131755051));
-//        localTextView4.setText(getResources().getString(2131755325));
-//        localTextView5.setText(getResources().getString(2131755247));
-//        localTextView6.setText(getResources().getString(2131755217));
-//        localTextView7.setText(getResources().getString(2131755382));
-//        localTextView8.setText(getResources().getString(2131755023));
-//        localTextView9.setVisibility(8);
-//        localTextView10.setText(getResources().getString(2131755408));
-//        localTextView11.setText(getResources().getString(2131755017));
-//        localTextView12.setText(getResources().getString(2131755041));
-//        localTextView13.setText(getResources().getString(2131755051));
-//        localTextView14.setText(getResources().getString(2131755325));
-//        localTextView15.setText(getResources().getString(2131755247));
-//        localTextView16.setText(getResources().getString(2131755217));
-//        localTextView17.setText(getResources().getString(2131755052));
-//        localTextView18.setText(getResources().getString(2131755024));
-//        paramViewGroup.setText(getResources().getString(2131755259));
-//        mBtnStdDiet.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View paramAnonymousView)
-//            {
-//                DailyMeal.access$getDisplayError(DailyMeal.this, Boolean.valueOf(DailyMeal.access$getMSharedPreferences(DailyMeal.this).getBoolean(str1, false)));
-//                if (!DailyMeal.createLink(DailyMeal.this).booleanValue())
-//                {
-//                    DailyMeal.access$getDeleteButton(DailyMeal.this).setTextColor(getResources().getColor(2131099698));
-//                    DailyMeal.access$getStopButton(DailyMeal.this).setVisibility(0);
-//                    DailyMeal.access$getColorButton(DailyMeal.this).setTextColor(getResources().getColor(2131099679));
-//                    DailyMeal.access$getMRootView(DailyMeal.this).setVisibility(8);
-//                    DailyMeal.access$getEditor(DailyMeal.this).putBoolean(str1, true);
-//                    DailyMeal.access$getEditor(DailyMeal.this).putBoolean(str2, false);
-//                }
-//                DailyMeal.access$getEditor(DailyMeal.this).commit();
-//                if (DailyMeal.access$getTabsContainer(DailyMeal.this) == null)
-//                {
-//                    DailyMeal.display(DailyMeal.this, (LinearLayout)paramBundle.findViewById(2131362190));
-//                    DailyMeal.access$getTabsContainer(DailyMeal.this).setBackgroundResource(0);
-//                }
-//            }
-//        });
-//        mBtnVegDiet.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View paramAnonymousView)
-//            {
-//                DailyMeal.access$setAlive(DailyMeal.this, Boolean.valueOf(DailyMeal.access$getMSharedPreferences(DailyMeal.this).getBoolean(str2, false)));
-//                if (!DailyMeal.access$getMLocked(DailyMeal.this).booleanValue())
-//                {
-//                    DailyMeal.access$getColorButton(DailyMeal.this).setTextColor(getResources().getColor(2131099698));
-//                    DailyMeal.access$getMRootView(DailyMeal.this).setVisibility(0);
-//                    DailyMeal.access$getDeleteButton(DailyMeal.this).setTextColor(getResources().getColor(2131099679));
-//                    DailyMeal.access$getStopButton(DailyMeal.this).setVisibility(8);
-//                    DailyMeal.access$getEditor(DailyMeal.this).putBoolean(str2, true);
-//                    DailyMeal.access$getEditor(DailyMeal.this).putBoolean(str1, false);
-//                }
-//                DailyMeal.access$getEditor(DailyMeal.this).commit();
-//                if (DailyMeal.addNote(DailyMeal.this) == null)
-//                {
-//                    DailyMeal.addTag(DailyMeal.this, (LinearLayout)paramBundle.findViewById(2131362307));
-//                    DailyMeal.addNote(DailyMeal.this).setBackgroundResource(0);
-//                }
-//            }
-//        });
-//        if (complete.booleanValue())
-//        {
-//            if (Build.VERSION.SDK_INT >= 21) {
-//                paramViewGroup = completed;
-//            }
-//            for (paramLayoutInflater = getResources().getDrawable(2131230985, getActivity().getTheme());; paramLayoutInflater = getResources().getDrawable(2131230985))
-//            {
-//                paramViewGroup.setImageDrawable(paramLayoutInflater);
-//                break;
-//                paramViewGroup = completed;
-//            }
-//            paramViewGroup = completed;
-//            paramLayoutInflater = getResources();
-//        }
-//        for (int i = 2131099698;; i = 2131099736)
-//        {
-//            paramViewGroup.setBackgroundTintList(ColorStateList.valueOf(paramLayoutInflater.getColor(i)));
-//            break;
-//            if (Build.VERSION.SDK_INT >= 21) {
-//                paramViewGroup = completed;
-//            }
-//            for (paramLayoutInflater = getResources().getDrawable(2131230985, getActivity().getTheme());;
-//                 paramLayoutInflater = getResources().getDrawable(2131230985))
-//            {
-//                paramViewGroup.setImageDrawable(paramLayoutInflater);
-//                break;
-//                paramViewGroup = completed;
-//            }
-//            paramViewGroup = completed;
-//            paramLayoutInflater = getResources();
-//        }
-//        completed.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View paramAnonymousView)
-//            {
-//                DailyMeal.access$setB(DailyMeal.this, Boolean.valueOf(DailyMeal.access$getMSharedPreferences(DailyMeal.this).getBoolean(val$tag, false)));
-//                Object localObject1;
-//                Object localObject2;
-//                if (DailyMeal.access$getTip(DailyMeal.this).booleanValue())
-//                {
-//                    DailyMeal.access$getEditor(DailyMeal.this).putBoolean(val$tag, false);
-//                    if (Build.VERSION.SDK_INT >= 21) {
-//                        localObject1 = DailyMeal.access$getFab(DailyMeal.this);
-//                    }
-//                    for (localObject2 = getResources().getDrawable(2131230985, getActivity().getTheme());; localObject2 = getResources().getDrawable(2131230985))
-//                    {
-//                        paramAnonymousView = this;
-//                        ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-//                        break;
-//                        localObject1 = DailyMeal.access$getFab(DailyMeal.this);
-//                    }
-//                    localObject1 = DailyMeal.access$getFab(this$0);
-//                    localObject2 = this$0;
-//                    ((FloatingActionButton)localObject1).setBackgroundTintList(ColorStateList.valueOf(((Fragment)localObject2).getResources().getColor(2131099736)));
-//                }
-//                else
-//                {
-//                    DailyMeal.access$getEditor(DailyMeal.this).putBoolean(val$tag, true);
-//                    if (Build.VERSION.SDK_INT >= 21) {
-//                        paramAnonymousView = DailyMeal.access$getFab(DailyMeal.this);
-//                    }
-//                    for (localObject1 = getResources().getDrawable(2131230985, getActivity().getTheme());; localObject1 = getResources().getDrawable(2131230985))
-//                    {
-//                        localObject2 = this;
-//                        paramAnonymousView.setImageDrawable((Drawable)localObject1);
-//                        break;
-//                        paramAnonymousView = DailyMeal.access$getFab(DailyMeal.this);
-//                    }
-//                    DailyMeal.access$getFab(this$0).setBackgroundTintList(ColorStateList.valueOf(this$0.getResources().getColor(2131099698)));
-//                    paramAnonymousView = this$0;
-//                    Toast.makeText(paramAnonymousView.getActivity(), "Finished", 0).show();
-//                    paramAnonymousView = (View)localObject2;
-//                }
-//                DailyMeal.access$getEditor(this$0).commit();
-//            }
-//        });
-//        if ((stddietenabled.booleanValue() == true) && (!vegdietenabled.booleanValue()))
-//        {
-//            mBtnStdDiet.setTextColor(getResources().getColor(R.color.green));
-//            mBtnVegDiet.setTextColor(getResources().getColor(R.color.blue));
-//            scrollstddietfood.setVisibility(View.INVISIBLE);
-//            scrollvegdietfood.setVisibility(View.VISIBLE);
-//        }
-//        for (;;)
-//        {
-//            if ((!stddietenabled.booleanValue()) && (vegdietenabled.booleanValue() == true))
-//            {
-//                mBtnStdDiet.setTextColor(getResources().getColor(R.color.green));
-//                mBtnVegDiet.setTextColor(getResources().getColor(R.color.blue));
-//                scrollstddietfood.setVisibility(View.VISIBLE);
-//                scrollvegdietfood.setVisibility(View.INVISIBLE);
-//            }
-//            else
-//            {
-//                if ((stddietenabled.booleanValue()) || (vegdietenabled.booleanValue())) {
-//                    break;
-//                }
-//                mBtnStdDiet.setTextColor(getResources().getColor(R.color.green));
-//                mBtnVegDiet.setTextColor(getResources().getColor(R.color.blue));
-//                scrollstddietfood.setVisibility(View.INVISIBLE);
-//                scrollvegdietfood.setVisibility(View.VISIBLE);
-////                prefsEditor.putBoolean(str1, true);
-////                prefsEditor.putBoolean(str2, false);
-//                prefsEditor.commit();
-//            }
-//        }
+        mBtnStdDiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stddietenabled = mSharedPreferences.getBoolean(str1,false);
+                if(!stddietenabled.booleanValue()){
+                    mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+                    mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    mLayoutStdDiet.setVisibility(View.VISIBLE);
+                    mLayoutVegDiet.setVisibility(View.INVISIBLE);
+                    prefsEditor.putBoolean(str1,true);
+                    prefsEditor.putBoolean(str2,false);
+                }
+                prefsEditor.commit();
+            }
+        });
+        mBtnVegDiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vegdietenabled = mSharedPreferences.getBoolean(str2,false);
+                if(!vegdietenabled.booleanValue()){
+                    mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+                    mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    mLayoutVegDiet.setVisibility(View.VISIBLE);
+                    mLayoutStdDiet.setVisibility(View.INVISIBLE);
+                    prefsEditor.putBoolean(str1,false);
+                    prefsEditor.putBoolean(str2,true);
+                }
+                prefsEditor.commit();
+            }
+        });
+        completed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (complete.booleanValue())
+                {
+                    completed.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.lightpink)));
+                    complete = false;
+                }else{
+                    completed.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+                    complete = true;
+                }
+
+            }
+        });
+        if ((stddietenabled.booleanValue() == true) && (!vegdietenabled.booleanValue()))
+        {
+            mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+            mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+            scrollstddietfood.setVisibility(0);
+            scrollvegdietfood.setVisibility(8);
+        }
+        for (;;)
+        {
+            if ((!stddietenabled.booleanValue()) && (vegdietenabled.booleanValue() == true))
+            {
+                mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+                mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+                scrollstddietfood.setVisibility(8);
+                scrollvegdietfood.setVisibility(0);
+            }
+            else
+            {
+                if ((stddietenabled.booleanValue()) || (vegdietenabled.booleanValue())) {
+                    break;
+                }
+                mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+                mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+                scrollstddietfood.setVisibility(0);
+                scrollvegdietfood.setVisibility(8);
+                prefsEditor.putBoolean(str1, true);
+                prefsEditor.putBoolean(str2, false);
+                prefsEditor.commit();
+            }
+            return inflate;
+        }
+        if (complete.booleanValue())
+        {
+            completed.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.lightpink)));
+        }else{
+            completed.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+        }
         return inflate;
     }
 }

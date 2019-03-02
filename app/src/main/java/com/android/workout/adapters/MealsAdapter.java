@@ -40,9 +40,9 @@ public class MealsAdapter extends Adapter<MealsAdapter.MealsRecyclerViewHolders>
             super(view);
             this.mealsAdapter = mealsAdapter;
             view.setOnClickListener(this);
-            LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+            LayoutParams layoutParams = new LayoutParams(-1, -2);
 //            layoutParams.setMargins(5, 5, 5, 5);
-//            layoutParams.weight = 1.0f;
+//            weight = 1.0f;
             this.cardview1 = view.findViewById(R.id.cardviewone);
             this.cardview1.setLayoutParams(layoutParams);
             this.countryName = view.findViewById(R.id.row_day);
@@ -67,7 +67,9 @@ public class MealsAdapter extends Adapter<MealsAdapter.MealsRecyclerViewHolders>
     public int getItemCount() {
         return this.itemList.size();
     }
+
     public void onBindViewHolder(MealsRecyclerViewHolders mealsRecyclerViewHolders, int i) {
+
         mealsRecyclerViewHolders.countryName.setText(this.itemList.get(i).getName());
         i++;
         StringBuilder stringBuilder = new StringBuilder();
@@ -83,4 +85,5 @@ public class MealsAdapter extends Adapter<MealsAdapter.MealsRecyclerViewHolders>
     public MealsRecyclerViewHolders onCreateViewHolder(ViewGroup viewGroup, int i) {
         return new MealsRecyclerViewHolders(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.meals_days_row, null));
     }
+
 }
