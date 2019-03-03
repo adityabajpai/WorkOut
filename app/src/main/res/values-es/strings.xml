@@ -383,4 +383,5 @@
     <string name="year">" año"</string>
     <string name="yes">Sí</string>
     <string name="you_need_to_take_rest">Necesitas descansar</string>
+    <string name="exitapp">¿Seguro que quieres salir?</string>
 </resources>

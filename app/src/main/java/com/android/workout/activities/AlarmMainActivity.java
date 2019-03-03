@@ -42,4 +42,11 @@ public class AlarmMainActivity extends AppCompatActivity {
             beginTransaction.commit();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+        finish();
+    }
 }

@@ -1,5 +1,6 @@
 package com.android.workout.activities;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
@@ -47,11 +48,14 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_excercise_detail);
+        sharedPreferences = getSharedPreferences(Locale_Preference, Activity.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         excercise_detail_text = findViewById(R.id.excercise_text);
         viewFlipper = findViewById(R.id.imageView);
         Bundle bundle = getIntent().getExtras();
         excercise = bundle.getString("excercise");
         Log.e("excercise",excercise);
+        loadLocale();
     }
 
     public void changeLocale(String lang) {
@@ -79,7 +83,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
     }
 
     private void setFlippingViews() {
-        if(excercise.equals("PUSHUPS"))
+        if(excercise.equals(getResources().getString(R.string.pushups)))
         {
             for (int i = 0; i < image_array_pushUps.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -91,7 +95,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             Log.e("enterd","entrerd");
             excercise_detail_text.setText(getResources().getString(R.string.desc_pushups));
         }
-        else if(excercise.equals("SQUATS"))
+        else if(excercise.equals(getResources().getString(R.string.squats)))
         {
             for (int i = 0; i < image_array_squats.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -102,7 +106,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_squats);
         }
-        else if(excercise.equals("LEG RAISE"))
+        else if(excercise.equals(getResources().getString(R.string.leg_raise)))
         {
             for (int i = 0; i < image_array_legRaise.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -113,7 +117,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_leg_raise);
         }
-        else if(excercise.equals("JUMPING JACK")) {
+        else if(excercise.equals(getResources().getString(R.string.jumping_jacks))) {
             for (int i = 0; i < image_array_jumpingJack.length; i++) {
                 ImageView imageView = new ImageView(this);
                 imageView.setImageResource(image_array_jumpingJack[i]);
@@ -123,7 +127,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_jumping_jacks);
         }
-        else if(excercise.equals("PLANK WITH LEG FIT"))
+        else if(excercise.equals(getResources().getString(R.string.plank_with_leg_lift)))
         {
             for (int i = 0; i < image_array_plank.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -134,7 +138,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_plank_with_leg_lift);
         }
-        else if(excercise.equals("HIGH KNEES"))
+        else if(excercise.equals(getResources().getString(R.string.high_knees)))
         {
             for (int i = 0; i < highknees.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -145,7 +149,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_high_knees);
         }
-        else if(excercise.equals("BASIC CRUNCHES"))
+        else if(excercise.equals(getResources().getString(R.string.basic_crunches)))
         {
             for (int i = 0; i < basic_crunches.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -156,7 +160,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_basic_crunches);
         }
-        else if(excercise.equals("BENCH DIPS"))
+        else if(excercise.equals(getResources().getString(R.string.bench_dips)))
         {
             for (int i = 0; i < bench_dips.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -167,7 +171,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_bench_dips);
         }
-        else if(excercise.equals("ALTERNATER HEEL TOUCH"))
+        else if(excercise.equals(getResources().getString(R.string.alternater_heeltouch)))
         {
             for (int i = 0; i < alternator_heel_touch.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -178,7 +182,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_alternater_heeltouch);
         }
-        else if(excercise.equals("ARM CRUNCHES"))
+        else if(excercise.equals(getResources().getString(R.string.arm_crunches)))
         {
             for (int i = 0; i < arm_crunches.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -189,7 +193,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_arm_crunches);
         }
-        else if(excercise.equals("BICYCLE CRUNCHES"))
+        else if(excercise.equals(getResources().getString(R.string.bicycle_crunches)))
         {
             for (int i = 0; i < bicycle_crunches.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -200,7 +204,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_bicycle_crunches);
         }
-        else if(excercise.equals("FLUTTER KICKS"))
+        else if(excercise.equals(getResources().getString(R.string.flutter_kicks)))
         {
             for (int i = 0; i < flutter_kicks.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -211,7 +215,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_flutter_kicks);
         }
-        else if(excercise.equals("LEG UP CRUNCHES"))
+        else if(excercise.equals(getResources().getString(R.string.leg_up_crunches)))
         {
             for (int i = 0; i < leg_up_crunches.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -222,7 +226,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_leg_up_crunches);
         }
-        else if(excercise.equals("LUNGE"))
+        else if(excercise.equals(getResources().getString(R.string.lunge)))
         {
             for (int i = 0; i < lunge.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -233,7 +237,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_lunge);
         }
-        else if(excercise.equals("V CRUNCHES"))
+        else if(excercise.equals(getResources().getString(R.string.v_crunches)))
         {
             for (int i = 0; i < v_crunches.length; i++) {
                 ImageView imageView = new ImageView(this);
@@ -244,7 +248,7 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             viewFlipper.setAutoStart(true);
             excercise_detail_text.setText(R.string.desc_v_crunches);
         }
-        else if(excercise.equals("VERTICAL LEG CRUNCHES"))
+        else if(excercise.equals(getResources().getString(R.string.vertical_leg_crunches)))
         {
             for (int i = 0; i < vertical_leg_crunches.length; i++) {
                 ImageView imageView = new ImageView(this);

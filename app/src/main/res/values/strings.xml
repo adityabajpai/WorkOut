@@ -433,5 +433,6 @@
     <string name="year">yr</string>
     <string name="yes">Yes</string>
     <string name="you_need_to_take_rest">You need to take rest</string>
+    <string name="exitapp">Are you sure you want to exit?</string>
 </resources>
 

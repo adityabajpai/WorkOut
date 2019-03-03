@@ -44,27 +44,35 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-        WorkoutData home =homes.get(viewHolder.getAdapterPosition());
+        final WorkoutData home =homes.get(viewHolder.getAdapterPosition());
         if((i+1)%4==0){
             viewHolder.tv1.setText(context.getResources().getString(R.string.restday));
             viewHolder.tv_progress1.setVisibility(View.INVISIBLE);
             viewHolder.progressBar1.setVisibility(View.INVISIBLE);
 
         }else{
-            viewHolder.tv1.setText(home.getDay());
-            viewHolder.tv_progress1.setText(((int)home.getProgress())+"%");
-            viewHolder.progressBar1.setProgress((int)home.getProgress());
+            viewHolder.tv1.setText(context.getResources().getString(R.string.day)+" "+(i+1));
+            viewHolder.tv_progress1.setText(((int)Math.ceil(home.getProgress())+"%"));
+            viewHolder.progressBar1.setProgress((int)Math.ceil(home.getProgress()));
         }
         if((int)home.getProgress()==100){
             Log.e("true","true");
-            viewHolder.ll1.setEnabled(false);
-            viewHolder.tv_progress1.setEnabled(false);
-            viewHolder.progressBar1.setEnabled(false);
+//            viewHolder.ll1.setEnabled(false);
+            viewHolder.ll1.setClickable(false);
+            viewHolder.tv_progress1.setClickable(false);
+//            viewHolder.tv_progress1.setEnabled(false);
+//            viewHolder.progressBar1.setEnabled(false);
+            viewHolder.progressBar1.setClickable(false);
         }
         viewHolder.ll1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(viewHolder.getAdapterPosition()+1==4 || viewHolder.getAdapterPosition()+1==8 || viewHolder.getAdapterPosition()+1==12 || viewHolder.getAdapterPosition()+1==16 || viewHolder.getAdapterPosition()+1==20 || viewHolder.getAdapterPosition()+1==24 || viewHolder.getAdapterPosition()+1==28)
+
+                if((int)home.getProgress()==100){
+                    Log.e("true","true1");
+                }
+
+                else if(viewHolder.getAdapterPosition()+1==4 || viewHolder.getAdapterPosition()+1==8 || viewHolder.getAdapterPosition()+1==12 || viewHolder.getAdapterPosition()+1==16 || viewHolder.getAdapterPosition()+1==20 || viewHolder.getAdapterPosition()+1==24 || viewHolder.getAdapterPosition()+1==28)
                 {
                     Log.e("my day ",""+(viewHolder.getAdapterPosition()+1));
                     Intent intent = new Intent(context, RestDayActivity.class);

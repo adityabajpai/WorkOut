@@ -78,8 +78,6 @@ public class HomeActivity extends AppCompatActivity
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,7 +110,7 @@ public class HomeActivity extends AppCompatActivity
         homeList = databaseOperations.getAllDaysProgress();
         int totalProgressApp = 0,totalCompleteDays=0;
         for(WorkoutData workoutData:homeList){
-            int x = (int)workoutData.getProgress();
+            int x = (int)Math.ceil(workoutData.getProgress());
             totalProgressApp += x;
             if(x == 100){
                 totalCompleteDays++;
@@ -122,7 +120,7 @@ public class HomeActivity extends AppCompatActivity
         if(totalProgressApp == 100){
             restartProgress();
         }
-        daysLeftView.setText((30-totalCompleteDays)+" days left");
+        daysLeftView.setText((30-totalCompleteDays)+ getResources().getString(R.string.dayleft));
         allProgess.setText(totalProgressApp+"%");
         allProgressBar.setProgress(totalProgressApp);
         adapter = new HomeAdapter(getApplicationContext(), homeList);
@@ -147,15 +145,15 @@ public class HomeActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure you want to exit?")
+            builder.setMessage(getResources().getString(R.string.exitapp))
                     .setCancelable(false)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             HomeActivity.this.finish();
                             finish();
                         }
                     })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
@@ -197,8 +195,10 @@ public class HomeActivity extends AppCompatActivity
             //
         } else if (id == R.id.meals_Plan) {
             startActivity(new Intent(getApplicationContext(), MealsMainActivity.class));
+            finish();
         } else if (id == R.id.reminder) {
             startActivity(new Intent(HomeActivity.this, AlarmMainActivity.class));
+            finish();
         } else if (id == R.id.bmi_Calculator) {
             loadCalculateActivity();
         } else if (id == R.id.language) {
@@ -365,6 +365,14 @@ public class HomeActivity extends AppCompatActivity
         this.lang_portugese = dialogLanguage.findViewById(R.id.brazil);
         this.lang_english = dialogLanguage.findViewById(R.id.usa);
         this.select = dialogLanguage.findViewById(R.id.select);
+        String language = sharedPreferences.getString(Locale_KeyValue, "");
+        if(language.equals("es")){
+            lang_spain.setChecked(true);
+        }else if(language.equals("pt")){
+            lang_portugese.setChecked(true);
+        }else{
+            lang_english.setChecked(true);
+        }
         this.lang_portugese.setOnClickListener(new C10204(this));
         this.lang_english.setOnClickListener(new C10215(this));
         this.lang_spain.setOnClickListener(new C10226(this));
@@ -390,6 +398,8 @@ public class HomeActivity extends AppCompatActivity
                 changeLocale("en");
             }
             dialogLanguage.dismiss();
+//            adapter.notifyDataSetChanged();
+//            recreate();
         }
     }
     public void changeLocale(String lang) {
@@ -402,9 +412,7 @@ public class HomeActivity extends AppCompatActivity
         config.locale = myLocale;//set config locale as selected locale
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the config
         Log.e("Language changed",lang);
-//        Intent refresh = new Intent(this, HomeActivity.class);
-//        startActivity(refresh);
-//        finish();
+        adapter.notifyDataSetChanged();
     }
 
     public void saveLocale(String lang) {

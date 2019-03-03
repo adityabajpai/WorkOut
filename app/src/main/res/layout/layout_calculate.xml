@@ -511,7 +511,7 @@
         android:layout_height="35.0dip"
         android:layout_marginTop="10.0dip"
         android:layout_marginRight="10.0dip"
-        android:text="Edit"
+        android:text="EDIT"
         android:layout_alignParentRight="true"
         android:textAllCaps="false" />
 </RelativeLayout>

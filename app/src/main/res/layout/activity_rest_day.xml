@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You need to take rest"
+        android:text="@string/you_need_to_take_rest"
         android:gravity="center"
         android:textColor="#000"
         android:textStyle="bold"
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:text="OK"
+        android:text="@string/ok"
         android:id="@+id/okrestDay"
         android:gravity="center"
         android:background="@drawable/back"

@@ -7,42 +7,42 @@
         <item
             android:id="@+id/training_Plan"
             android:icon="@drawable/ic_timer_black_24dp"
-            android:title="Training Plan" />
+            android:title="@string/training_plan" />
         <item
             android:id="@+id/meals_Plan"
             android:icon="@drawable/ic_restaurant_menu_black_24dp"
-            android:title="Meals Plan" />
+            android:title="@string/meals_plan" />
         <item
             android:id="@+id/reminder"
             android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Reminder" />
+            android:title="@string/reminder" />
         <item
             android:id="@+id/bmi_Calculator"
             android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="BMI Calculator" />
+            android:title="@string/bmi_calculator" />
 
         <item
             android:id="@+id/language"
             android:icon="@drawable/ic_public_black_24dp"
-            android:title="Languages" />
+            android:title="@string/languages" />
 
         <item
             android:id="@+id/share"
             android:icon="@drawable/ic_share_black_24dp"
-            android:title="Share" />
+            android:title="@string/share" />
         <item
             android:id="@+id/feedback"
             android:icon="@drawable/ic_feedback_black_24dp"
-            android:title="FeedBack" />
+            android:title="@string/feedback" />
         <item
             android:id="@+id/rate_Us"
             android:icon="@drawable/ic_thumb_up_black_24dp"
-            android:title="Rate Us" />
+            android:title="@string/rateus" />
 
         <item
             android:id="@+id/restart_Progress"
             android:icon="@drawable/ic_replay_black_24dp"
-            android:title="Restart Progress" />
+            android:title="@string/restart_progress" />
 
     </group>
 

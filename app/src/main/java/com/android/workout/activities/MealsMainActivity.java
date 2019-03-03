@@ -1,5 +1,6 @@
 package com.android.workout.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,8 @@ public class MealsMainActivity extends AppCompatActivity {
         switch (getSupportFragmentManager().getBackStackEntryCount()) {
             case 0:
                 super.onBackPressed();
+                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                finish();
                 break;
             case 1:
                 break;

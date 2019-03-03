@@ -51,48 +51,38 @@
 		android:orientation="horizontal"
 		android:id="@+id/dietbtns"
 		android:layout_width="match_parent"
+        android:weightSum="2"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="10dp"
 		android:layout_marginBottom="10dp">
 
-		<View
-			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_weight="0.1"/>
 
 		<Button
 			android:textSize="20sp"
 			android:textColor="@color/black"
 			android:id="@+id/Stddiet"
 			android:background="@drawable/roundbtncorner"
-			android:layout_width="0dp"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/standarddiet"
 			android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
 			android:textAllCaps="false"
 			android:fontFamily="@font/roboto_medium"/>
-
-		<View
-			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_weight="0.1"/>
 
 		<Button
 			android:textSize="20sp"
 			android:textColor="@color/black"
 			android:id="@+id/vegdiet"
+            android:layout_marginRight="5dp"
 			android:background="@drawable/roundbtncorner"
-			android:layout_width="0dp"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/vegeteriandiet"
 			android:layout_weight="1"
 			android:textAllCaps="false"
 			android:fontFamily="@font/roboto_medium"/>
-
-		<View
-			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_weight="0.1"/>
 	</LinearLayout>
 
 	<FrameLayout

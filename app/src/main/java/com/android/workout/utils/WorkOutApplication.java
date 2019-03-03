@@ -8,7 +8,7 @@ import android.util.Log;
 
 import java.util.Locale;
 
-public class setLanguage extends Application {
+public class WorkOutApplication extends Application {
     private static Locale myLocale;
 
     private static final String Locale_Preference = "Locale Preference";

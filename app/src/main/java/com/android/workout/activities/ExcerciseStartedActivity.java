@@ -157,8 +157,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
         img_btn_pause.setVisibility(View.INVISIBLE);
         img_btn_play.setVisibility(View.VISIBLE);
         new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
-                .setMessage("Would you like to repeat this workout?")
-                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                .setMessage(getResources().getString(R.string.repeatworkout))
+                .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (isRunningC1) {
@@ -221,11 +221,10 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                         Log.e("value inserted", "" + check);
                         Bundle bundle1 = new Bundle();
                         bundle1.putInt("day", dayNo);
-
                         startActivity(new Intent(ExcerciseStartedActivity.this, ExcerciseActivity.class).putExtras(bundle1));
                         finish();
                     }
-                }).setNegativeButton("no", null).show();
+                }).setNegativeButton(getResources().getString(R.string.no), null).show();
     }
 
     int totalDayCyclesXX;
@@ -421,6 +420,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                         public void onFinish() {
                             isRunningC1 = false;
                             c1.cancel();
+                            workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime1 - 2000) / 2000) * 100)
+                                    / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                            Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                             relativeLayout.setVisibility(View.INVISIBLE);
                             linearLayout.setVisibility(View.VISIBLE);
                             c2.start();
@@ -474,6 +476,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                         public void onFinish() {
                             isRunningC3 = false;
                             c3.cancel();
+                            workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime3 - 2000) / 2000) * 100)
+                                    / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                            Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                             relativeLayout.setVisibility(View.INVISIBLE);
                             linearLayout.setVisibility(View.VISIBLE);
                             tv_nextExcerciseName.setText(name5);
@@ -527,6 +532,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                         public void onFinish() {
                             isRunningC5 = false;
                             c5.cancel();
+                            workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime5 - 2000) / 2000) * 100)
+                                    / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                            Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                             relativeLayout.setVisibility(View.INVISIBLE);
                             linearLayout.setVisibility(View.VISIBLE);
                             tv_nextExcerciseName.setText(name7);
@@ -580,6 +588,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                         public void onFinish() {
                             isRunningC7 = false;
                             c7.cancel();
+                            workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime7 - 2000) / 2000) * 100)
+                                    / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                            Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                             relativeLayout.setVisibility(View.INVISIBLE);
                             linearLayout.setVisibility(View.VISIBLE);
                             tv_nextExcerciseName.setText(name9);
@@ -633,6 +644,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                         public void onFinish() {
                             isRunningC9 = false;
                             c9.cancel();
+                            workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime9 - 2000) / 2000) * 100)
+                                    / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                            Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                             relativeLayout.setVisibility(View.INVISIBLE);
                             linearLayout.setVisibility(View.VISIBLE);
                             tv_nextExcerciseName.setText(name11);
@@ -686,6 +700,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                         public void onFinish() {
                             isRunningC11 = false;
                             c11.cancel();
+                            workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime11 - 2000) / 2000) * 100)
+                                    / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                            Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                             relativeLayout.setVisibility(View.INVISIBLE);
                             linearLayout.setVisibility(View.VISIBLE);
                             speakOut2();
@@ -800,7 +817,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
                 linearLayout.setVisibility(View.VISIBLE);
                 tv_nextExcerciseName.setText(name3);
                 tv_nextExcerciseTotalSet.setText("x" + ((totaltime3 - 2000) / 2000));
-                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime1 - 2000) / 2000) * 100) / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime1 - 2000) / 2000) * 100)
+                        / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
                 Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                 speakOut1();
                 c2.start();
@@ -850,7 +868,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
             public void onFinish() {
                 isRunningC3 = false;
                 c3.cancel();
-                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime3 - 2000) / 2000) * 100) / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime3 - 2000) / 2000) * 100)
+                        / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
                 Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -908,7 +927,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
             public void onFinish() {
                 isRunningC5 = false;
                 c5.cancel();
-                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime5 - 2000) / 2000) * 100) / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime5 - 2000) / 2000) * 100)
+                        / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
                 Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -967,7 +987,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
             public void onFinish() {
                 isRunningC7 = false;
                 c7.cancel();
-                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime7 - 2000) / 2000) * 100) / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime7 - 2000) / 2000) * 100)
+                        / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
                 Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -1026,7 +1047,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
             public void onFinish() {
                 isRunningC9 = false;
                 c9.cancel();
-                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime9 - 2000) / 2000) * 100) / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime9 - 2000) / 2000) * 100)
+                        / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
                 Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -1085,7 +1107,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity implements
             public void onFinish() {
                 isRunningC11 = false;
                 c11.cancel();
-                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime11 - 2000) / 2000) * 100) / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
+                workoutData.setProgress(workoutData.getProgress() + ((float) (((totaltime11 - 2000) / 2000) * 100)
+                        / (((totaltime1 + totaltime3 + totaltime5 + totaltime7 + totaltime9 + totaltime11) - (2000 * 6)) / 2000)));
                 Log.e("Current progress" + dayNo, "" + workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
