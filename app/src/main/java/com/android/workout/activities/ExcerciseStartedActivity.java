@@ -837,7 +837,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 linearLayout.setVisibility(View.VISIBLE);
                 tv_nextExcerciseName.setText(name3);
                 tv_nextExcerciseTotalSet.setText("x"+ ((totaltime3-2000)/2000));
-                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                workoutData.setProgress(workoutData.getProgress()+((float)(((totaltime1-2000)/2000)*100)/(((totaltime1+totaltime3+totaltime5+totaltime7+totaltime9+totaltime11)-(2000*6))/2000)));
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 c2.start();
             }
@@ -888,7 +888,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC3 = false;
                 c3.cancel();
-                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                workoutData.setProgress(workoutData.getProgress()+((float)(((totaltime3-2000)/2000)*100)/(((totaltime1+totaltime3+totaltime5+totaltime7+totaltime9+totaltime11)-(2000*6))/2000)));
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -947,7 +947,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC5 = false;
                 c5.cancel();
-                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                workoutData.setProgress(workoutData.getProgress()+((float)(((totaltime5-2000)/2000)*100)/(((totaltime1+totaltime3+totaltime5+totaltime7+totaltime9+totaltime11)-(2000*6))/2000)));
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -1007,7 +1007,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC7 = false;
                 c7.cancel();
-                workoutData.setProgress(workoutData.getProgress()+((float)1500/125));
+                workoutData.setProgress(workoutData.getProgress()+((float)(((totaltime7-2000)/2000)*100)/(((totaltime1+totaltime3+totaltime5+totaltime7+totaltime9+totaltime11)-(2000*6))/2000)));
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -1067,7 +1067,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC9 = false;
                 c9.cancel();
-                workoutData.setProgress(workoutData.getProgress()+((float)2000/125));
+                workoutData.setProgress(workoutData.getProgress()+((float)(((totaltime9-2000)/2000)*100)/(((totaltime1+totaltime3+totaltime5+totaltime7+totaltime9+totaltime11)-(2000*6))/2000)));
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -1127,7 +1127,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onFinish() {
                 isRunningC11 = false;
                 c11.cancel();
-                workoutData.setProgress(workoutData.getProgress()+((float)3000/125));
+                workoutData.setProgress(workoutData.getProgress()+((float)(((totaltime11-2000)/2000)*100)/(((totaltime1+totaltime3+totaltime5+totaltime7+totaltime9+totaltime11)-(2000*6))/2000)));
                 Log.e("Current progress"+dayNo,""+workoutData.getProgress());
                 relativeLayout.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
@@ -1170,6 +1170,53 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if (isRunningC1) {
+            isPausedC1 = true;
+            viewFlipper_pushups.stopFlipping();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C1",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            first = true;
+            Log.e("Progress paused", "" + progress_stored);
+//            Toast.makeText(ExcerciseStartedActivity.this, "C1", Toast.LENGTH_SHORT).show();
+        } else if (isRunningC3) {
+            isPausedC3 = true;
+            viewFlipper_squats.stopFlipping();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C3",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            third = true;
+//            Toast.makeText(ExcerciseStartedActivity.this, "C3", Toast.LENGTH_SHORT).show();
+        } else if (isRunningC5) {
+            isPausedC5 = true;
+            viewFlipper_legRaise.stopFlipping();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C5",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            fifth = true;
+//            Toast.makeText(ExcerciseStartedActivity.this, "C5", Toast.LENGTH_SHORT).show();
+        } else if (isRunningC7) {
+            isPausedC7 = true;
+            viewFlipper_jumpingJack.stopFlipping();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C7",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            seventh = true;
+//            Toast.makeText(ExcerciseStartedActivity.this, "C7", Toast.LENGTH_SHORT).show();
+        } else if (isRunningC9) {
+            isPausedC9 = true;
+            viewFlipper_squatsAgain.stopFlipping();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C9",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            ninth = true;
+//            Toast.makeText(ExcerciseStartedActivity.this, "C9", Toast.LENGTH_SHORT).show();
+        } else if (isRunningC11) {
+            isPausedC11 = true;
+            viewFlipper_plankwithlegFit.stopFlipping();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C11",Toast.LENGTH_LONG).show();
+            progress_stored = progress;
+            eleventh = true;
+//            Toast.makeText(ExcerciseStartedActivity.this, "C11", Toast.LENGTH_SHORT).show();
+        }
+        img_btn_pause.setVisibility(View.INVISIBLE);
+        img_btn_play.setVisibility(View.VISIBLE);
+
     }
 
 }
