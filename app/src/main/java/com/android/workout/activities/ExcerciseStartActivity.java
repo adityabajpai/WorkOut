@@ -3,6 +3,7 @@ package com.android.workout.activities;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,11 +16,14 @@ import com.android.workout.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
-public class ExcerciseStartActivity extends AppCompatActivity{
+public class ExcerciseStartActivity extends AppCompatActivity implements
+        TextToSpeech.OnInitListener{
 
+    private TextToSpeech tts;
     FloatingActionButton floatingActionButton_play, floatingActionButton_pause;
-    MediaPlayer mySong;
+//    MediaPlayer mySong;
     TextView tvCountDown;
     //    int count=10;
     TextView btn_skip;
@@ -47,11 +51,12 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         floatingActionButton_play = findViewById(R.id.play);
         floatingActionButton_pause = findViewById(R.id.pause);
         tvCountDown = findViewById(R.id.countDown);
+        tts = new TextToSpeech(this, this);
         btn_skip = findViewById(R.id.skipButton);
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat("ss");
-        mySong = MediaPlayer.create(ExcerciseStartActivity.this,R.raw.hum);
-        mySong.start();
+//        mySong = MediaPlayer.create(ExcerciseStartActivity.this,R.raw.hum);
+//        mySong.start();
 //        t = new Thread(){
 //            @Override
 //            public void run() {
@@ -94,6 +99,8 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                     c1_isRunning = true;
                     display_time = millisUntilFinished;
                     tvCountDown.setText("" + display_time / 1000);
+                    Log.e("TextToSpeech",tvCountDown.getText()+"");
+                    speakOut();
                 }
             }
 
@@ -101,7 +108,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
             public void onFinish() {
                 c1_isRunning = false;
                 c1.cancel();
-                mySong.stop();
+//                mySong.stop();
                 bundle = new Bundle();
                 bundle.putInt("day",dayNo);
                 startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class).putExtras(bundle));
@@ -116,7 +123,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                     c1.cancel();
                 }
                 c1_isCanceled = true;
-                mySong.stop();
+//                mySong.stop();
                 bundle = new Bundle();
                 bundle.putInt("day",dayNo);
                 startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class).putExtras(bundle));
@@ -126,7 +133,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         floatingActionButton_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mySong.pause();
+//                mySong.pause();
                 pause_time = System.currentTimeMillis();
                 c1_isRunning = false;
                 c1_isPaused = true;
@@ -139,7 +146,7 @@ public class ExcerciseStartActivity extends AppCompatActivity{
         floatingActionButton_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mySong.start();
+//                mySong.start();
                 play_time = System.currentTimeMillis();
 //                play_time = calendar.get(Calendar.SECOND);
                 diff = play_time - pause_time;
@@ -163,6 +170,8 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                             c1_isRunning = true;
                             display_time = millisUntilFinished;
                             tvCountDown.setText("" + display_time / 1000);
+                            Log.e("TextToSpeech",tvCountDown.getText()+"");
+                            speakOut();
                         }
                     }
 
@@ -170,8 +179,10 @@ public class ExcerciseStartActivity extends AppCompatActivity{
                     public void onFinish() {
                         c1_isRunning = false;
                         c1.cancel();
-                        mySong.stop();
-                        startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class));
+//                        mySong.stop();
+                        bundle = new Bundle();
+                        bundle.putInt("day",dayNo);
+                        startActivity(new Intent(ExcerciseStartActivity.this, ExcerciseStartedActivity.class).putExtras(bundle));
                         finish();
                     }
                 }.start();
@@ -188,11 +199,66 @@ public class ExcerciseStartActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mySong.stop();
+//        mySong.stop();
         if(c1_isRunning)
         {
             c1.cancel();
         }
         finish();
+    }
+
+    @Override
+    public void onDestroy() {
+// Don't forget to shutdown tts!
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void onInit(int status) {
+
+        if (status == TextToSpeech.SUCCESS) {
+
+            int result = tts.setLanguage(Locale.US);
+
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "This Language is not supported");
+            } else {
+//                buttonSpeak.setEnabled(true);
+                speakOut();
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!");
+        }
+
+    }
+
+    private void speakOut() {
+        if(tvCountDown.getText().equals("0"))
+        {
+            tts.speak("Ready to Go", TextToSpeech.QUEUE_FLUSH, null);
+        }
+        else
+        {
+            String text = tvCountDown.getText().toString();
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pause_time = System.currentTimeMillis();
+        c1_isRunning = false;
+        c1_isPaused = true;
+//                pause_time = calendar.get(Calendar.SECOND);
+//                Toast.makeText(ThreadActivity.this, pause_time+"", Toast.LENGTH_SHORT).show();
+        floatingActionButton_pause.setVisibility(View.INVISIBLE);
+        floatingActionButton_play.setVisibility(View.VISIBLE);
     }
 }
