@@ -58,6 +58,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         if((int)home.getProgress()==100){
             Log.e("true","true");
             viewHolder.ll1.setEnabled(false);
+            viewHolder.tv_progress1.setEnabled(false);
+            viewHolder.progressBar1.setEnabled(false);
         }
         viewHolder.ll1.setOnClickListener(new View.OnClickListener() {
             @Override

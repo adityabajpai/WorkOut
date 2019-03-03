@@ -36,7 +36,7 @@ public class AlarmHelper {
     }
 
     private PendingIntent getPendingIntent() {
-        Intent intent = new Intent("com.outthinking.weightloss.alarmmanagerdemo.NOTIFY_ACTION");
+        Intent intent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
         intent.setClass(this.context, NotificationPublisher.class);
         intent.setFlags(ErrorDialogData.BINDER_CRASH);
         return PendingIntent.getBroadcast(this.context, getNextRequestCode(), intent, 134217728);
@@ -48,13 +48,13 @@ public class AlarmHelper {
     }
 
     public PendingIntent existAlarm(int i) {
-        Intent intent = new Intent("com.outthinking.weightloss.alarmmanagerdemo.NOTIFY_ACTION");
+        Intent intent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
         intent.setClass(this.context, NotificationPublisher.class);
         return PendingIntent.getBroadcast(this.context, i, intent, ErrorDialogData.DYNAMITE_CRASH);
     }
 
     public boolean isAlarmScheduled(int i) {
-        Intent intent = new Intent("com.outthinking.weightloss.alarmmanagerdemo.NOTIFY_ACTION");
+        Intent intent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
         intent.setClass(this.context, NotificationPublisher.class);
         return PendingIntent.getBroadcast(this.context, i, intent, ErrorDialogData.DYNAMITE_CRASH) != null;
     }

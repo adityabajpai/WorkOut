@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -86,7 +87,7 @@ public class DailyMeal extends Fragment {
         ((StringBuilder) localObject).append("DAY_");
         ((StringBuilder) localObject).append(getArguments().getInt("DAY"));
         ((StringBuilder) localObject).append("_CHECKED");
-        localObject = localObject.toString();
+        final String str0 = localObject.toString();
         Object obj1 = new StringBuilder();
         ((StringBuilder) obj1).append("DAY_");
         ((StringBuilder) obj1).append(getArguments().getInt("DAY"));
@@ -97,7 +98,7 @@ public class DailyMeal extends Fragment {
         ((StringBuilder) obj1).append(getArguments().getInt("DAY"));
         ((StringBuilder) obj1).append("_VEGDIET");
         final String str2 = obj1.toString();
-        complete = Boolean.valueOf(mSharedPreferences.getBoolean((String)localObject, false));
+        complete = Boolean.valueOf(mSharedPreferences.getBoolean(str0, false));
         stddietenabled = Boolean.valueOf(mSharedPreferences.getBoolean(str1, false));
         vegdietenabled = Boolean.valueOf(mSharedPreferences.getBoolean(str2, false));
         completed = inflate.findViewById(R.id.fab);
@@ -795,8 +796,8 @@ public class DailyMeal extends Fragment {
                 if(!stddietenabled.booleanValue()){
                     mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorAccent));
                     mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
-                    mLayoutStdDiet.setVisibility(View.VISIBLE);
-                    mLayoutVegDiet.setVisibility(View.INVISIBLE);
+                    scrollstddietfood.setVisibility(View.VISIBLE);
+                    scrollvegdietfood.setVisibility(View.INVISIBLE);
                     prefsEditor.putBoolean(str1,true);
                     prefsEditor.putBoolean(str2,false);
                 }
@@ -810,8 +811,8 @@ public class DailyMeal extends Fragment {
                 if(!vegdietenabled.booleanValue()){
                     mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorAccent));
                     mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
-                    mLayoutVegDiet.setVisibility(View.VISIBLE);
-                    mLayoutStdDiet.setVisibility(View.INVISIBLE);
+                    scrollvegdietfood.setVisibility(View.VISIBLE);
+                    scrollstddietfood.setVisibility(View.INVISIBLE);
                     prefsEditor.putBoolean(str1,false);
                     prefsEditor.putBoolean(str2,true);
                 }
@@ -821,14 +822,18 @@ public class DailyMeal extends Fragment {
         completed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (complete.booleanValue())
+
+                complete = mSharedPreferences.getBoolean(str0,false);
+
+                if (!complete.booleanValue())
                 {
                     completed.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.lightpink)));
-                    complete = false;
+                    prefsEditor.putBoolean(str0,true);
                 }else{
                     completed.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-                    complete = true;
+                    prefsEditor.putBoolean(str0,false);
                 }
+                prefsEditor.commit();
 
             }
         });
@@ -838,31 +843,36 @@ public class DailyMeal extends Fragment {
             mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
             scrollstddietfood.setVisibility(0);
             scrollvegdietfood.setVisibility(8);
+        }else{
+            mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+            mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+            scrollstddietfood.setVisibility(8);
+            scrollvegdietfood.setVisibility(0);
         }
-        for (;;)
-        {
-            if ((!stddietenabled.booleanValue()) && (vegdietenabled.booleanValue() == true))
-            {
-                mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
-                mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorAccent));
-                scrollstddietfood.setVisibility(8);
-                scrollvegdietfood.setVisibility(0);
-            }
-            else
-            {
-                if ((stddietenabled.booleanValue()) || (vegdietenabled.booleanValue())) {
-                    break;
-                }
-                mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorAccent));
-                mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
-                scrollstddietfood.setVisibility(0);
-                scrollvegdietfood.setVisibility(8);
-                prefsEditor.putBoolean(str1, true);
-                prefsEditor.putBoolean(str2, false);
-                prefsEditor.commit();
-            }
-            return inflate;
-        }
+//        for (;;)
+//        {
+//            if ((!stddietenabled.booleanValue()) && (vegdietenabled.booleanValue() == true))
+//            {
+//                mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+//                scrollstddietfood.setVisibility(8);
+//                scrollvegdietfood.setVisibility(0);
+//            }
+//            else
+//            {
+//                if ((stddietenabled.booleanValue()) || (vegdietenabled.booleanValue())) {
+//                    break;
+//                }
+//                mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorAccent));
+//                mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                scrollstddietfood.setVisibility(0);
+//                scrollvegdietfood.setVisibility(8);
+//                prefsEditor.putBoolean(str1, true);
+//                prefsEditor.putBoolean(str2, false);
+//                prefsEditor.commit();
+//            }
+//            return inflate;
+//        }
         if (complete.booleanValue())
         {
             completed.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.lightpink)));

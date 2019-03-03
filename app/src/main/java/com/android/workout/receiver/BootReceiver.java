@@ -43,7 +43,7 @@ public class BootReceiver extends BroadcastReceiver {
     }
 
     private PendingIntent getPendingIntent() {
-        Intent localIntent = new Intent("com.outthinking.weightloss.alarmmanagerdemo.NOTIFY_ACTION");
+        Intent localIntent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
         localIntent.setClass(context, NotificationPublisher.class);
         localIntent.setFlags(268435456);
         return PendingIntent.getBroadcast(context, getNextRequestCode(), localIntent, 134217728);

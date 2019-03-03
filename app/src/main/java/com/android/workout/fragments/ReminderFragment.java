@@ -1,12 +1,12 @@
 package com.android.workout.fragments;
 
+import android.app.AlertDialog.Builder;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.app.AlertDialog.Builder;
 
 import com.android.workout.R;
 import com.android.workout.adapters.ReminderAdapter;
@@ -48,8 +47,8 @@ public class ReminderFragment extends Fragment {
     private SharedPreferences.Editor prefsEditor;
 
     class C10432 implements View.OnClickListener {
-        /* renamed from: a */
-        final /* synthetic */ ReminderFragment f3352a;
+
+        final ReminderFragment f3352a;
 
         C10432(ReminderFragment reminderFragment) {
             this.f3352a = reminderFragment;
@@ -61,8 +60,8 @@ public class ReminderFragment extends Fragment {
     }
 
     class C10443 implements TimePickerDialog.OnTimeSetListener {
-        /* renamed from: a */
-        final /* synthetic */ ReminderFragment f3353a;
+
+        final ReminderFragment f3353a;
 
         C10443(ReminderFragment reminderFragment) {
             this.f3353a = reminderFragment;
@@ -84,8 +83,8 @@ public class ReminderFragment extends Fragment {
     }
 
     class C10476 implements DialogInterface.OnClickListener {
-        /* renamed from: a */
-        final /* synthetic */ ReminderFragment f3359a;
+
+        final ReminderFragment f3359a;
 
         C10476(ReminderFragment reminderFragment) {
             this.f3359a = reminderFragment;
@@ -97,8 +96,8 @@ public class ReminderFragment extends Fragment {
     }
 
     class C15101 extends TypeToken<List<Reminder_custom>> {
-        /* renamed from: d */
-        final /* synthetic */ ReminderFragment f5149d;
+
+        final ReminderFragment f5149d;
 
         C15101(ReminderFragment reminderFragment) {
             this.f5149d = reminderFragment;
@@ -129,7 +128,7 @@ public class ReminderFragment extends Fragment {
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View inflate = layoutInflater.inflate(R.layout.layout_reminderfragment, viewGroup, false);
         inflate.setTag(TAG);
-        Toolbar toolbar = (Toolbar) inflate.findViewById(R.id.toolbar);
+        Toolbar toolbar = inflate.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -137,12 +136,12 @@ public class ReminderFragment extends Fragment {
         setHasOptionsMenu(true);
         this.alarmHelper = new AlarmHelper(getActivity());
         this.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        this.mRecyclerView = (RecyclerView) inflate.findViewById(R.id.reminderlist);
+        this.mRecyclerView = inflate.findViewById(R.id.reminderlist);
         this.mRecyclerView.setHasFixedSize(true);
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        this.noreminders = (TextView) inflate.findViewById(R.id.noreminder);
+        this.noreminders = inflate.findViewById(R.id.noreminder);
         this.gson = new Gson();
-        this.mReCu = (List) this.gson.fromJson(this.mSharedPreferences.getString("Reminder_customObjectList", null), new C15101(this).getType());
+        this.mReCu = this.gson.fromJson(this.mSharedPreferences.getString("Reminder_customObjectList", null), new C15101(this).getType());
         if (this.mReCu == null || this.mReCu.size() <= 0) {
             this.mRecyclerView.setVisibility(8);
             this.noreminders.setVisibility(0);
@@ -153,6 +152,7 @@ public class ReminderFragment extends Fragment {
             this.noreminders.setVisibility(8);
         }
         inflate.findViewById(R.id.addreminder).setOnClickListener(new C10432(this));
+        mAdapter.notifyDataSetChanged();
         return inflate;
     }
 
@@ -175,9 +175,7 @@ public class ReminderFragment extends Fragment {
                     arrayList.add(Integer.valueOf(i));
                     return;
                 }
-                if (arrayList.contains(Integer.valueOf(i))) {
-                    arrayList.remove(Integer.valueOf(i));
-                }
+                arrayList.remove(Integer.valueOf(i));
             }
         });
         builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -189,19 +187,19 @@ public class ReminderFragment extends Fragment {
                     Reminder_custom reminder_custom = new Reminder_custom();
                     reminder_custom.settime(startTimeFormat().format(calendar.getTime()));
                     for (i = 0; i < arrayList.size(); i++) {
-                        if (((Integer) arrayList.get(i)).equals(Integer.valueOf(0))) {
+                        if (arrayList.get(i).equals(Integer.valueOf(0))) {
                             reminder_custom.setMon(true);
-                        } else if (((Integer) arrayList.get(i)).equals(Integer.valueOf(1))) {
+                        } else if (arrayList.get(i).equals(Integer.valueOf(1))) {
                             reminder_custom.setTue(true);
-                        } else if (((Integer) arrayList.get(i)).equals(Integer.valueOf(2))) {
+                        } else if (arrayList.get(i).equals(Integer.valueOf(2))) {
                             reminder_custom.setWen(true);
-                        } else if (((Integer) arrayList.get(i)).equals(Integer.valueOf(3))) {
+                        } else if (arrayList.get(i).equals(Integer.valueOf(3))) {
                             reminder_custom.setThr(true);
-                        } else if (((Integer) arrayList.get(i)).equals(Integer.valueOf(4))) {
+                        } else if (arrayList.get(i).equals(Integer.valueOf(4))) {
                             reminder_custom.setFri(true);
-                        } else if (((Integer) arrayList.get(i)).equals(Integer.valueOf(5))) {
+                        } else if (arrayList.get(i).equals(Integer.valueOf(5))) {
                             reminder_custom.setSat(true);
-                        } else if (((Integer) arrayList.get(i)).equals(Integer.valueOf(6))) {
+                        } else if (arrayList.get(i).equals(Integer.valueOf(6))) {
                             reminder_custom.setSun(true);
                         }
                     }

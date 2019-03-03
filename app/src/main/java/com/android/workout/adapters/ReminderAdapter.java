@@ -42,8 +42,8 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
     private Reminder_custom reminderproduct;
 
     class C10427 implements DialogInterface.OnClickListener {
-        /* renamed from: a */
-        final /* synthetic */ ReminderAdapter f3351a;
+
+        final  ReminderAdapter f3351a;
 
         C10427(ReminderAdapter reminderAdapter) {
             this.f3351a = reminderAdapter;
@@ -55,28 +55,18 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
     }
 
     class ProductViewHolder extends ViewHolder {
-        /* renamed from: a */
+
         TextView f5137a;
-        /* renamed from: b */
         TextView f5138b;
-        /* renamed from: c */
         TextView f5139c;
-        /* renamed from: d */
         TextView f5140d;
-        /* renamed from: e */
         TextView f5141e;
-        /* renamed from: f */
         TextView f5142f;
-        /* renamed from: g */
         TextView f5143g;
-        /* renamed from: h */
         TextView f5144h;
-        /* renamed from: i */
         ImageView f5145i;
-        /* renamed from: j */
         Switch f5146j;
-        /* renamed from: k */
-        final /* synthetic */ ReminderAdapter f5147k;
+        final ReminderAdapter f5147k;
 
         public ProductViewHolder(ReminderAdapter reminderAdapter, View view) {
             super(view);
@@ -139,7 +129,6 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
         this.reminderproduct = this.productList.get(i);
         productViewHolder.f5137a.setText(this.reminderproduct.gettime());
         productViewHolder.f5137a.setOnClickListener(new View.OnClickListener() {
-            /* renamed from: b */
 
             public void onClick(View view) {
                 reminderproduct = productList.get(productViewHolder.getAdapterPosition());
@@ -190,8 +179,6 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
         }
         productViewHolder.f5146j.setChecked(this.reminderproduct.getOnoff());
         productViewHolder.f5146j.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            /* renamed from: b */
-            
 
             public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
                 reminderproduct = productList.get(productViewHolder.getAdapterPosition());
@@ -203,7 +190,6 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
             }
         });
         productViewHolder.f5145i.setOnClickListener(new View.OnClickListener() {
-            /* renamed from: b */
 
             public void onClick(View view) {
                 if (SystemClock.elapsedRealtime() - mLastClickTime >= 1000) {
@@ -212,6 +198,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
                 }
             }
         });
+
     }
     public SimpleDateFormat startTimeFormat() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
@@ -289,6 +276,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
                     prefsEditor.apply();
                     notifyItemChanged(i2);
                     notifyItemRangeChanged(i2, productList.size());
+                    notifyDataSetChanged();
                     return;
                 }
                 Toast.makeText(mCtx, "Please select at-least one day", 0).show();
@@ -308,9 +296,10 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
         }
         for (int k = 0;; k = 1)
         {
-            paramAlarmHelper.schedulePendingIntent(i, j, k);
             i = Integer.parseInt(getHourFormat().format(paramCalendar.getTime()));
             j = Integer.parseInt(getMinuteFormat().format(paramCalendar.getTime()));
+            paramAlarmHelper.schedulePendingIntent(i, j, k);
+            break;
         }
     }
 }

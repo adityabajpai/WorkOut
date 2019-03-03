@@ -102,56 +102,56 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
         {
             isPausedC1 = true;
             viewFlipper_pushups.stopFlipping();
-            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C1",Toast.LENGTH_LONG).show();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C1",Toast.LENGTH_LONG).show();
             progress_stored = progress;
             first = true;
             Log.e("Progress paused",""+progress_stored);
-            Toast.makeText(ExcerciseStartedActivity.this, "C1", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ExcerciseStartedActivity.this, "C1", Toast.LENGTH_SHORT).show();
         }
         else if(isRunningC3)
         {
             isPausedC3 = true;
             viewFlipper_squats.stopFlipping();
-            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C3",Toast.LENGTH_LONG).show();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C3",Toast.LENGTH_LONG).show();
             progress_stored = progress;
             third = true;
-            Toast.makeText(ExcerciseStartedActivity.this, "C3", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ExcerciseStartedActivity.this, "C3", Toast.LENGTH_SHORT).show();
         }
         else if(isRunningC5)
         {
             isPausedC5 = true;
             viewFlipper_legRaise.stopFlipping();
-            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C5",Toast.LENGTH_LONG).show();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C5",Toast.LENGTH_LONG).show();
             progress_stored = progress;
             fifth = true;
-            Toast.makeText(ExcerciseStartedActivity.this, "C5", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ExcerciseStartedActivity.this, "C5", Toast.LENGTH_SHORT).show();
         }
         else if(isRunningC7)
         {
             isPausedC7 = true;
             viewFlipper_jumpingJack.stopFlipping();
-            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C7",Toast.LENGTH_LONG).show();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C7",Toast.LENGTH_LONG).show();
             progress_stored = progress;
             seventh = true;
-            Toast.makeText(ExcerciseStartedActivity.this, "C7", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ExcerciseStartedActivity.this, "C7", Toast.LENGTH_SHORT).show();
         }
         else if(isRunningC9)
         {
             isPausedC9 = true;
             viewFlipper_squatsAgain.stopFlipping();
-            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C9",Toast.LENGTH_LONG).show();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C9",Toast.LENGTH_LONG).show();
             progress_stored = progress;
             ninth = true;
-            Toast.makeText(ExcerciseStartedActivity.this, "C9", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ExcerciseStartedActivity.this, "C9", Toast.LENGTH_SHORT).show();
         }
         else if(isRunningC11)
         {
             isPausedC11 = true;
             viewFlipper_plankwithlegFit.stopFlipping();
-            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C11",Toast.LENGTH_LONG).show();
+//            Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C11",Toast.LENGTH_LONG).show();
             progress_stored = progress;
             eleventh = true;
-            Toast.makeText(ExcerciseStartedActivity.this, "C11", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ExcerciseStartedActivity.this, "C11", Toast.LENGTH_SHORT).show();
         }
         img_btn_pause.setVisibility(View.INVISIBLE);
         img_btn_play.setVisibility(View.VISIBLE);
@@ -345,56 +345,56 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 {
                     isPausedC1 = true;
                     viewFlipper_pushups.stopFlipping();
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C1",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C1",Toast.LENGTH_LONG).show();
                     progress_stored = progress;
                     first = true;
                     Log.e("Progress paused",""+progress_stored);
-                    Toast.makeText(ExcerciseStartedActivity.this, "C1", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this, "C1", Toast.LENGTH_SHORT).show();
                 }
                 else if(isRunningC3)
                 {
                     isPausedC3 = true;
                     viewFlipper_squats.stopFlipping();
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C3",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C3",Toast.LENGTH_LONG).show();
                     progress_stored = progress;
                     third = true;
-                    Toast.makeText(ExcerciseStartedActivity.this, "C3", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this, "C3", Toast.LENGTH_SHORT).show();
                 }
                 else if(isRunningC5)
                 {
                     isPausedC5 = true;
                     viewFlipper_legRaise.stopFlipping();
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C5",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C5",Toast.LENGTH_LONG).show();
                     progress_stored = progress;
                     fifth = true;
-                    Toast.makeText(ExcerciseStartedActivity.this, "C5", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this, "C5", Toast.LENGTH_SHORT).show();
                 }
                 else if(isRunningC7)
                 {
                     isPausedC7 = true;
                     viewFlipper_jumpingJack.stopFlipping();
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C7",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C7",Toast.LENGTH_LONG).show();
                     progress_stored = progress;
                     seventh = true;
-                    Toast.makeText(ExcerciseStartedActivity.this, "C7", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this, "C7", Toast.LENGTH_SHORT).show();
                 }
                 else if(isRunningC9)
                 {
                     isPausedC9 = true;
                     viewFlipper_squatsAgain.stopFlipping();
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C9",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C9",Toast.LENGTH_LONG).show();
                     progress_stored = progress;
                     ninth = true;
-                    Toast.makeText(ExcerciseStartedActivity.this, "C9", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this, "C9", Toast.LENGTH_SHORT).show();
                 }
                 else if(isRunningC11)
                 {
                     isPausedC11 = true;
                     viewFlipper_plankwithlegFit.stopFlipping();
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C11",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Paused C11",Toast.LENGTH_LONG).show();
                     progress_stored = progress;
                     eleventh = true;
-                    Toast.makeText(ExcerciseStartedActivity.this, "C11", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this, "C11", Toast.LENGTH_SHORT).show();
                 }
                 img_btn_pause.setVisibility(View.INVISIBLE);
                 img_btn_play.setVisibility(View.VISIBLE);
@@ -406,7 +406,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(isPausedC1)
                 {
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C1",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C1",Toast.LENGTH_LONG).show();
                     isPausedC1 = false;
                     isCanceledC1 = false;
                     img_btn_play.setVisibility(View.INVISIBLE);
@@ -460,7 +460,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 }
                 else if(isPausedC3)
                 {
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C3",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C3",Toast.LENGTH_LONG).show();
                     isPausedC3 = false;
                     isCanceledC3 = false;
                     img_btn_play.setVisibility(View.INVISIBLE);
@@ -514,7 +514,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 }
                 else if(isPausedC5)
                 {
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C5",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C5",Toast.LENGTH_LONG).show();
                     isPausedC5 = false;
                     isCanceledC5 = false;
                     img_btn_play.setVisibility(View.INVISIBLE);
@@ -568,7 +568,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 }
                 else if(isPausedC7)
                 {
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C7",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C7",Toast.LENGTH_LONG).show();
                     isPausedC7 = false;
                     isCanceledC7 = false;
                     img_btn_play.setVisibility(View.INVISIBLE);
@@ -622,7 +622,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 }
                 else if(isPausedC9)
                 {
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C9",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C9",Toast.LENGTH_LONG).show();
                     isPausedC9 = false;
                     isCanceledC9 = false;
                     img_btn_play.setVisibility(View.INVISIBLE);
@@ -676,7 +676,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                 }
                 else if(isPausedC11)
                 {
-                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C11",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ExcerciseStartedActivity.this,"Excercise Played C11",Toast.LENGTH_LONG).show();
                     isPausedC11 = false;
                     isCanceledC11 = false;
                     img_btn_play.setVisibility(View.INVISIBLE);
@@ -1139,6 +1139,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
 
                 isRunningC12= true;
+                btn_skip.setVisibility(View.INVISIBLE);
                 tv_nextExcerciseTotalSet.setVisibility(View.INVISIBLE);
                 tv_nextExcerciseName.setText(R.string.excercise_done);
                 display_time = millisUntilFinished;
@@ -1165,4 +1166,10 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
             }
         };
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
 }

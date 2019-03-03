@@ -204,7 +204,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.language) {
             customs();
         } else if (id == R.id.share) {
-            shareApp();
+            shareUS();
         } else if (id == R.id.feedback) {
             getFeedback();
         } else if (id == R.id.rate_Us) {
@@ -349,26 +349,27 @@ public class HomeActivity extends AppCompatActivity
         return this.lbs.isChecked() ? (float) (((double) f) * 0.453592d) : f;
     }
 
+    Dialog dialogLanguage;
     void customs(){
-        Dialog dialog = new Dialog(this, R.style.AppTheme);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.PauseDialogAnimation;
-        dialog.getWindow().setLayout(-1, -1);
-        dialog.requestWindowFeature(1);
-        dialog.getWindow().setFlags(1024, 1024);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        dialog.setContentView(R.layout.activity_custom_language);
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(-1, -1);
-        dialog.setCancelable(true);
-        this.lang_spain = dialog.findViewById(R.id.spain);
-        this.lang_portugese = dialog.findViewById(R.id.brazil);
-        this.lang_english = dialog.findViewById(R.id.usa);
-        this.select = dialog.findViewById(R.id.select);
+        dialogLanguage = new Dialog(this, R.style.AppTheme);
+        dialogLanguage.getWindow().getAttributes().windowAnimations = R.style.PauseDialogAnimation;
+        dialogLanguage.getWindow().setLayout(-1, -1);
+        dialogLanguage.requestWindowFeature(1);
+        dialogLanguage.getWindow().setFlags(1024, 1024);
+        dialogLanguage.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        dialogLanguage.setContentView(R.layout.activity_custom_language);
+        dialogLanguage.setCancelable(false);
+        dialogLanguage.getWindow().setLayout(-1, -1);
+        dialogLanguage.setCancelable(true);
+        this.lang_spain = dialogLanguage.findViewById(R.id.spain);
+        this.lang_portugese = dialogLanguage.findViewById(R.id.brazil);
+        this.lang_english = dialogLanguage.findViewById(R.id.usa);
+        this.select = dialogLanguage.findViewById(R.id.select);
         this.lang_portugese.setOnClickListener(new C10204(this));
         this.lang_english.setOnClickListener(new C10215(this));
         this.lang_spain.setOnClickListener(new C10226(this));
         this.select.setOnClickListener(new C10237(this));
-        dialog.show();
+        dialogLanguage.show();
     }
     class C10237 implements View.OnClickListener{
         final HomeActivity homeActivity;
@@ -380,7 +381,7 @@ public class HomeActivity extends AppCompatActivity
         @Override
         public void onClick(View v) {
             if(this.homeActivity.flagbrasil){
-               changeLocale("kn");
+               changeLocale("pt");
             }
             else if(this.homeActivity.flagspain){
                 changeLocale("es");
@@ -388,6 +389,7 @@ public class HomeActivity extends AppCompatActivity
             else{
                 changeLocale("en");
             }
+            dialogLanguage.dismiss();
         }
     }
     public void changeLocale(String lang) {
@@ -497,18 +499,18 @@ public class HomeActivity extends AppCompatActivity
             }
         }
     }
-    private void shareApp() {
-        Intent intent = new Intent();
-        intent.setAction("android.intent.action.SEND");
-        intent.putExtra("android.intent.extra.SUBJECT", getResources().getString(R.string.app_name));
+
+    private void shareUS()
+    {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("https://play.google.com/store/apps/details?id=");
         stringBuilder.append(getApplicationContext().getPackageName());
         String stringBuilder2 = stringBuilder.toString();
         StringBuilder stringBuilder3 = new StringBuilder();
         stringBuilder3.append(getResources().getString(R.string.amazingapp));
-        stringBuilder3.append(getResources().getString(R.string.app_name));
-        stringBuilder3.append(getResources().getString(R.string.awesome));
+        stringBuilder3.append(" "+getResources().getString(R.string.app_name));
+        stringBuilder3.append(" "+getResources().getString(R.string.awesome));
         stringBuilder3.append("\n\n");
         stringBuilder3.append(getResources().getString(R.string.keepsfit));
         stringBuilder3.append("\n\n");
@@ -516,10 +518,11 @@ public class HomeActivity extends AppCompatActivity
         stringBuilder3.append("\n");
         stringBuilder3.append(stringBuilder2);
         stringBuilder2 = stringBuilder3.toString();
-        intent.putExtra("android.intent.extra.TEXT", stringBuilder2);
-        intent.putExtra("android.intent.extra.STREAM", stringBuilder2);
-        intent.setType("text/plain");
-        startActivity(intent);
+        sharingIntent.setType("text/plain");
+        String shareBody = "Here is the share content body";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "WorkOut");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, stringBuilder2);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
 }
