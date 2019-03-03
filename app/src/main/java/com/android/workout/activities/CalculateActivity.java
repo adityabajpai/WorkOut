@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.android.workout.utils.CustomSeekBar;
 import com.android.workout.utils.ProgressItem;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CalculateActivity extends Activity {
 
@@ -55,9 +57,17 @@ public class CalculateActivity extends Activity {
     private TextView wght2;
     private TextView wght4;
     private EditText year;
+    private static final String Locale_Preference = "Locale Preference";
+    private static final String Locale_KeyValue = "Saved Locale";
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
+    private static Locale myLocale;
+
     protected void onCreate(@Nullable Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.layout_calculate);
+        sharedPreferences = getSharedPreferences(Locale_Preference, Activity.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         this.bmiseekBar = findViewById(R.id.bmiseekBar);
         this.heightseekBar = findViewById(R.id.heightseekBar);
         this.wght2 = findViewById(R.id.wght2);
@@ -65,10 +75,32 @@ public class CalculateActivity extends Activity {
         this.hght2 = findViewById(R.id.hght2);
         this.hght4 = findViewById(R.id.hght4);
         this.height_desc = findViewById(R.id.height_desc);
-        initDataToSeekbar();
+        loadLocale();
         this.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+    }
+
+    public void loadLocale() {
+        String language = sharedPreferences.getString(Locale_KeyValue, "");
+        changeLocale(language);
+    }
+
+    public void saveLocale(String lang) {
+        editor.putString(Locale_KeyValue, lang);
+        editor.commit();
+    }
+
+    public void changeLocale(String lang) {
+        if (lang.equalsIgnoreCase(""))
+            return;
+        myLocale = new Locale(lang);//Set Selected Locale
+        saveLocale(lang);//Save the selected locale
+        Locale.setDefault(myLocale);//set new locale as default
+        Configuration config = new Configuration();//get Configuration
+        config.locale = myLocale;//set config locale as selected locale
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the config
+        initDataToSeekbar();
         findViewById(R.id.edit).setOnClickListener(new C10061(this));
-        findViewById(R.id.startexc).setOnClickListener(new C10072(this));
+        findViewById(R.id.startexc).setOnClickListener(new C10072(this));//Update texts according to locale
     }
 
     public void imageclick(View view) {

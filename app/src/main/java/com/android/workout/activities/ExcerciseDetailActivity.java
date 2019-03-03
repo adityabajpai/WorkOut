@@ -1,5 +1,7 @@
 package com.android.workout.activities;
 
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.android.workout.R;
+
+import java.util.Locale;
 
 public class ExcerciseDetailActivity extends AppCompatActivity {
 
@@ -30,8 +34,14 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
     public int[] lunge = {R.drawable.lunge_a,R.drawable.lunge_b,R.drawable.lunge_c};
     public int[] v_crunches = {R.drawable.v_crunches_a,R.drawable.v_crunches_b};
     public int[] vertical_leg_crunches = {R.drawable.vertical_leg_crunches_a,R.drawable.vertical_leg_crunches_b};
-
     ViewFlipper viewFlipper;
+
+    private static Locale myLocale;
+
+    private static final String Locale_Preference = "Locale Preference";
+    private static final String Locale_KeyValue = "Saved Locale";
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +52,35 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         excercise = bundle.getString("excercise");
         Log.e("excercise",excercise);
+    }
+
+    public void changeLocale(String lang) {
+        if (lang.equalsIgnoreCase(""))
+            return;
+        myLocale = new Locale(lang);//Set Selected Locale
+        saveLocale(lang);//Save the selected locale
+        Locale.setDefault(myLocale);//set new locale as default
+        Configuration config = new Configuration();//get Configuration
+        config.locale = myLocale;//set config locale as selected locale
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the config
+        setFlippingViews();//Update texts according to locale
+    }
+
+    //Save locale method in preferences
+    public void saveLocale(String lang) {
+        editor.putString(Locale_KeyValue, lang);
+        editor.commit();
+    }
+
+    //Get locale method in preferences
+    public void loadLocale() {
+        String language = sharedPreferences.getString(Locale_KeyValue, "");
+        changeLocale(language);
+    }
+
+    private void setFlippingViews() {
         if(excercise.equals("PUSHUPS"))
         {
-            excercise_detail_text.setText(R.string.desc_pushups);
             for (int i = 0; i < image_array_pushUps.length; i++) {
                 ImageView imageView = new ImageView(this);
                 imageView.setImageResource(image_array_pushUps[i]);
@@ -52,6 +88,8 @@ public class ExcerciseDetailActivity extends AppCompatActivity {
             }
             viewFlipper.setFlipInterval(500);
             viewFlipper.setAutoStart(true);
+            Log.e("enterd","entrerd");
+            excercise_detail_text.setText(getResources().getString(R.string.desc_pushups));
         }
         else if(excercise.equals("SQUATS"))
         {

@@ -152,7 +152,7 @@ public class ReminderFragment extends Fragment {
             this.noreminders.setVisibility(8);
         }
         inflate.findViewById(R.id.addreminder).setOnClickListener(new C10432(this));
-        mAdapter.notifyDataSetChanged();
+//        mAdapter.notifyDataSetChanged();
         return inflate;
     }
 

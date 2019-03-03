@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -93,6 +95,9 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
 
     long totaltime1, totaltime3, totaltime5, totaltime7, totaltime9, totaltime11;
     String name1, name3, name5 ,name7, name9, name11;
+
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor prefsEditor;
 
 
     @Override
@@ -238,7 +243,7 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
                     }
                 }).setNegativeButton("no", null).show();
     }
-
+    int totalDayCyclesXX;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -247,6 +252,8 @@ public class ExcerciseStartedActivity extends AppCompatActivity {
         dayNo = bundle.getInt("day");
         day_details = "day"+dayNo+"Excercise";
         workoutData.setDay("Day "+dayNo);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        prefsEditor = mSharedPreferences.edit();
         databaseOperations = new DatabaseOperations(getApplicationContext());
         workoutData.setProgress(0.0f);
         PowerManager powerManager = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
