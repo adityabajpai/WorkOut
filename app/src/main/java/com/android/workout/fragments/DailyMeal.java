@@ -793,7 +793,7 @@ public class DailyMeal extends Fragment {
             @Override
             public void onClick(View v) {
                 stddietenabled = mSharedPreferences.getBoolean(str1,false);
-                if(!stddietenabled.booleanValue()){
+                if(!stddietenabled){
                     mBtnStdDiet.setTextColor(getResources().getColor(R.color.colorAccent));
                     mBtnVegDiet.setTextColor(getResources().getColor(R.color.colorPrimary));
                     scrollstddietfood.setVisibility(View.VISIBLE);
