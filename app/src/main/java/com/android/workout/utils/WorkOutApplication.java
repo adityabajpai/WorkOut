@@ -44,7 +44,7 @@ public class WorkOutApplication extends Application {
 
     //Get locale method in preferences
     public void loadLocale() {
-        String language = sharedPreferences.getString(Locale_KeyValue, "");
+        String language = sharedPreferences.getString(Locale_KeyValue, "en");
         changeLocale(language);
     }
 

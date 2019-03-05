@@ -89,6 +89,7 @@ public class HomeActivity extends AppCompatActivity
         this.width = displayMetrics.widthPixels;
         this.height = displayMetrics.heightPixels;
         this.context = this;
+        loadLocale();
         databaseOperations = new DatabaseOperations(context);
         if(databaseOperations.CheckDBEmpty()==0){
             Log.e("HomeActivity","database was empty");
@@ -134,7 +135,6 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        loadLocale();
     }
 
 
@@ -166,6 +166,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        loadLocale();
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -398,8 +399,9 @@ public class HomeActivity extends AppCompatActivity
                 changeLocale("en");
             }
             dialogLanguage.dismiss();
+//            finish();
 //            adapter.notifyDataSetChanged();
-//            recreate();
+            recreate();
         }
     }
     public void changeLocale(String lang) {
@@ -412,7 +414,7 @@ public class HomeActivity extends AppCompatActivity
         config.locale = myLocale;//set config locale as selected locale
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the config
         Log.e("Language changed",lang);
-        adapter.notifyDataSetChanged();
+//        adapter.notifyDataSetChanged();
     }
 
     public void saveLocale(String lang) {
