@@ -36,10 +36,10 @@ public class NotificationPublisher extends BroadcastReceiver {
     private SharedPreferences sharedPreferences;
     private SimpleDateFormat startTimeFormat;
 
-    /* renamed from: com.outthinking.weightlossformen.alarm.alarmmanagerdemo.NotificationPublisher$1 */
+
     class C15111 extends TypeToken<List<Reminder_custom>> {
-        /* renamed from: d */
-        final /* synthetic */ NotificationPublisher f5150d;
+
+        final NotificationPublisher f5150d;
 
         C15111(NotificationPublisher notificationPublisher) {
             this.f5150d = notificationPublisher;
@@ -100,7 +100,6 @@ public class NotificationPublisher extends BroadcastReceiver {
         throw new AssertionError();
     }
 
-    /* renamed from: a */
     void m2551a(AlarmHelper alarmHelper, Calendar calendar) {
         int parseInt;
         int parseInt2;
@@ -146,9 +145,9 @@ public class NotificationPublisher extends BroadcastReceiver {
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         List list = (List) new Gson().fromJson(this.sharedPreferences.getString("Reminder_customObjectList", null), new C15111(this).getType());
         Calendar instance = Calendar.getInstance();
-        instance.get(11);
-        instance.get(12);
-        int i = instance.get(7);
+        instance.get(Calendar.HOUR_OF_DAY);
+        instance.get(Calendar.MINUTE);
+        int i = instance.get(Calendar.DAY_OF_WEEK);
         if (list != null && list.size() > 0) {
             this.alarmHelper = new AlarmHelper(context);
             int i2 = 0;

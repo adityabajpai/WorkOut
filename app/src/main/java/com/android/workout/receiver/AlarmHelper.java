@@ -36,7 +36,7 @@ public class AlarmHelper {
     }
 
     private PendingIntent getPendingIntent() {
-        Intent intent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
+        Intent intent = new Intent("com.android.workout.receiver.NOTIFY_ACTION");
         intent.setClass(this.context, NotificationPublisher.class);
         intent.setFlags(ErrorDialogData.BINDER_CRASH);
         return PendingIntent.getBroadcast(this.context, getNextRequestCode(), intent, 134217728);
@@ -48,34 +48,34 @@ public class AlarmHelper {
     }
 
     public PendingIntent existAlarm(int i) {
-        Intent intent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
+        Intent intent = new Intent("com.android.workout.receiver.NOTIFY_ACTION");
         intent.setClass(this.context, NotificationPublisher.class);
         return PendingIntent.getBroadcast(this.context, i, intent, ErrorDialogData.DYNAMITE_CRASH);
     }
 
     public boolean isAlarmScheduled(int i) {
-        Intent intent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
+        Intent intent = new Intent("com.android.workout.receiver.NOTIFY_ACTION");
         intent.setClass(this.context, NotificationPublisher.class);
         return PendingIntent.getBroadcast(this.context, i, intent, ErrorDialogData.DYNAMITE_CRASH) != null;
     }
 
     public void schedulePendingIntent(int i, int i2, int i3) {
         Calendar instance = Calendar.getInstance();
-        instance.set(11, i);
-        instance.set(12, i2);
-        instance.set(13, 0);
-        instance.set(14, 0);
-        instance.set(9, i3);
+        instance.set(Calendar.HOUR_OF_DAY, i);
+        instance.set(Calendar.MINUTE, i2);
+        instance.set(Calendar.SECOND, 0);
+        instance.set(Calendar.MILLISECOND, 0);
+        instance.set(Calendar.AM_PM,i3);
         schedulePendingIntent(instance.getTimeInMillis(), getPendingIntent());
     }
 
     public void schedulePendingIntent(int i, int i2, int i3, long j) {
         Calendar instance = Calendar.getInstance();
-        instance.set(11, i);
-        instance.set(12, i2);
-        instance.set(13, 0);
-        instance.set(14, 0);
-        instance.set(9, i3);
+        instance.set(Calendar.HOUR_OF_DAY, i);
+        instance.set(Calendar.MINUTE, i2);
+        instance.set(Calendar.SECOND, 0);
+        instance.set(Calendar.MILLISECOND, 0);
+        instance.set(Calendar.AM_PM,i3);
         schedulePendingIntent(instance.getTimeInMillis(), getPendingIntent(), j);
     }
 

@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.android.workout.model.Reminder_custom;
+import com.google.android.gms.common.util.CrashUtils.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -43,9 +44,9 @@ public class BootReceiver extends BroadcastReceiver {
     }
 
     private PendingIntent getPendingIntent() {
-        Intent localIntent = new Intent("com.android.workout.reciever.NOTIFY_ACTION");
+        Intent localIntent = new Intent("com.android.workout.receiver.NOTIFY_ACTION");
         localIntent.setClass(context, NotificationPublisher.class);
-        localIntent.setFlags(268435456);
+        localIntent.setFlags(ErrorDialogData.BINDER_CRASH);
         return PendingIntent.getBroadcast(context, getNextRequestCode(), localIntent, 134217728);
     }
 
@@ -69,25 +70,27 @@ public class BootReceiver extends BroadcastReceiver {
     void getTime(AlarmHelper paramAlarmHelper, Calendar paramCalendar) {
         int i=0;
         int j=0;
+        int k=0;
         if (start_TimeFormat().format(paramCalendar.getTime()).endsWith("AM")) {
             i = Integer.parseInt(getHourFormat().format(paramCalendar.getTime()));
             j = Integer.parseInt(getMinuteFormat().format(paramCalendar.getTime()));
+            k=0;
         }
-        for (int k = 0;; k = 1) {
-            init(i, j, k);
-//            return;
+        else {
             i = Integer.parseInt(getHourFormat().format(paramCalendar.getTime()));
             j = Integer.parseInt(getMinuteFormat().format(paramCalendar.getTime()));
+            k=1;
         }
+        init(i, j, k);
     }
 
     void init(int paramInt1, int paramInt2, int paramInt3) {
         Calendar localCalendar = Calendar.getInstance();
-        localCalendar.set(11, paramInt1);
-        localCalendar.set(12, paramInt2);
-        localCalendar.set(13, 0);
-        localCalendar.set(14, 0);
-        localCalendar.set(9, paramInt3);
+        localCalendar.set(Calendar.HOUR_OF_DAY, paramInt1);
+        localCalendar.set(Calendar.MINUTE, paramInt2);
+        localCalendar.set(Calendar.SECOND, 0);
+        localCalendar.set(Calendar.MILLISECOND, 0);
+        localCalendar.set(Calendar.AM_PM, paramInt3);
         setAlarm(localCalendar.getTimeInMillis(), getPendingIntent());
     }
 

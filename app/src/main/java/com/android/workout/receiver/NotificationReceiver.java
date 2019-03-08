@@ -53,6 +53,10 @@ public class NotificationReceiver extends BroadcastReceiver {
         ((NotificationManager) context.getSystemService("notification")).
                 notify(100, new Builder(context, "reminder_notification").
                         setContentIntent(PendingIntent.getActivity(context, 100, new Intent(context, HomeActivity.class),
-                134217728)).setSmallIcon(R.drawable.icon_notification).setContentTitle(context.getString(R.string.workouttime)).setContentText(this.f3392d).setStyle(new NotificationCompat.BigPictureStyle().bigPicture(decodeResource).setBigContentTitle(context.getString(R.string.letsstart)).setSummaryText(this.f3393e)).setAutoCancel(true).build());
+                134217728)).setSmallIcon(R.drawable.icon_notification).setContentTitle(context.getString(R.string.workouttime))
+                        .setContentText(this.f3392d)
+                        .setStyle(new NotificationCompat.BigPictureStyle()
+                                .bigPicture(decodeResource).setBigContentTitle(context.getString(R.string.letsstart))
+                                .setSummaryText(this.f3393e)).setAutoCancel(true).build());
     }
 }

@@ -100,12 +100,12 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
             public void onTimeSet(TimePicker timePicker, int i, int i2) {
                 if (timePicker.isShown()) {
                     Calendar instance = Calendar.getInstance();
-                    instance.set(11, i);
-                    instance.set(12, i2);
+                    instance.set(Calendar.HOUR_OF_DAY, i);
+                    instance.set(Calendar.MINUTE, i2);
                     showDialog(instance, reminder_custom, i);
                 }
             }
-        }, instance.get(11), instance.get(12), false).show();
+        }, instance.get(Calendar.HOUR_OF_DAY), instance.get(Calendar.MINUTE), false).show();
     }
 
     public SimpleDateFormat getHourFormat() {
@@ -289,17 +289,19 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Produc
     {
         int i=0;
         int j=0;
+        int k=0;
         if (startTimeFormat().format(paramCalendar.getTime()).endsWith("AM"))
         {
             i = Integer.parseInt(getHourFormat().format(paramCalendar.getTime()));
             j = Integer.parseInt(getMinuteFormat().format(paramCalendar.getTime()));
+            k=0;
         }
-        for (int k = 0;; k = 1)
+        else
         {
             i = Integer.parseInt(getHourFormat().format(paramCalendar.getTime()));
             j = Integer.parseInt(getMinuteFormat().format(paramCalendar.getTime()));
-            paramAlarmHelper.schedulePendingIntent(i, j, k);
-            break;
+            k=1;
         }
+        paramAlarmHelper.schedulePendingIntent(i, j, k);
     }
 }
